@@ -11,6 +11,15 @@ copyright = '2024, JunFN'
 author = 'JunFN'
 release = '1.0'
 
+
+html_theme_options = {
+    "logo_only": True,
+}
+
+html_logo = "7Z010_S1_RSTdocument/images/00_media/8.png"
+html_logo_format = "png"
+
+
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
