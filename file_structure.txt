@@ -1,0 +1,51 @@
+
+
+AX7XXX板卡包
+   ├── AX7450B_S1_RSTdocument/               # RST格式技术文档教程（GitHub上可以直接浏览）
+   │   │
+   │   ├── xxx.rst                           # 每个章节对应的rst格式文件教程
+   │   │
+   │   └── images/                           # RST技术文档教程用到的图片
+   │        │         
+   │        └── xx_media/                    # 对应每个章节内的图片
+   │     
+   │ 
+   ├──  course_s1_fpga/                      # S1_FPGA demo实验工程
+   │ 
+   ├──  course_s2_vitis/                     # S2_Vitis demo实验工程
+   │ 
+   ├──  course_s3_hls/                       # S3_HLS demo实验工程 
+   │ 
+   ├──  course_s4_linux/                     # S4_Linux demo实验工程
+   │ 
+   ├──  00_hardware/                         # 硬件资料
+   │   
+   └──  README/                              # 板卡功能介绍
+
+ZYNQ7000系列板卡中存在有些没有S2,S3,s4,S5,S6教程的其中任何一个或者很多个，那么可能整合到了S1教程中。如果没有找到那我们正在积极的进行补充请耐心等待。
+   
+English description
+
+AX7XXX board package
+   ├── AX7450B_S1_RSTdocument/                  # RST format technical document tutorial (can be browsed directly on GitHub)
+   │   │
+   │   ├── xxx.rst                              # Rst format file tutorial corresponding to each chapter
+   │   │
+   │   └── images/                              # Pictures used in RST technical documentation tutorials
+   │   │
+   │   └── xx_media/                            # Corresponding to the pictures in each chapter
+   │
+   │
+   ├── course_s1_fpga/                          # S1_FPGA demo experimental project
+   │
+   ├── course_s2_vitis/                         # S2_Vitis demo experimental project
+   │
+   ├── course_s3_hls/                           # S3_HLS demo experimental project
+   │
+   ├── course_s4_linux/                         # S4_Linux demo experimental project
+   │ 
+   ├──  00_hardware/                            # Hardware data
+   │
+   └── README/                                  # Board function introduction
+   
+There are some ZYNQ7000 series boards that do not have any one or more of the S2, S3, s4, S5, and S6 tutorials, so they may be integrated into the S1 tutorial. If you don't find it, we are actively adding it. Please wait patiently.

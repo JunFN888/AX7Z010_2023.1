@@ -1,0 +1,1055 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="zh-CN" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.19: https://docutils.sourceforge.io/" />
+
+    <title>以太网实验（LWIP） &#8212; ZYNQ 7000开发平台FPGA教程 1.0 文档</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/translations.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = '7Z010_S1_RSTdocument/12_以太网实验_CN';</script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="自定义IP实验" href="13_%E8%87%AA%E5%AE%9A%E4%B9%89IP%E5%AE%9E%E9%AA%8C_CN.html" />
+    <link rel="prev" title="安装虚拟机和Ubuntu系统" href="11_%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8CUbuntu%E7%B3%BB%E7%BB%9F_CN.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="zh-CN"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search..."
+         aria-label="Search..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../index.html">
+  
+  
+  
+  
+  
+    <p class="title logo__title">ZYNQ 7000开发平台FPGA教程 1.0 文档</p>
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">公司简介</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_%E5%85%B3%E4%BA%8EALINX_CN.html">关于ALINX</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AX7350型号板卡S1_FPGA教程</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_%E4%BF%AE%E6%AD%A3%E5%B1%A5%E5%8E%86_CN.html">版权声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="01_%E8%BD%AF%E4%BB%B6%E5%8C%85%E8%AF%B4%E6%98%8E%E5%92%8C%E5%BC%80%E5%8F%91%E6%9D%BF%E6%A3%80%E6%B5%8B_CN.html">软件包说明和开发板检测</a></li>
+<li class="toctree-l1"><a class="reference internal" href="02_ZYNQ%E7%AE%80%E4%BB%8B_CN.html">ZYNQ简介</a></li>
+<li class="toctree-l1"><a class="reference internal" href="03_Vivado%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83_CN.html">Vivado开发环境</a></li>
+<li class="toctree-l1"><a class="reference internal" href="04_PL%E7%9A%84LED%E5%AE%9E%E9%AA%8C_CN.html">PL的“Hello World”LED实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="05_HDMI%E8%BE%93%E5%87%BA%E5%AE%9E%E9%AA%8C_CN.html">HDMI输出实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="06_%E4%BD%93%E9%AA%8CARM%E8%BE%93%E5%87%BAHello%20World_CN.html">体验ARM，裸机输出“Hello World”</a></li>
+<li class="toctree-l1"><a class="reference internal" href="07_PS%E5%AE%9A%E6%97%B6%E5%99%A8%E4%B8%AD%E6%96%AD%E5%AE%9E%E9%AA%8C_CN.html">PS定时器中断实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="08_PS%E7%AB%AFMIO%E7%9A%84%E4%BD%BF%E7%94%A8_CN.html">PS端MIO的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="09_PS%E7%AB%AFEMIO%E7%9A%84%E4%BD%BF%E7%94%A8_CN.html">PS端EMIO的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="10_PL%E7%AB%AFAXI%20GPIO%E7%9A%84%E4%BD%BF%E7%94%A8_CN.html">PL端AXI GPIO的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="11_%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8CUbuntu%E7%B3%BB%E7%BB%9F_CN.html">安装虚拟机和Ubuntu系统</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">以太网实验（LWIP）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="13_%E8%87%AA%E5%AE%9A%E4%B9%89IP%E5%AE%9E%E9%AA%8C_CN.html">自定义IP实验</a></li>
+<li class="toctree-l1"><a class="reference internal" href="14_%E4%BD%BF%E7%94%A8VDMA%E9%A9%B1%E5%8A%A8HDMI%E6%98%BE%E7%A4%BA_CN.html">使用VDMA驱动HDMI显示</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AX7350型号板卡S2_Vitis教程</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/00_%E7%89%88%E6%9D%83%E5%A3%B0%E6%98%8E_CN.html">版权声明</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/00_%E5%89%8D%E8%A8%80_CN.html">前言</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/00_%E5%87%86%E5%A4%87%E5%B7%A5%E7%A8%8B%E5%8F%8A%E6%B3%A8%E6%84%8F%E4%BA%8B%E9%A1%B9_CN.html">准备工程及注意事项</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/01_PS%E7%AB%AFUART%E8%AF%BB%E5%86%99%E6%8E%A7%E5%88%B6_CN.html">PS端UART读写控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/02_XADC%E7%9A%84%E4%BD%BF%E7%94%A8_CN.html">XADC的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/03_I2C%E7%9A%84%E8%AF%BB%E5%86%99_CN.html">I2C的读写</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/04_CAN%E6%80%BB%E7%BA%BF%E8%AF%BB%E5%86%99_CN.html">CAN总线读写</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/05_RS485%E6%B5%8B%E8%AF%95_CN.html">RS485测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/06_PL%E8%AF%BB%E5%86%99PS%E7%AB%AFDDR%E6%95%B0%E6%8D%AE_CN.html">PL读写PS端DDR数据</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/07_%E9%80%9A%E8%BF%87BRAM%E5%AE%9E%E7%8E%B0PS%E4%B8%8EPL%E6%95%B0%E6%8D%AE%E4%BA%A4%E4%BA%92_CN.html">通过BRAM实现PS与PL数据交互</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/08_%E5%8F%8C%E6%A0%B8AMP%E7%9A%84%E4%BD%BF%E7%94%A8_CN.html">双核AMP的使用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/09_ZYNQ%E4%B8%8B%E4%BD%BF%E7%94%A8Free%20RTOS_CN.html">ZYNQ下使用Free RTOS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/10_DMA%E7%8E%AF%E9%80%9A%E6%B5%8B%E8%AF%95_CN.html">DMA环通测试</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/11_DMA%E4%BD%BF%E7%94%A8%E4%B9%8BDAC%E6%B3%A2%E5%BD%A2%E5%8F%91%E7%94%9F%E5%99%A8_CN.html">DMA使用之DAC波形发生器(AN108)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/12_DMA%E4%BD%BF%E7%94%A8%E4%B9%8BADC%E7%A4%BA%E6%B3%A2%E5%99%A8_CN.html">DMA使用之ADC示波器(AN108)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/13_DMA%E4%BD%BF%E7%94%A8%E4%B9%8BADC%E7%A4%BA%E6%B3%A2%E5%99%A8_CN.html">DMA使用之ADC示波器(AN9238)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/14_DMA%E4%BD%BF%E7%94%A8%E4%B9%8BADC%E7%A4%BA%E6%B3%A2%E5%99%A8_CN.html">DMA使用之ADC示波器（AN706）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/15_%E5%9F%BA%E4%BA%8EADC%E6%A8%A1%E5%9D%97%E7%9A%84Scatter_CN.html">基于ADC模块的Scatter/Gather DMA使用(AN108)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/16_%E5%9F%BA%E4%BA%8EDAC%E6%A8%A1%E5%9D%97%E7%9A%84Scatter_CN.html">基于DAC模块的Scatter/Gather DMA使用（AN9767）</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/17_OV5640%E6%91%84%E5%83%8F%E5%A4%B4%E7%9A%84%E9%87%87%E9%9B%86%E6%98%BE%E7%A4%BA%E4%B8%80_CN.html">OV5640摄像头的采集显示一</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/18_OV5640%E6%91%84%E5%83%8F%E5%A4%B4%E7%9A%84%E9%87%87%E9%9B%86%E6%98%BE%E7%A4%BA%E4%BA%8C_CN.html">OV5640摄像头的采集显示二</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/19_%E5%8F%8C%E7%9B%AE%E6%91%84%E5%83%8F%E5%A4%B4%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BC%A0%E8%BE%93_CN.html">双目摄像头以太网传输</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/20_SD%E5%8D%A1%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C%E4%B9%8BBMP%E5%9B%BE%E7%89%87%E6%98%BE%E7%A4%BA_CN.html">SD卡读写操作之BMP图片显示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/21_SD%E5%8D%A1%E8%AF%BB%E5%86%99%E6%93%8D%E4%BD%9C%E4%B9%8B%E6%91%84%E5%83%8F%E5%A4%B4%E6%8A%93%E6%8B%8D_CN.html">SD卡读写操作之摄像头抓拍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/22_%E5%9F%BA%E4%BA%8EAN5641%E6%A8%A1%E5%9D%97%E7%9A%84MIPI%E9%87%87%E9%9B%86%E6%98%BE%E7%A4%BA_CN.html">基于AN5641模块的MIPI采集显示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/23_%E9%9F%B3%E9%A2%91%E6%A8%A1%E5%9D%97AN831%E7%9A%84%E5%BD%95%E9%9F%B3%E4%B8%8E%E6%92%AD%E6%94%BE_CN.html">音频模块AN831的录音与播放</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/24_7%E5%AF%B8%E8%A7%A6%E6%91%B8%E5%B1%8F%E6%A8%A1%E5%9D%97%E7%9A%84%E6%98%BE%E7%A4%BA_CN.html">7寸触摸屏模块的显示</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/25_7%E5%AF%B8%E8%A7%A6%E6%91%B8%E5%B1%8F%E7%9A%84GUI%E5%8F%8A%E8%A7%A6%E6%91%B8%E6%8E%A7%E5%88%B6_CN.html">7寸触摸屏的GUI及触摸控制</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/26_%E5%9F%BA%E4%BA%8EAN108%E6%A8%A1%E5%9D%97%E7%9A%84ADC%E9%87%87%E9%9B%86%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BC%A0%E8%BE%93_CN.html">基于AN108模块的ADC采集以太网传输</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/27_%E5%9F%BA%E4%BA%8EAN9238%E6%A8%A1%E5%9D%97%E7%9A%84ADC%E9%87%87%E9%9B%86%E4%B9%8B%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BC%A0%E8%BE%93_CN.html">基于AN9238模块的ADC采集之以太网传输</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/28_%E5%9F%BA%E4%BA%8EAN706%E6%A8%A1%E5%9D%97%E7%9A%84ADC%E9%87%87%E9%9B%86%E4%B9%8B%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%BC%A0%E8%BE%93_CN.html">基于AN706模块的ADC采集之以太网传输</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S2_RSTdocument/29_%E5%9F%BA%E4%BA%8EUDP_TCP%E7%9A%84%E8%BF%9C%E7%A8%8B%E6%9B%B4%E6%96%B0_CN.html">基于UDP/TCP的远程更新QSPI Flash</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AX7350型号板卡S3_HLS教程</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/01_led_control_CN.html">初识HLS</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/02_led_register_CN.html">状态指示led</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/03_average_float_CN.html">浮点协处理</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/04_colorbar_CN.html">视频彩条</a></li>
+
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/05_video_show_CN.html">视频帧缓存读写管理</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/06_contrast_adj_CN.html">图像对比度调整</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/07_auto_focus_CN.html">自动聚焦</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/08_edge_detector_CN.html">边缘检测</a></li>
+
+
+
+<li class="toctree-l1"><a class="reference internal" href="../7Z010_S3_RSTdocument/09_dual_corner_CN.html">角点检测</a></li>
+
+
+
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">AX7350常见问题</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_%E5%BA%8F_CN.html">序</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Alinx版权</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="00_%E8%B4%A3%E4%BB%BB%E5%A3%B0%E6%98%8E_CN.html">版权说明</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下载此页面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/7Z010_S1_RSTdocument/12_以太网实验_CN.rst" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下载源文件"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.rst</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全屏模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="搜索" aria-label="搜索" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>以太网实验（LWIP）</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目录 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vivado">Vivado工程建立</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vitis">Vitis程序开发</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LWIP库修改</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lwipapp">创建基于LWIP模板的APP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">下载调试</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">以太网测试</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验总结</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section id="lwip">
+<h1>以太网实验（LWIP）<a class="headerlink" href="#lwip" title="此标题的永久链接">#</a></h1>
+<p><strong>实验Vivado工程为“net_test”。</strong></p>
+<p>开发板有1路千兆以太网，通过RGMII接口连接，本实验演示如何使用Vitis自带的LWIP模板进行千兆以太网TCP通信。</p>
+<p>LWIP虽然是轻量级协议栈，但如果从来没有使用过，使用起来会有一定的困难，建议先熟悉LWIP的相关知识。</p>
+<section id="vivado">
+<h2>Vivado工程建立<a class="headerlink" href="#vivado" title="此标题的永久链接">#</a></h2>
+<p>基于“ps_hello”另存一个“net_test”vivado工作。PS端Ethernet 0已经配置过。</p>
+</section>
+<section id="vitis">
+<h2>Vitis程序开发<a class="headerlink" href="#vitis" title="此标题的永久链接">#</a></h2>
+<section id="id1">
+<h3>LWIP库修改<a class="headerlink" href="#id1" title="此标题的永久链接">#</a></h3>
+<p>由于自带的LWIP库只能识别部分phy芯片，如果开发板所用的phy芯片不在默认支持范围内，要修改库文件。也可以直接使用修改过的库替换原有的库。</p>
+<ol class="arabic simple">
+<li><p>找到库文件目录“D:\Xilinx2023.1\Vitis\2023.1\data\embeddedsw\ThirdParty\sw_services”</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image140.png"><img alt="../_images/image140.png" src="../_images/image140.png" style="width: 4.67986in; height: 3.44167in;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>找到要修改的文件目录“lwip213_v1_0\src\contrib\ports\xilinx\netif”中文件“xaxiemacif_physpeed.c”和“xemacpsif_physpeed.c”要修改。</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image229.png"><img alt="../_images/image229.png" src="../_images/image229.png" style="width: 5.12431in; height: 3.84861in;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>修改“xaxiemacif_physpeed.c”文件，添加相关宏定义</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image325.png"><img alt="../_images/image325.png" src="../_images/image325.png" style="width: 3.53542in; height: 3.52083in;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>添加phy速度获取函数</p></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>unsigned int get_phy_speed_ksz9031<strong>(</strong>XAxiEthernet
+<strong>*</strong>xaxiemacp<strong>,</strong> u32 phy_addr<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>u16 control<strong>;</strong></p>
+<p>u16 status<strong>;</strong></p>
+<p>u16 partner_capabilities<strong>;</strong></p>
+<p>xil_printf<strong>(</strong>“Start PHY autonegotiation \r\n”<strong>);</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong>phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 2<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_MAC<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>//control |= IEEE_RGMII_TXRX_CLOCK_DELAYED_MASK;</p>
+<p>control <strong>&amp;=</strong> <strong>~(</strong>0x10<strong>);</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_MAC<strong>,</strong> control<strong>);</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 0<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_AUTONEGO_ADVERTISE_REG<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_ASYMMETRIC_PAUSE_MASK<strong>;</strong></p>
+<p>control <strong>|=</strong> IEEE_PAUSE_MASK<strong>;</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_100<strong>;</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_10<strong>;</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_AUTONEGO_ADVERTISE_REG<strong>,</strong> control<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_1000_ADVERTISE_REG_OFFSET<strong>,</strong></p>
+<p><strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_1000<strong>;</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_1000_ADVERTISE_REG_OFFSET<strong>,</strong></p>
+<p>control<strong>);</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 0<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_COPPER_SPECIFIC_CONTROL_REG<strong>,</strong></p>
+<p><strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> <strong>(</strong>7 <strong>&lt;&lt;</strong> 12<strong>);</strong> /* max number of gigabit
+attempts */</p>
+<p>control <strong>|=</strong> <strong>(</strong>1 <strong>&lt;&lt;</strong> 11<strong>);</strong> /* enable downshift */</p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_COPPER_SPECIFIC_CONTROL_REG<strong>,</strong></p>
+<p>control<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_CTRL_AUTONEGOTIATE_ENABLE<strong>;</strong></p>
+<p>control <strong>|=</strong> IEEE_STAT_AUTONEGOTIATE_RESTART<strong>;</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> control<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_CTRL_RESET_MASK<strong>;</strong></p>
+<p>XAxiEthernet_PhyWrite<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> control<strong>);</strong></p>
+<p><strong>while</strong> <strong>(</strong>1<strong>)</strong> <strong>{</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p><strong>if</strong> <strong>(</strong>control <strong>&amp;</strong> IEEE_CTRL_RESET_MASK<strong>)</strong></p>
+<p><strong>continue;</strong></p>
+<p><strong>else</strong></p>
+<p><strong>break;</strong></p>
+<p><strong>}</strong></p>
+<p>xil_printf<strong>(</strong>“Waiting for PHY to complete
+autonegotiation.\r\n”<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_STATUS_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>status<strong>);</strong></p>
+<p><strong>while</strong> <strong>(</strong> <strong>!(</strong>status <strong>&amp;</strong>
+IEEE_STAT_AUTONEGOTIATE_COMPLETE<strong>)</strong> <strong>)</strong> <strong>{</strong></p>
+<p>sleep<strong>(</strong>1<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_STATUS_REG_OFFSET<strong>,</strong></p>
+<p><strong>&amp;</strong>status<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p>xil_printf<strong>(</strong>“autonegotiation complete \r\n”<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+0x1f<strong>,</strong> <strong>&amp;</strong>partner_capabilities<strong>);</strong></p>
+<p><strong>if</strong> <strong>(</strong> <strong>(</strong>partner_capabilities <strong>&amp;</strong> 0x40<strong>)</strong> <strong>==</strong>
+0x40<strong>)</strong>/* 1000Mbps */</p>
+<p><strong>return</strong> 1000<strong>;</strong></p>
+<p><strong>else</strong> <strong>if</strong> <strong>(</strong> <strong>(</strong>partner_capabilities <strong>&amp;</strong> 0x20<strong>)</strong>
+<strong>==</strong> 0x20<strong>)</strong>/* 100Mbps */</p>
+<p><strong>return</strong> 100<strong>;</strong></p>
+<p><strong>else</strong> <strong>if</strong> <strong>(</strong> <strong>(</strong>partner_capabilities <strong>&amp;</strong> 0x10<strong>)</strong>
+<strong>==</strong> 0x10<strong>)</strong>/* 10Mbps */</p>
+<p><strong>return</strong> 10<strong>;</strong></p>
+<p><strong>else</strong></p>
+<p><strong>return</strong> 0<strong>;</strong></p>
+<p><strong>}</strong></p>
+<p><strong>static</strong> u32_t get_phy_speed_JL2121(XAxiEthernet *xaxiemacp, u32_t
+phy_addr)</p>
+<p>{</p>
+<p>u16_t temp;</p>
+<p>u16_t control;</p>
+<p>u16_t status;</p>
+<p>u16_t status_speed;</p>
+<p>u32_t timeout_counter = 0;</p>
+<p>u32_t temp_speed;</p>
+<p>u32_t phyregtemp;</p>
+<p>xil_printf(”<em>phy</em> is JL2121!\r\n”);</p>
+<p>xil_printf(“Start PHY <em>autonegotiation</em> \r\n”);</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p>control |= IEEE_CTRL_RESET_MASK;</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+control);</p>
+<p>usleep(10000);</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr,
+IEEE_AUTONEGO_ADVERTISE_REG, &amp;control);</p>
+<p>control |= IEEE_ASYMMETRIC_PAUSE_MASK;</p>
+<p>control |= IEEE_PAUSE_MASK;</p>
+<p>control |= ADVERTISE_100;</p>
+<p>control |= ADVERTISE_10;</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp, phy_addr,
+IEEE_AUTONEGO_ADVERTISE_REG, control);</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr,
+IEEE_1000_ADVERTISE_REG_OFFSET,</p>
+<p>&amp;control);</p>
+<p>control |= ADVERTISE_1000;</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp, phy_addr,
+IEEE_1000_ADVERTISE_REG_OFFSET,</p>
+<p>control);</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p>control |= IEEE_CTRL_AUTONEGOTIATE_ENABLE;</p>
+<p>control |= IEEE_STAT_AUTONEGOTIATE_RESTART;</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+control);</p>
+<p><strong>while</strong> (1) {</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p><strong>if</strong> (control &amp; IEEE_CTRL_RESET_MASK)</p>
+<p><strong>continue</strong>;</p>
+<p><strong>else</strong></p>
+<p><strong>break</strong>;</p>
+<p>}</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr, IEEE_STATUS_REG_OFFSET,
+&amp;status);</p>
+<p>xil_printf(“Waiting for PHY to complete <em>autonegotiation</em>.\r\n”);</p>
+<p><strong>while</strong> ( !(status &amp; IEEE_STAT_AUTONEGOTIATE_COMPLETE) ) {</p>
+<p>sleep(1);</p>
+<p>timeout_counter++;</p>
+<p><strong>if</strong> (timeout_counter == 30) {</p>
+<p>xil_printf(“Auto negotiation error \r\n”);</p>
+<p><strong>return</strong>;</p>
+<p>}</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr, IEEE_STATUS_REG_OFFSET,
+&amp;status);</p>
+<p>}</p>
+<p>xil_printf(”<em>autonegotiation</em> complete \r\n”);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_SPECIFIC_PAGE);</p>
+<p>XAxiEthernet_PhyRead(xaxiemacp, phy_addr,
+JLSEMI_PHY_SPECIFIC_STATUS_REG_OFFSET, &amp;status_speed);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_LCR_PAGE);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_LED_CONTROL_REG_OFFSET,0xAE01);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_LED_BLINK_PAGE);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_LED_BLINK_REG_OFFSET,0x0704);</p>
+<p>XAxiEthernet_PhyWrite(xaxiemacp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,0);</p>
+<p><strong>if</strong> ( (status_speed &amp; 0x20) == 0x20)/* 1000Mbps */</p>
+<p><strong>return</strong> 1000;</p>
+<p><strong>else</strong> <strong>if</strong> ( (status_speed &amp; 0x10) == 0x10)/* 100Mbps */</p>
+<p><strong>return</strong> 100;</p>
+<p><strong>else</strong> <strong>if</strong> ( (status_speed &amp; 0x30) == 0x0)/* 10Mbps */</p>
+<p><strong>return</strong> 10;</p>
+<p><strong>else</strong></p>
+<p><strong>return</strong> 0;</p>
+<p><strong>return</strong> XST_SUCCESS;</p>
+<p>}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>修改函数“get_IEEE_phy_speed”，添加对KSZ9031和JL2121的支持。</p></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>unsigned get_IEEE_phy_speed<strong>(</strong>XAxiEthernet
+<strong>*</strong>xaxiemacp<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>u16 phy_identifier<strong>;</strong></p>
+<p>u16 phy_model<strong>;</strong></p>
+<p>u8 phytype<strong>;</strong></p>
+<p>#ifdef XPAR_AXIETHERNET_0_BASEADDR</p>
+<p>u32 phy_addr <strong>=</strong> detect_phy<strong>(</strong>xaxiemacp<strong>);</strong></p>
+<p>/* Get the PHY Identifier and Model number */</p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+PHY_IDENTIFIER_1_REG<strong>,</strong> <strong>&amp;</strong>phy_identifier<strong>);</strong></p>
+<p>XAxiEthernet_PhyRead<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>,</strong>
+PHY_IDENTIFIER_2_REG<strong>,</strong> <strong>&amp;</strong>phy_model<strong>);</strong></p>
+<p>/* Depending upon what manufacturer PHY is connected, a different
+mask is</p>
+<p>* needed to determine the specific model number of the PHY. */</p>
+<p><strong>if</strong> <strong>(</strong>phy_identifier <strong>==</strong> MARVEL_PHY_IDENTIFIER<strong>)</strong>
+<strong>{</strong></p>
+<p>phy_model <strong>=</strong> phy_model <strong>&amp;</strong> MARVEL_PHY_MODEL_NUM_MASK<strong>;</strong></p>
+<p><strong>if</strong> <strong>(</strong>phy_model <strong>==</strong> MARVEL_PHY_88E1116R_MODEL<strong>)</strong> <strong>{</strong></p>
+<p><strong>return</strong> get_phy_speed_88E1116R<strong>(</strong>xaxiemacp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong> <strong>else</strong> <strong>if</strong> <strong>(</strong>phy_model <strong>==</strong>
+MARVEL_PHY_88E1111_MODEL<strong>)</strong> <strong>{</strong></p>
+<p><strong>return</strong> get_phy_speed_88E1111<strong>(</strong>xaxiemacp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>}</strong> <strong>else</strong> <strong>if</strong> <strong>(</strong>phy_identifier <strong>==</strong>
+TI_PHY_IDENTIFIER<strong>)</strong> <strong>{</strong></p>
+<p>phy_model <strong>=</strong> phy_model <strong>&amp;</strong> TI_PHY_DP83867_MODEL<strong>;</strong></p>
+<p>phytype <strong>=</strong>
+XAxiEthernet_GetPhysicalInterface<strong>(</strong>xaxiemacp<strong>);</strong></p>
+<p><strong>if</strong> <strong>(</strong>phy_model <strong>==</strong> TI_PHY_DP83867_MODEL <strong>&amp;&amp;</strong> phytype
+<strong>==</strong> XAE_PHY_TYPE_SGMII<strong>)</strong> <strong>{</strong></p>
+<p><strong>return</strong> get_phy_speed_TI_DP83867_SGMII<strong>(</strong>xaxiemacp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>if</strong> <strong>(</strong>phy_model <strong>==</strong> TI_PHY_DP83867_MODEL<strong>)</strong> <strong>{</strong></p>
+<p><strong>return</strong> get_phy_speed_TI_DP83867<strong>(</strong>xaxiemacp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>}</strong></p>
+<p><strong>else</strong> <strong>if(</strong>phy_identifier <strong>==</strong> MICREL_PHY_IDENTIFIER<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>xil_printf<strong>(</strong>“Phy %d is KSZ9031\n\r”<strong>,</strong> phy_addr<strong>);</strong></p>
+<p>get_phy_speed_ksz9031<strong>(</strong>xaxiemacp<strong>,</strong> phy_addr<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>else</strong> <strong>if</strong>(phy_identifier == JLSEMI_IDENTIFIER)</p>
+<p>{</p>
+<p><strong>return</strong> get_phy_speed_JL2121(xaxiemacp, phy_addr);</p>
+<p>}</p>
+<p><strong>else</strong> <strong>{</strong></p>
+<p>LWIP_DEBUGF<strong>(</strong>NETIF_DEBUG<strong>,</strong> <strong>(</strong>“XAxiEthernet
+get_IEEE_phy_speed: Detected PHY with unknown
+identifier/model.\r\n”<strong>));</strong></p>
+<p><strong>}</strong></p>
+<p>#endif</p>
+<p>#ifdef PCM_PMA_CORE_PRESENT</p>
+<p><strong>return</strong> get_phy_negotiated_speed<strong>(</strong>xaxiemacp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p>#endif</p>
+<p><strong>}</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>修改“xemacpsif_physpeed.c”文件添加宏定义</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image425.png"><img alt="../_images/image425.png" src="../_images/image425.png" style="width: 3.4125in; height: 2.85139in;" /></a>
+<ol class="arabic simple" start="7">
+<li><p>添加phy速度获取函数</p></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>static u32_t get_phy_speed_ksz9031<strong>(</strong>XEmacPs
+<strong>*</strong>xemacpsp<strong>,</strong> u32_t phy_addr<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>u16_t temp<strong>;</strong></p>
+<p>u16_t control<strong>;</strong></p>
+<p>u16_t status<strong>;</strong></p>
+<p>u16_t status_speed<strong>;</strong></p>
+<p>u32_t timeout_counter <strong>=</strong> 0<strong>;</strong></p>
+<p>u32_t temp_speed<strong>;</strong></p>
+<p>u32_t phyregtemp<strong>;</strong></p>
+<p>xil_printf<strong>(</strong>“Start PHY autonegotiation \r\n”<strong>);</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong>phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 2<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_MAC<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_RGMII_TXRX_CLOCK_DELAYED_MASK<strong>;</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_MAC<strong>,</strong> control<strong>);</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 0<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_AUTONEGO_ADVERTISE_REG<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_ASYMMETRIC_PAUSE_MASK<strong>;</strong></p>
+<p>control <strong>|=</strong> IEEE_PAUSE_MASK<strong>;</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_100<strong>;</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_10<strong>;</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_AUTONEGO_ADVERTISE_REG<strong>,</strong> control<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_1000_ADVERTISE_REG_OFFSET<strong>,</strong></p>
+<p><strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> ADVERTISE_1000<strong>;</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_1000_ADVERTISE_REG_OFFSET<strong>,</strong></p>
+<p>control<strong>);</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_PAGE_ADDRESS_REGISTER<strong>,</strong> 0<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_COPPER_SPECIFIC_CONTROL_REG<strong>,</strong></p>
+<p><strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> <strong>(</strong>7 <strong>&lt;&lt;</strong> 12<strong>);</strong> /* max number of gigabit
+attempts */</p>
+<p>control <strong>|=</strong> <strong>(</strong>1 <strong>&lt;&lt;</strong> 11<strong>);</strong> /* enable downshift */</p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_COPPER_SPECIFIC_CONTROL_REG<strong>,</strong></p>
+<p>control<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_CTRL_AUTONEGOTIATE_ENABLE<strong>;</strong></p>
+<p>control <strong>|=</strong> IEEE_STAT_AUTONEGOTIATE_RESTART<strong>;</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> control<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p>control <strong>|=</strong> IEEE_CTRL_RESET_MASK<strong>;</strong></p>
+<p>XEmacPs_PhyWrite<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> control<strong>);</strong></p>
+<p><strong>while</strong> <strong>(</strong>1<strong>)</strong> <strong>{</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_CONTROL_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>control<strong>);</strong></p>
+<p><strong>if</strong> <strong>(</strong>control <strong>&amp;</strong> IEEE_CTRL_RESET_MASK<strong>)</strong></p>
+<p><strong>continue;</strong></p>
+<p><strong>else</strong></p>
+<p><strong>break;</strong></p>
+<p><strong>}</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_STATUS_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>status<strong>);</strong></p>
+<p>xil_printf<strong>(</strong>“Waiting for PHY to complete
+autonegotiation.\r\n”<strong>);</strong></p>
+<p><strong>while</strong> <strong>(</strong> <strong>!(</strong>status <strong>&amp;</strong>
+IEEE_STAT_AUTONEGOTIATE_COMPLETE<strong>)</strong> <strong>)</strong> <strong>{</strong></p>
+<p>sleep<strong>(</strong>1<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong></p>
+<p>IEEE_COPPER_SPECIFIC_STATUS_REG_2<strong>,</strong> <strong>&amp;</strong>temp<strong>);</strong></p>
+<p>timeout_counter<strong>++;</strong></p>
+<p><strong>if</strong> <strong>(</strong>timeout_counter <strong>==</strong> 30<strong>)</strong> <strong>{</strong></p>
+<p>xil_printf<strong>(</strong>“Auto negotiation error \r\n”<strong>);</strong></p>
+<p><strong>return;</strong></p>
+<p><strong>}</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+IEEE_STATUS_REG_OFFSET<strong>,</strong> <strong>&amp;</strong>status<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p>xil_printf<strong>(</strong>“autonegotiation complete \r\n”<strong>);</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>0x1f<strong>,</strong></p>
+<p><strong>&amp;</strong>status_speed<strong>);</strong></p>
+<p><strong>if</strong> <strong>(</strong> <strong>(</strong>status_speed <strong>&amp;</strong> 0x40<strong>)</strong> <strong>==</strong>
+0x40<strong>)</strong>/* 1000Mbps */</p>
+<p><strong>return</strong> 1000<strong>;</strong></p>
+<p><strong>else</strong> <strong>if</strong> <strong>(</strong> <strong>(</strong>status_speed <strong>&amp;</strong> 0x20<strong>)</strong> <strong>==</strong>
+0x20<strong>)</strong>/* 100Mbps */</p>
+<p><strong>return</strong> 100<strong>;</strong></p>
+<p><strong>else</strong> <strong>if</strong> <strong>(</strong> <strong>(</strong>status_speed <strong>&amp;</strong> 0x10<strong>)</strong> <strong>==</strong>
+0x10<strong>)</strong>/* 10Mbps */</p>
+<p><strong>return</strong> 10<strong>;</strong></p>
+<p><strong>else</strong></p>
+<p><strong>return</strong> 0<strong>;</strong></p>
+<p><strong>return</strong> XST_SUCCESS<strong>;</strong></p>
+<p><strong>}</strong></p>
+<p><strong>static</strong> u32_t <strong>get_phy_speed_JL2121</strong>(XEmacPs *xemacpsp, u32_t
+phy_addr)</p>
+<p>{</p>
+<p>u16_t temp;</p>
+<p>u16_t control;</p>
+<p>u16_t status;</p>
+<p>u16_t status_speed;</p>
+<p>u32_t timeout_counter = 0;</p>
+<p>u32_t temp_speed;</p>
+<p>u32_t phyregtemp;</p>
+<p>xil_printf(”<em>phy</em> is JL2121!\r\n”);</p>
+<p>xil_printf(“Start PHY <em>autonegotiation</em> \r\n”);</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p>control |= IEEE_CTRL_RESET_MASK;</p>
+<p>XEmacPs_PhyWrite(xemacpsp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+control);</p>
+<p>usleep(10000);</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_AUTONEGO_ADVERTISE_REG,
+&amp;control);</p>
+<p>control |= IEEE_ASYMMETRIC_PAUSE_MASK;</p>
+<p>control |= IEEE_PAUSE_MASK;</p>
+<p>control |= ADVERTISE_100;</p>
+<p>control |= ADVERTISE_10;</p>
+<p>XEmacPs_PhyWrite(xemacpsp, phy_addr, IEEE_AUTONEGO_ADVERTISE_REG,
+control);</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_1000_ADVERTISE_REG_OFFSET,</p>
+<p>&amp;control);</p>
+<p>control |= ADVERTISE_1000;</p>
+<p>XEmacPs_PhyWrite(xemacpsp, phy_addr, IEEE_1000_ADVERTISE_REG_OFFSET,</p>
+<p>control);</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p>control |= IEEE_CTRL_AUTONEGOTIATE_ENABLE;</p>
+<p>control |= IEEE_STAT_AUTONEGOTIATE_RESTART;</p>
+<p>XEmacPs_PhyWrite(xemacpsp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+control);</p>
+<p><strong>while</strong> (1) {</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_CONTROL_REG_OFFSET,
+&amp;control);</p>
+<p><strong>if</strong> (control &amp; IEEE_CTRL_RESET_MASK)</p>
+<p><strong>continue</strong>;</p>
+<p><strong>else</strong></p>
+<p><strong>break</strong>;</p>
+<p>}</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_STATUS_REG_OFFSET, &amp;status);</p>
+<p>xil_printf(“Waiting for PHY to complete <em>autonegotiation</em>.\r\n”);</p>
+<p><strong>while</strong> ( !(status &amp; IEEE_STAT_AUTONEGOTIATE_COMPLETE) ) {</p>
+<p>sleep(1);</p>
+<p>timeout_counter++;</p>
+<p><strong>if</strong> (timeout_counter == 30) {</p>
+<p>xil_printf(“Auto negotiation error \r\n”);</p>
+<p><strong>return</strong>;</p>
+<p>}</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr, IEEE_STATUS_REG_OFFSET, &amp;status);</p>
+<p>}</p>
+<p>xil_printf(”<em>autonegotiation</em> complete \r\n”);</p>
+<p>XEmacPs_PhyWrite(xemacpsp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_SPECIFIC_PAGE);</p>
+<p>XEmacPs_PhyRead(xemacpsp, phy_addr,
+JLSEMI_PHY_SPECIFIC_STATUS_REG_OFFSET, &amp;status_speed);</p>
+<p>XEmacPs_PhyWrite(xemacpsp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_LCR_PAGE);</p>
+<p>XEmacPs_PhyWrite(xemacpsp,
+phy_addr,JLSEMI_PHY_LED_CONTROL_REG_OFFSET,0xAE01);</p>
+<p>XEmacPs_PhyWrite(xemacpsp,
+phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,JLSEMI_PHY_LED_BLINK_PAGE);</p>
+<p>XEmacPs_PhyWrite(xemacpsp,
+phy_addr,JLSEMI_PHY_LED_BLINK_REG_OFFSET,0x0704);</p>
+<p>XEmacPs_PhyWrite(xemacpsp, phy_addr,JLSEMI_PHY_SELECT_REG_OFFSET,0);</p>
+<p><strong>if</strong> ( (status_speed &amp; 0x20) == 0x20)/* 1000Mbps */</p>
+<p><strong>return</strong> 1000;</p>
+<p><strong>else</strong> <strong>if</strong> ( (status_speed &amp; 0x10) == 0x10)/* 100Mbps */</p>
+<p><strong>return</strong> 100;</p>
+<p><strong>else</strong> <strong>if</strong> ( (status_speed &amp; 0x30) == 0x0)/* 10Mbps */</p>
+<p><strong>return</strong> 10;</p>
+<p><strong>else</strong></p>
+<p><strong>return</strong> 0;</p>
+<p><strong>return</strong> XST_SUCCESS;</p>
+<p>}</p>
+</td>
+</tr>
+</tbody>
+</table>
+<ol class="arabic simple">
+<li><p>修改函数“get_IEEE_phy_speed”，添加对KSZ9031和JL2121的支持</p></li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="row-odd"><td><p>static u32_t get_IEEE_phy_speed<strong>(</strong>XEmacPs
+<strong>*</strong>xemacpsp<strong>,</strong> u32_t phy_addr<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>u16_t phy_identity<strong>;</strong></p>
+<p>u32_t RetStatus<strong>;</strong></p>
+<p>XEmacPs_PhyRead<strong>(</strong>xemacpsp<strong>,</strong> phy_addr<strong>,</strong>
+PHY_IDENTIFIER_1_REG<strong>,</strong></p>
+<p><strong>&amp;</strong>phy_identity<strong>);</strong></p>
+<p><strong>if(</strong>phy_identity <strong>==</strong> MICREL_PHY_IDENTIFIER<strong>)</strong></p>
+<p><strong>{</strong></p>
+<p>RetStatus <strong>=</strong> get_phy_speed_ksz9031<strong>(</strong>xemacpsp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p>}else if (phy_identity == JLSEMI_IDENTIFIER) {</p>
+<p>RetStatus = get_phy_speed_JL2121(xemacpsp, phy_addr);</p>
+<p>}</p>
+<p><strong>else</strong> <strong>if</strong> <strong>(</strong>phy_identity <strong>==</strong> PHY_TI_IDENTIFIER<strong>)</strong>
+<strong>{</strong></p>
+<p>RetStatus <strong>=</strong> get_TI_phy_speed<strong>(</strong>xemacpsp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong> <strong>else</strong> <strong>{</strong></p>
+<p>RetStatus <strong>=</strong> get_Marvell_phy_speed<strong>(</strong>xemacpsp<strong>,</strong>
+phy_addr<strong>);</strong></p>
+<p><strong>}</strong></p>
+<p><strong>return</strong> RetStatus<strong>;</strong></p>
+<p><strong>}</strong></p>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="lwipapp">
+<h3>创建基于LWIP模板的APP<a class="headerlink" href="#lwipapp" title="此标题的永久链接">#</a></h3>
+<a class="reference internal image-reference" href="../_images/image520.png"><img alt="../_images/image520.png" src="../_images/image520.png" style="width: 4.09444in; height: 4.69653in;" /></a>
+</section>
+</section>
+<section id="id2">
+<h2>下载调试<a class="headerlink" href="#id2" title="此标题的永久链接">#</a></h2>
+<p>测试环境要求有一台支持dhcp的路由器，开发板连接路由器可以自动获取IP地址，实验主机和开发板在一个网络，可以相互通信。</p>
+<section id="id3">
+<h3>以太网测试<a class="headerlink" href="#id3" title="此标题的永久链接">#</a></h3>
+<ol class="arabic simple">
+<li><p>连接串口打开串口调试终端，连接好PS端以太网网线到路由器，运行Vitis</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image619.png"><img alt="../_images/image619.png" src="../_images/image619.png" style="width: 6in; height: 4.82222in;" /></a>
+<ol class="arabic simple" start="2">
+<li><p>可以看到串口打印出一些信息，可以看到自动获取到地址为“192.168.1.63”，连接速度1000Mbps，tcp端口为7</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image719.png"><img alt="../_images/image719.png" src="../_images/image719.png" style="width: 6.00417in; height: 3.78056in;" /></a>
+<ol class="arabic simple" start="3">
+<li><p>使用telnet连接</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image817.png"><img alt="../_images/image817.png" src="../_images/image817.png" style="width: 4.24508in; height: 4.08682in;" /></a>
+<ol class="arabic simple" start="4">
+<li><p>当输入一个字符时，开发板返回相同字符</p></li>
+</ol>
+<a class="reference internal image-reference" href="../_images/image912.png"><img alt="../_images/image912.png" src="../_images/image912.png" style="width: 3.71875in; height: 2.34167in;" /></a>
+</section>
+</section>
+<section id="id4">
+<h2>实验总结<a class="headerlink" href="#id4" title="此标题的永久链接">#</a></h2>
+<p>通过实验我们更加深刻了解到Vitis程序的开发，本实验只是简单的讲解如何创建一个LWIP应用，LWIP可以完成UDP、TCP等协议，在后续的教程中我们会提供基于以太网的具体应用，例如ADC采集数据通过以太网发送，摄像头数据通过以太网发送上位机显示。</p>
+<p><em>ZYNQ-7000开发平台 FPGA教程</em>    - <a class="reference external" href="http://www.alinx.com">Alinx官方网站</a></p>
+</section>
+</section>
+
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="11_%E5%AE%89%E8%A3%85%E8%99%9A%E6%8B%9F%E6%9C%BA%E5%92%8CUbuntu%E7%B3%BB%E7%BB%9F_CN.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">上一页</p>
+        <p class="prev-next-title">安装虚拟机和Ubuntu系统</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="13_%E8%87%AA%E5%AE%9A%E4%B9%89IP%E5%AE%9E%E9%AA%8C_CN.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">下一页</p>
+        <p class="prev-next-title">自定义IP实验</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目录
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vivado">Vivado工程建立</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#vitis">Vitis程序开发</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">LWIP库修改</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#lwipapp">创建基于LWIP模板的APP</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">下载调试</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">以太网测试</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">实验总结</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JunFN
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2024, JunFN.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
