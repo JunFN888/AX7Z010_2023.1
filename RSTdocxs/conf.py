@@ -12,14 +12,6 @@ author = 'JunFN'
 release = '1.0'
 
 
-html_theme_options = {
-    "logo_only": True,
-}
-
-html_logo = "7Z010_S1_RSTdocument/images/00_media/8.png"
-html_logo_format = "png"
-
-
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
@@ -38,3 +30,4 @@ language = 'zh_CN'
 
 html_theme = 'sphinx_book_theme'
 #html_theme = 'sphinx_rtd_theme'
+html_logo = "7Z010_S1_RSTdocument/images/00_media/8.png"
