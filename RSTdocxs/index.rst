@@ -10,7 +10,7 @@
 ======================================
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
    :caption: 公司简介
 
    7Z010_S1_RSTdocument/00_关于ALINX_CN
