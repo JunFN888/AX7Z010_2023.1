@@ -18,6 +18,9 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
+master_doc = 'index'
+
+
 extensions = []
 
 templates_path = ['_templates']
