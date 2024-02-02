@@ -420,100 +420,100 @@ document.write(`
 <ol class="arabic simple">
 <li><p>开发板的PL部分连接了4个红色的用户LED灯。这4个灯完全由PL控制。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image115.png"><img alt="../_images/image115.png" src="../_images/image115.png" style="width: 6.00417in; height: 0.93186in;" /></a>
+<a class="reference internal image-reference" href="../_images/image115.png"><img alt="../_images/image115.png" class="align-center" src="../_images/image115.png" style="width: 6.00417in; height: 0.93186in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>我们可以根据原理图的连线关系确定LED和PL管脚的绑定关系。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image24.png"><img alt="../_images/image24.png" src="../_images/image24.png" style="width: 4.39414in; height: 2.34751in;" /></a>
+<a class="reference internal image-reference" href="../_images/image24.png"><img alt="../_images/image24.png" class="align-center" src="../_images/image24.png" style="width: 4.39414in; height: 2.34751in;" /></a>
 <p>对应的管脚信息</p>
 <ol class="arabic simple" start="3">
 <li><p><strong>原理图中以PS_MIO开头的IO都是PS端IO，不需要绑定，也不能绑定</strong></p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image33.png"><img alt="../_images/image33.png" src="../_images/image33.png" style="width: 1.60585in; height: 2.70758in;" /></a>
+<a class="reference internal image-reference" href="../_images/image33.png"><img alt="../_images/image33.png" class="align-center" src="../_images/image33.png" style="width: 1.60585in; height: 2.70758in;" /></a>
 </section>
 <section id="vivado">
 <h2>创建Vivado工程<a class="headerlink" href="#vivado" title="此标题的永久链接">#</a></h2>
 <ol class="arabic simple">
 <li><p>启动Vivado，在Windows中可以通过双击Vivado快捷方式启动</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image43.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image133.pngimage133" src="../_images/image43.png" style="width: 0.7916in; height: 0.85in;" /></a>
+<a class="reference internal image-reference" href="../_images/image43.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image133.pngimage133" class="align-center" src="../_images/image43.png" style="width: 0.7916in; height: 0.85in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在Vivado开发环境里点击“Create New Project”，创建一个新的工程。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image53.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image134.pngimage134" src="../_images/image53.png" style="width: 5.15486in; height: 3.53542in;" /></a>
+<a class="reference internal image-reference" href="../_images/image53.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image134.pngimage134" class="align-center" src="../_images/image53.png" style="width: 5.15486in; height: 3.53542in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>弹出一个建立新工程的向导，点击“Next”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image63.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image135.pngimage135" src="../_images/image63.png" style="width: 5.57778in; height: 4.07917in;" /></a>
+<a class="reference internal image-reference" href="../_images/image63.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image135.pngimage135" class="align-center" src="../_images/image63.png" style="width: 5.57778in; height: 4.07917in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>在弹出的对话框中输入工程名和工程存放的目录，我们这里取一个led的工程名。需要注意工程路径“Project
 location”不能有中文空格，路径名称也不能太长。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image73.png"><img alt="../_images/image73.png" src="../_images/image73.png" style="width: 4.88871in; height: 4.04452in;" /></a>
+<a class="reference internal image-reference" href="../_images/image73.png"><img alt="../_images/image73.png" class="align-center" src="../_images/image73.png" style="width: 4.88871in; height: 4.04452in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>在工程类型中选择“RTL Project”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image83.png"><img alt="../_images/image83.png" src="../_images/image83.png" style="width: 4.81582in; height: 4.0906in;" /></a>
+<a class="reference internal image-reference" href="../_images/image83.png"><img alt="../_images/image83.png" class="align-center" src="../_images/image83.png" style="width: 4.81582in; height: 4.0906in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>目标语言“Target
 language”选择“Verilog”，虽然选择Verilog，但VHDL也可以使用，支持多语言混合编程。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image93.png"><img alt="../_images/image93.png" src="../_images/image93.png" style="width: 4.69941in; height: 3.989in;" /></a>
+<a class="reference internal image-reference" href="../_images/image93.png"><img alt="../_images/image93.png" class="align-center" src="../_images/image93.png" style="width: 4.69941in; height: 3.989in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>点击“Next”，不添加任何文件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image103.png"><img alt="../_images/image103.png" src="../_images/image103.png" style="width: 4.74051in; height: 4.01184in;" /></a>
+<a class="reference internal image-reference" href="../_images/image103.png"><img alt="../_images/image103.png" class="align-center" src="../_images/image103.png" style="width: 4.74051in; height: 4.01184in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>在“Part”选项中，器件家族“Family”选择“Zynq-7000”，AX7020开发板封装类型“Package”选择“clg400”,Speed选择”-2”减少选择范围。在下拉列表中选择“xc7z020clg400-2”,“-2”表示速率等级，数字越大，性能越好，速率高的芯片向下兼容速率低的芯片。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image116.png"><img alt="../_images/image116.png" src="../_images/image116.png" style="width: 5.07573in; height: 4.30316in;" /></a>
+<a class="reference internal image-reference" href="../_images/image116.png"><img alt="../_images/image116.png" class="align-center" src="../_images/image116.png" style="width: 5.07573in; height: 4.30316in;" /></a>
 <p>AX7010开发板选择型号“xc7z010clg400-1”</p>
-<a class="reference internal image-reference" href="../_images/image123.png"><img alt="../_images/image123.png" src="../_images/image123.png" style="width: 5.28881in; height: 2.73249in;" /></a>
+<a class="reference internal image-reference" href="../_images/image123.png"><img alt="../_images/image123.png" class="align-center" src="../_images/image123.png" style="width: 5.28881in; height: 2.73249in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>点击“Finish”就可以完成以后名为“led”工程的创建。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image132.png"><img alt="../_images/image132.png" src="../_images/image132.png" style="width: 4.90862in; height: 4.14445in;" /></a>
+<a class="reference internal image-reference" href="../_images/image132.png"><img alt="../_images/image132.png" class="align-center" src="../_images/image132.png" style="width: 4.90862in; height: 4.14445in;" /></a>
 <ol class="arabic simple" start="10">
 <li><p>Vivado软件界面</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image142.png"><img alt="../_images/image142.png" src="../_images/image142.png" style="width: 4.61346in; height: 3.97672in;" /></a>
+<a class="reference internal image-reference" href="../_images/image142.png"><img alt="../_images/image142.png" class="align-center" src="../_images/image142.png" style="width: 4.61346in; height: 3.97672in;" /></a>
 </section>
 <section id="verilog-hdlled">
 <h2>创建Verilog HDL文件点亮LED<a class="headerlink" href="#verilog-hdlled" title="此标题的永久链接">#</a></h2>
 <ol class="arabic simple">
 <li><p>点击Project Manager下的Add Sources图标（或者使用快捷键Alt+A）</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image152.png"><img alt="../_images/image152.png" src="../_images/image152.png" style="width: 3.88736in; height: 2.26719in;" /></a>
+<a class="reference internal image-reference" href="../_images/image152.png"><img alt="../_images/image152.png" class="align-center" src="../_images/image152.png" style="width: 3.88736in; height: 2.26719in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>选择添加或创建设计源文件“Add or create design sources”,点击“Next”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image161.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image145.pngimage145" src="../_images/image161.png" style="width: 5.11389in; height: 3.45338in;" /></a>
+<a class="reference internal image-reference" href="../_images/image161.png"><img alt="C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S1文档/../7z010_S1_RSTdocument/images/images_5/image145.pngimage145" class="align-center" src="../_images/image161.png" style="width: 5.11389in; height: 3.45338in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>选择创建文件“Create File”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image171.png"><img alt="../_images/image171.png" src="../_images/image171.png" style="width: 5.19748in; height: 3.5094in;" /></a>
+<a class="reference internal image-reference" href="../_images/image171.png"><img alt="../_images/image171.png" class="align-center" src="../_images/image171.png" style="width: 5.19748in; height: 3.5094in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>文件名“File name”设置为“led”，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image181.png"><img alt="../_images/image181.png" src="../_images/image181.png" style="width: 4.86244in; height: 3.28317in;" /></a>
+<a class="reference internal image-reference" href="../_images/image181.png"><img alt="../_images/image181.png" class="align-center" src="../_images/image181.png" style="width: 4.86244in; height: 3.28317in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>点击“Finish”,完成“led.v”文件添加</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image191.png"><img alt="../_images/image191.png" src="../_images/image191.png" style="width: 4.89769in; height: 3.30698in;" /></a>
+<a class="reference internal image-reference" href="../_images/image191.png"><img alt="../_images/image191.png" class="align-center" src="../_images/image191.png" style="width: 4.89769in; height: 3.30698in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>在弹出的模块定义“Define
 Module”,中可以指定“led.v”文件的模块名称“Module
 name”,这里默认不变为“led”，还可以指定一些端口，这里暂时不指定，点击“OK”。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image201.png"><img alt="../_images/image201.png" src="../_images/image201.png" style="width: 4.48908in; height: 3.21372in;" /></a>
+<a class="reference internal image-reference" href="../_images/image201.png"><img alt="../_images/image201.png" class="align-center" src="../_images/image201.png" style="width: 4.48908in; height: 3.21372in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>在弹出的对话框中选择“Yes”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image211.png"><img alt="../_images/image211.png" src="../_images/image211.png" style="width: 4.33533in; height: 3.10366in;" /></a>
+<a class="reference internal image-reference" href="../_images/image211.png"><img alt="../_images/image211.png" class="align-center" src="../_images/image211.png" style="width: 4.33533in; height: 3.10366in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>双击“led.v”可以打开文件，然后编辑</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image221.png"><img alt="../_images/image221.png" src="../_images/image221.png" style="width: 4.52898in; height: 3.45462in;" /></a>
+<a class="reference internal image-reference" href="../_images/image221.png"><img alt="../_images/image221.png" class="align-center" src="../_images/image221.png" style="width: 4.52898in; height: 3.45462in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>编写“led.v”,这里定义了一个32位的寄存器timer,
 用于循环计数0~49999999(1秒钟), 计数到49999999(1秒)的时候,
@@ -561,31 +561,31 @@ name”,这里默认不变为“led”，还可以指定一些端口，这里暂
 <ol class="arabic simple">
 <li><p>点击“Open Elaborated Design”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image231.png"><img alt="../_images/image231.png" src="../_images/image231.png" style="width: 4.42061in; height: 4.8915in;" /></a>
+<a class="reference internal image-reference" href="../_images/image231.png"><img alt="../_images/image231.png" class="align-center" src="../_images/image231.png" style="width: 4.42061in; height: 4.8915in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在弹出的窗口中点击“OK”按钮</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image241.png"><img alt="../_images/image241.png" src="../_images/image241.png" style="width: 4.67253in; height: 1.87694in;" /></a>
+<a class="reference internal image-reference" href="../_images/image241.png"><img alt="../_images/image241.png" class="align-center" src="../_images/image241.png" style="width: 4.67253in; height: 1.87694in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>在菜单中选择“Window -&gt; I/O Ports”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image25.png"><img alt="../_images/image25.png" src="../_images/image25.png" style="width: 3.7922in; height: 4.01405in;" /></a>
+<a class="reference internal image-reference" href="../_images/image25.png"><img alt="../_images/image25.png" class="align-center" src="../_images/image25.png" style="width: 3.7922in; height: 4.01405in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>在弹出的I/O Ports中可以看到管脚分配情况</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image26.png"><img alt="../_images/image26.png" src="../_images/image26.png" style="width: 6.00417in; height: 3.11042in;" /></a>
+<a class="reference internal image-reference" href="../_images/image26.png"><img alt="../_images/image26.png" class="align-center" src="../_images/image26.png" style="width: 6.00417in; height: 3.11042in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>将复位信号rst_n绑定到PL端的按键，给LED和时钟分配管脚、电平标准，完成后点击保存图标</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image27.png"><img alt="../_images/image27.png" src="../_images/image27.png" style="width: 5.18899in; height: 1.36537in;" /></a>
+<a class="reference internal image-reference" href="../_images/image27.png"><img alt="../_images/image27.png" class="align-center" src="../_images/image27.png" style="width: 5.18899in; height: 1.36537in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>弹出窗口，要求保存约束文件，文件名我们填写“led”，文件类型默认“XDC”，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image28.png"><img alt="../_images/image28.png" src="../_images/image28.png" style="width: 2.30913in; height: 2.32246in;" /></a>
+<a class="reference internal image-reference" href="../_images/image28.png"><img alt="../_images/image28.png" class="align-center" src="../_images/image28.png" style="width: 2.30913in; height: 2.32246in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>打开刚才生成的“led.xdc”文件，我们可以看到是一个TCL脚本，如果我们了解这些语法，完全可以通过自己编写led.xdc文件的方式来约束管脚</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image29.png"><img alt="../_images/image29.png" src="../_images/image29.png" style="width: 5.76511in; height: 1.86703in;" /></a>
+<a class="reference internal image-reference" href="../_images/image29.png"><img alt="../_images/image29.png" class="align-center" src="../_images/image29.png" style="width: 5.76511in; height: 1.86703in;" /></a>
 <p>下面来介绍一下最基本的XDC编写的语法，普通IO口只需约束引脚号和电压，管脚约束如下：</p>
 <p><strong>set_property PACKAGE_PIN “引脚编号” [get_ports “端口名称”]</strong></p>
 <p>电平信号的约束如下：</p>
@@ -600,40 +600,40 @@ name”,这里默认不变为“led”，还可以指定一些端口，这里暂
 <ol class="arabic simple">
 <li><p>点击“Run Synthesis”开始综合</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image30.png"><img alt="../_images/image30.png" src="../_images/image30.png" style="width: 2.87185in; height: 2.81538in;" /></a>
+<a class="reference internal image-reference" href="../_images/image30.png"><img alt="../_images/image30.png" class="align-center" src="../_images/image30.png" style="width: 2.87185in; height: 2.81538in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>弹出对话框点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image311.png"><img alt="../_images/image311.png" src="../_images/image311.png" style="width: 2.79204in; height: 2.14114in;" /></a>
+<a class="reference internal image-reference" href="../_images/image311.png"><img alt="../_images/image311.png" class="align-center" src="../_images/image311.png" style="width: 2.79204in; height: 2.14114in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>综合完成以后点击“Cancel”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image321.png"><img alt="../_images/image321.png" src="../_images/image321.png" style="width: 1.95225in; height: 2.02559in;" /></a>
+<a class="reference internal image-reference" href="../_images/image321.png"><img alt="../_images/image321.png" class="align-center" src="../_images/image321.png" style="width: 1.95225in; height: 2.02559in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>点击“Constraints Wizard”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image331.png"><img alt="../_images/image331.png" src="../_images/image331.png" style="width: 3.2343in; height: 2.50148in;" /></a>
+<a class="reference internal image-reference" href="../_images/image331.png"><img alt="../_images/image331.png" class="align-center" src="../_images/image331.png" style="width: 3.2343in; height: 2.50148in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>在弹出的窗口中点击“Next”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image34.png"><img alt="../_images/image34.png" src="../_images/image34.png" style="width: 4.1901in; height: 3.66881in;" /></a>
+<a class="reference internal image-reference" href="../_images/image34.png"><img alt="../_images/image34.png" class="align-center" src="../_images/image34.png" style="width: 4.1901in; height: 3.66881in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>时序约束向导分析出设计中的时钟，这里把“sys_clk”频率设置为50Mhz，然后点击“Skip
 to Finish”结束时序约束向导。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image35.png"><img alt="../_images/image35.png" src="../_images/image35.png" style="width: 4.76199in; height: 4.17817in;" /></a>
+<a class="reference internal image-reference" href="../_images/image35.png"><img alt="../_images/image35.png" class="align-center" src="../_images/image35.png" style="width: 4.76199in; height: 4.17817in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>弹出的窗口中点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image36.png"><img alt="../_images/image36.png" src="../_images/image36.png" style="width: 2.90404in; height: 0.79879in;" /></a>
+<a class="reference internal image-reference" href="../_images/image36.png"><img alt="../_images/image36.png" class="align-center" src="../_images/image36.png" style="width: 2.90404in; height: 0.79879in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>点击“Finish”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image37.png"><img alt="../_images/image37.png" src="../_images/image37.png" style="width: 3.71685in; height: 3.25444in;" /></a>
+<a class="reference internal image-reference" href="../_images/image37.png"><img alt="../_images/image37.png" class="align-center" src="../_images/image37.png" style="width: 3.71685in; height: 3.25444in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>这个时候led.xdc文件已经更新，点击“Reload”重新加载文件，并保存文件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image38.png"><img alt="../_images/image38.png" src="../_images/image38.png" style="width: 5.24604in; height: 2.15764in;" /></a>
+<a class="reference internal image-reference" href="../_images/image38.png"><img alt="../_images/image38.png" class="align-center" src="../_images/image38.png" style="width: 5.24604in; height: 2.15764in;" /></a>
 </section>
 <section id="bit">
 <h2>生成BIT文件<a class="headerlink" href="#bit" title="此标题的永久链接">#</a></h2>
@@ -641,21 +641,21 @@ to Finish”结束时序约束向导。</p></li>
 <li><p>编译的过程可以细分为综合、布局布线、生成bit文件等，这里我们直接点击“Generate
 Bitstream”,直接生成bit文件。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image39.png"><img alt="../_images/image39.png" src="../_images/image39.png" style="width: 2.98322in; height: 3.04568in;" /></a>
+<a class="reference internal image-reference" href="../_images/image39.png"><img alt="../_images/image39.png" class="align-center" src="../_images/image39.png" style="width: 2.98322in; height: 3.04568in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在弹出的对话框中可以选择任务数量，这里和CPU核心数有关，一般数字越大，编译越快，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image40.png"><img alt="../_images/image40.png" src="../_images/image40.png" style="width: 2.2739in; height: 1.78158in;" /></a>
+<a class="reference internal image-reference" href="../_images/image40.png"><img alt="../_images/image40.png" class="align-center" src="../_images/image40.png" style="width: 2.2739in; height: 1.78158in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>这个时候开始编译，可以看到右上角有个状态信息，在编译过程中可能会被杀毒软件、电脑管家拦截运行，导致无法编译或很长时间没有编译成功。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image411.png"><img alt="../_images/image411.png" src="../_images/image411.png" style="width: 5.50782in; height: 0.40733in;" /></a>
+<a class="reference internal image-reference" href="../_images/image411.png"><img alt="../_images/image411.png" class="align-center" src="../_images/image411.png" style="width: 5.50782in; height: 0.40733in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>编译中没有任何错误，编译完成，弹出一个对话框让我们选择后续操作，可以选择“Open
 Hardware Manger”，当然，也可以选择“Cancel”，我们这里选择
 “Cancel”，先不下载。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image421.png"><img alt="../_images/image421.png" src="../_images/image421.png" style="width: 1.83503in; height: 1.73657in;" /></a>
+<a class="reference internal image-reference" href="../_images/image421.png"><img alt="../_images/image421.png" class="align-center" src="../_images/image421.png" style="width: 1.83503in; height: 1.73657in;" /></a>
 </section>
 <section id="id3">
 <h2>Vivado仿真<a class="headerlink" href="#id3" title="此标题的永久链接">#</a></h2>
@@ -663,32 +663,32 @@ Hardware Manger”，当然，也可以选择“Cancel”，我们这里选择
 <ol class="arabic simple">
 <li><p>设置Vivado的仿真配置，右击SIMULATION中Simulation Settings。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image431.png"><img alt="../_images/image431.png" src="../_images/image431.png" style="width: 2.71162in; height: 2.82275in;" /></a>
+<a class="reference internal image-reference" href="../_images/image431.png"><img alt="../_images/image431.png" class="align-center" src="../_images/image431.png" style="width: 2.71162in; height: 2.82275in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在Simulation
 Settings窗口中进行如下图来配置，这里设置成50ms（根据需要自行设定）,其它按默认设置，单击OK完成。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image44.png"><img alt="../_images/image44.png" src="../_images/image44.png" style="width: 4.16967in; height: 3.68114in;" /></a>
+<a class="reference internal image-reference" href="../_images/image44.png"><img alt="../_images/image44.png" class="align-center" src="../_images/image44.png" style="width: 4.16967in; height: 3.68114in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>添加激励测试文件，点击Project Manager下的Add
 Sources图标,按下图设置后单击Next。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image45.png"><img alt="../_images/image45.png" src="../_images/image45.png" style="width: 4.24388in; height: 2.19655in;" /></a>
+<a class="reference internal image-reference" href="../_images/image45.png"><img alt="../_images/image45.png" class="align-center" src="../_images/image45.png" style="width: 4.24388in; height: 2.19655in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>点击Create File生成仿真激励文件。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image46.png"><img alt="../_images/image46.png" src="../_images/image46.png" style="width: 3.47146in; height: 2.72528in;" /></a>
+<a class="reference internal image-reference" href="../_images/image46.png"><img alt="../_images/image46.png" class="align-center" src="../_images/image46.png" style="width: 3.47146in; height: 2.72528in;" /></a>
 <p>在弹出的对话框中输入激励文件的名字，这里我们输入名为vtf_led_test。</p>
-<a class="reference internal image-reference" href="../_images/image47.png"><img alt="../_images/image47.png" src="../_images/image47.png" style="width: 2.21088in; height: 1.80096in;" /></a>
+<a class="reference internal image-reference" href="../_images/image47.png"><img alt="../_images/image47.png" class="align-center" src="../_images/image47.png" style="width: 2.21088in; height: 1.80096in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>点击Finish按钮返回。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image48.png"><img alt="../_images/image48.png" src="../_images/image48.png" style="width: 3.95375in; height: 3.03139in;" /></a>
+<a class="reference internal image-reference" href="../_images/image48.png"><img alt="../_images/image48.png" class="align-center" src="../_images/image48.png" style="width: 3.95375in; height: 3.03139in;" /></a>
 <p>这里我们先不添加IO Ports，点击OK。</p>
-<a class="reference internal image-reference" href="../_images/image49.png"><img alt="../_images/image49.png" src="../_images/image49.png" style="width: 3.1395in; height: 2.2426in;" /></a>
+<a class="reference internal image-reference" href="../_images/image49.png"><img alt="../_images/image49.png" class="align-center" src="../_images/image49.png" style="width: 3.1395in; height: 2.2426in;" /></a>
 <p>在Simulation
 Sources目录下多了一个刚才添加的vtf_led_test文件。双击打开这个文件，可以看到里面只有module名的定义，其它都没有。</p>
-<a class="reference internal image-reference" href="../_images/image50.png"><img alt="../_images/image50.png" src="../_images/image50.png" style="width: 4.14019in; height: 2.71368in;" /></a>
+<a class="reference internal image-reference" href="../_images/image50.png"><img alt="../_images/image50.png" class="align-center" src="../_images/image50.png" style="width: 4.14019in; height: 2.71368in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>接下去我们需要编写这个vtf_led_test.v文件的内容。首先定义输入和输出信号，然后需要实例化led_test模块，让led_test程序作为本测试程序的一部分。再添加复位和时钟的激励。完成后的vtf_led_test.v文件如下：</p></li>
 </ol>
@@ -726,26 +726,26 @@ Sources目录下多了一个刚才添加的vtf_led_test文件。双击打开这�
 <ol class="arabic simple">
 <li><p>编写好后保存，vtf_led_test.v自动成了这个仿真Hierarchy的顶层了，它下面是设计文件led_test.v。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image511.png"><img alt="../_images/image511.png" src="../_images/image511.png" style="width: 2.63408in; height: 2.45107in;" /></a>
+<a class="reference internal image-reference" href="../_images/image511.png"><img alt="../_images/image511.png" class="align-center" src="../_images/image511.png" style="width: 2.63408in; height: 2.45107in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>点击Run Simulation按钮，再选择Run Behavioral
 Simulation。这里我们做一下行为级的仿真就可以了。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image521.png"><img alt="../_images/image521.png" src="../_images/image521.png" style="width: 2.88031in; height: 3.23482in;" /></a>
+<a class="reference internal image-reference" href="../_images/image521.png"><img alt="../_images/image521.png" class="align-center" src="../_images/image521.png" style="width: 2.88031in; height: 3.23482in;" /></a>
 <p>如果没有错误，Vivado中的仿真软件开始工作了。</p>
 <p>10.
 在弹出仿真界面后如下图，界面是仿真软件自动运行到仿真设置的50ms的波形。</p>
-<a class="reference internal image-reference" href="../_images/image531.png"><img alt="../_images/image531.png" src="../_images/image531.png" style="width: 6.00417in; height: 0.78403in;" /></a>
+<a class="reference internal image-reference" href="../_images/image531.png"><img alt="../_images/image531.png" class="align-center" src="../_images/image531.png" style="width: 6.00417in; height: 0.78403in;" /></a>
 <p>由于LED[3：0]在程序中设计的状态变化时间长，而仿真又比较耗时，在这里观测timer[31:0]计数器变化。把它放到Wave中观察(点击Scope界面下的uut，
 再右键选择Objects界面下的timer， 在弹出的下拉菜单里选择Add Wave
 Window)。</p>
-<a class="reference internal image-reference" href="../_images/image54.png"><img alt="../_images/image54.png" src="../_images/image54.png" style="width: 3.61816in; height: 1.70279in;" /></a>
+<a class="reference internal image-reference" href="../_images/image54.png"><img alt="../_images/image54.png" class="align-center" src="../_images/image54.png" style="width: 3.61816in; height: 1.70279in;" /></a>
 <p>添加后timer显示在Wave的波形界面上，如下图所示。</p>
-<a class="reference internal image-reference" href="../_images/image55.png"><img alt="../_images/image55.png" src="../_images/image55.png" style="width: 6.00417in; height: 0.97778in;" /></a>
+<a class="reference internal image-reference" href="../_images/image55.png"><img alt="../_images/image55.png" class="align-center" src="../_images/image55.png" style="width: 6.00417in; height: 0.97778in;" /></a>
 <p>11. 点击如下标注的Restart按钮复位一下，再点击Run
 All按钮。（需要耐心！！！），可以看到仿真波形与设计相符。（注意：仿真的时间越长，仿真的波形文件占用的磁盘空间越大，波形文件在工程目录的xx.sim文件夹）</p>
-<a class="reference internal image-reference" href="../_images/image56.png"><img alt="../_images/image56.png" src="../_images/image56.png" style="width: 4.03696in; height: 1.95404in;" /></a>
-<a class="reference internal image-reference" href="../_images/image57.png"><img alt="../_images/image57.png" src="../_images/image57.png" style="width: 6.00417in; height: 1.21736in;" /></a>
+<a class="reference internal image-reference" href="../_images/image56.png"><img alt="../_images/image56.png" class="align-center" src="../_images/image56.png" style="width: 4.03696in; height: 1.95404in;" /></a>
+<a class="reference internal image-reference" href="../_images/image57.png"><img alt="../_images/image57.png" class="align-center" src="../_images/image57.png" style="width: 6.00417in; height: 1.21736in;" /></a>
 <p>我们可以看到led的信号会变成F，说明LED1~LED4灯同时变亮。</p>
 </section>
 <section id="id4">
@@ -754,23 +754,23 @@ All按钮。（需要耐心！！！），可以看到仿真波形与设计相�
 <li><p>连接好开发板的JTAG接口，给开发板上电</p></li>
 <li><p>在“HARDWARE MANAGER”界面点击“Auto Connect”，自动连接设备</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image58.png"><img alt="../_images/image58.png" src="../_images/image58.png" style="width: 3.01461in; height: 2.12162in;" /></a>
+<a class="reference internal image-reference" href="../_images/image58.png"><img alt="../_images/image58.png" class="align-center" src="../_images/image58.png" style="width: 3.01461in; height: 2.12162in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>可以看到JTAG扫描到arm和FPGA内核</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image59.png"><img alt="../_images/image59.png" src="../_images/image59.png" style="width: 2.63368in; height: 2.16936in;" /></a>
+<a class="reference internal image-reference" href="../_images/image59.png"><img alt="../_images/image59.png" class="align-center" src="../_images/image59.png" style="width: 2.63368in; height: 2.16936in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>选择xc7z020_1，右键“Program Device…”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image60.png"><img alt="../_images/image60.png" src="../_images/image60.png" style="width: 3.15252in; height: 2.35245in;" /></a>
+<a class="reference internal image-reference" href="../_images/image60.png"><img alt="../_images/image60.png" class="align-center" src="../_images/image60.png" style="width: 3.15252in; height: 2.35245in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>在弹出窗口中点击“Program”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image611.png"><img alt="../_images/image611.png" src="../_images/image611.png" style="width: 2.74385in; height: 1.52648in;" /></a>
+<a class="reference internal image-reference" href="../_images/image611.png"><img alt="../_images/image611.png" class="align-center" src="../_images/image611.png" style="width: 2.74385in; height: 1.52648in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>等待下载</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image621.png"><img alt="../_images/image621.png" src="../_images/image621.png" style="width: 3.18855in; height: 0.87404in;" /></a>
+<a class="reference internal image-reference" href="../_images/image621.png"><img alt="../_images/image621.png" class="align-center" src="../_images/image621.png" style="width: 3.18855in; height: 0.87404in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>下载完成以后，我们可以看到4颗LED开始每秒变化一次。到此为止Vivado简单流程体验完成。后面的章节会介绍如果把程序烧录到Flash，需要PS系统的配合才能完成，只有PL的工程不能直接烧写Flash。在”体验ARM，裸机输出”Hello
 World”一章的常见问题中有介绍。</p></li>
@@ -784,46 +784,46 @@ World”一章的常见问题中有介绍。</p></li>
 <ol class="arabic simple">
 <li><p>点击IP Catalog，在搜索框中搜索ila，双击ILA的IP</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image631.png"><img alt="../_images/image631.png" src="../_images/image631.png" style="width: 6.00417in; height: 1.63125in;" /></a>
+<a class="reference internal image-reference" href="../_images/image631.png"><img alt="../_images/image631.png" class="align-center" src="../_images/image631.png" style="width: 6.00417in; height: 1.63125in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>修改名称为ila，由于要采样两个信号，Probes的数量设置为2，Sample Data
 Depth指的是采样深度，设置的越高，采集的信号越多，同样消耗的资源也会越多。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image64.png"><img alt="../_images/image64.png" src="../_images/image64.png" style="width: 5.54324in; height: 4.05837in;" /></a>
+<a class="reference internal image-reference" href="../_images/image64.png"><img alt="../_images/image64.png" class="align-center" src="../_images/image64.png" style="width: 5.54324in; height: 4.05837in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>在Probe_Ports页面，设置Probe的宽度，设置PROBE0位宽为32，用于采样timer_cnt，设置PROBE1位宽为4，用于采样led。点击OK</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image65.png"><img alt="../_images/image65.png" src="../_images/image65.png" style="width: 5.55139in; height: 4.10415in;" /></a>
+<a class="reference internal image-reference" href="../_images/image65.png"><img alt="../_images/image65.png" class="align-center" src="../_images/image65.png" style="width: 5.55139in; height: 4.10415in;" /></a>
 <p>弹出界面，选择OK</p>
-<a class="reference internal image-reference" href="../_images/image66.png"><img alt="../_images/image66.png" src="../_images/image66.png" style="width: 3.37823in; height: 0.84827in;" /></a>
+<a class="reference internal image-reference" href="../_images/image66.png"><img alt="../_images/image66.png" class="align-center" src="../_images/image66.png" style="width: 3.37823in; height: 0.84827in;" /></a>
 <p>再如下设置，点击Generate</p>
-<a class="reference internal image-reference" href="../_images/image67.png"><img alt="../_images/image67.png" src="../_images/image67.png" style="width: 2.09757in; height: 2.74945in;" /></a>
+<a class="reference internal image-reference" href="../_images/image67.png"><img alt="../_images/image67.png" class="align-center" src="../_images/image67.png" style="width: 2.09757in; height: 2.74945in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>在led.v中例化ila，并保存</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image68.png"><img alt="../_images/image68.png" src="../_images/image68.png" style="width: 3.66479in; height: 4.06117in;" /></a>
+<a class="reference internal image-reference" href="../_images/image68.png"><img alt="../_images/image68.png" class="align-center" src="../_images/image68.png" style="width: 3.66479in; height: 4.06117in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>重新生成Bitstream</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image69.png"><img alt="../_images/image69.png" src="../_images/image69.png" style="width: 1.53797in; height: 0.7049in;" /></a>
+<a class="reference internal image-reference" href="../_images/image69.png"><img alt="../_images/image69.png" class="align-center" src="../_images/image69.png" style="width: 1.53797in; height: 0.7049in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>下载程序</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image60.png"><img alt="../_images/image60.png" src="../_images/image60.png" style="width: 3.15252in; height: 2.35245in;" /></a>
+<a class="reference internal image-reference" href="../_images/image60.png"><img alt="../_images/image60.png" class="align-center" src="../_images/image60.png" style="width: 3.15252in; height: 2.35245in;" /></a>
 <p>这时候看到有bit和ltx文件，点击program</p>
-<a class="reference internal image-reference" href="../_images/image70.png"><img alt="../_images/image70.png" src="../_images/image70.png" style="width: 3.26418in; height: 1.8118in;" /></a>
+<a class="reference internal image-reference" href="../_images/image70.png"><img alt="../_images/image70.png" class="align-center" src="../_images/image70.png" style="width: 3.26418in; height: 1.8118in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>此时弹出在线调试窗口，出现了我们添加的信号</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image711.png"><img alt="../_images/image711.png" src="../_images/image711.png" style="width: 5.57152in; height: 1.9635in;" /></a>
+<a class="reference internal image-reference" href="../_images/image711.png"><img alt="../_images/image711.png" class="align-center" src="../_images/image711.png" style="width: 5.57152in; height: 1.9635in;" /></a>
 <p>点击运行按钮，出现信号的数据</p>
-<a class="reference internal image-reference" href="../_images/image721.png"><img alt="../_images/image721.png" src="../_images/image721.png" style="width: 4.7147in; height: 1.59011in;" /></a>
+<a class="reference internal image-reference" href="../_images/image721.png"><img alt="../_images/image721.png" class="align-center" src="../_images/image721.png" style="width: 4.7147in; height: 1.59011in;" /></a>
 <p>也可以触发采集，在Trigger Setup窗口点击“+”，深度选择timer_cnt信号</p>
-<a class="reference internal image-reference" href="../_images/image731.png"><img alt="../_images/image731.png" src="../_images/image731.png" style="width: 3.55809in; height: 1.27791in;" /></a>
+<a class="reference internal image-reference" href="../_images/image731.png"><img alt="../_images/image731.png" class="align-center" src="../_images/image731.png" style="width: 3.55809in; height: 1.27791in;" /></a>
 <p>将Radix改为U，也就是十进制，在Value中设置为49999999，也就是timer_cnt计数的最大值</p>
-<a class="reference internal image-reference" href="../_images/image74.png"><img alt="../_images/image74.png" src="../_images/image74.png" style="width: 4.14914in; height: 0.7875in;" /></a>
+<a class="reference internal image-reference" href="../_images/image74.png"><img alt="../_images/image74.png" class="align-center" src="../_images/image74.png" style="width: 4.14914in; height: 0.7875in;" /></a>
 <p>再次点击运行，即可以看到触发成功，此时timer_cnt显示为十六进制，而led也在此时翻转。</p>
-<a class="reference internal image-reference" href="../_images/image75.png"><img alt="../_images/image75.png" src="../_images/image75.png" style="width: 5.09322in; height: 1.11278in;" /></a>
+<a class="reference internal image-reference" href="../_images/image75.png"><img alt="../_images/image75.png" class="align-center" src="../_images/image75.png" style="width: 5.09322in; height: 1.11278in;" /></a>
 </section>
 <section id="mark-debug">
 <h3>MARK DEBUG<a class="headerlink" href="#mark-debug" title="此标题的永久链接">#</a></h3>
@@ -832,37 +832,37 @@ IP的方式在线调试，下面介绍在代码中添加综合属性，实现在
 <ol class="arabic simple">
 <li><p>首先打开led.v，将ila的例化部分注释掉</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image76.png"><img alt="../_images/image76.png" src="../_images/image76.png" style="width: 3.98549in; height: 3.97213in;" /></a>
+<a class="reference internal image-reference" href="../_images/image76.png"><img alt="../_images/image76.png" class="align-center" src="../_images/image76.png" style="width: 3.98549in; height: 3.97213in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在led和timer_cnt的定义前面添加(* MARK_DEBUG=”true” *)，保存文件。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image77.png"><img alt="../_images/image77.png" src="../_images/image77.png" style="width: 2.15205in; height: 1.0659in;" /></a>
+<a class="reference internal image-reference" href="../_images/image77.png"><img alt="../_images/image77.png" class="align-center" src="../_images/image77.png" style="width: 2.15205in; height: 1.0659in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>点击综合</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image78.png"><img alt="../_images/image78.png" src="../_images/image78.png" style="width: 1.24322in; height: 0.56411in;" /></a>
+<a class="reference internal image-reference" href="../_images/image78.png"><img alt="../_images/image78.png" class="align-center" src="../_images/image78.png" style="width: 1.24322in; height: 0.56411in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>综合结束后，点击Set Up Debug</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image79.png"><img alt="../_images/image79.png" src="../_images/image79.png" style="width: 1.34093in; height: 1.63826in;" /></a>
+<a class="reference internal image-reference" href="../_images/image79.png"><img alt="../_images/image79.png" class="align-center" src="../_images/image79.png" style="width: 1.34093in; height: 1.63826in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>弹出的窗口点击Next</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image80.png"><img alt="../_images/image80.png" src="../_images/image80.png" style="width: 4.21566in; height: 2.83189in;" /></a>
+<a class="reference internal image-reference" href="../_images/image80.png"><img alt="../_images/image80.png" class="align-center" src="../_images/image80.png" style="width: 4.21566in; height: 2.83189in;" /></a>
 <p>按照默认点击Next</p>
-<a class="reference internal image-reference" href="../_images/image811.png"><img alt="../_images/image811.png" src="../_images/image811.png" style="width: 4.26495in; height: 2.86352in;" /></a>
+<a class="reference internal image-reference" href="../_images/image811.png"><img alt="../_images/image811.png" class="align-center" src="../_images/image811.png" style="width: 4.26495in; height: 2.86352in;" /></a>
 <p>采样深度窗口，选择Next</p>
-<a class="reference internal image-reference" href="../_images/image821.png"><img alt="../_images/image821.png" src="../_images/image821.png" style="width: 4.21772in; height: 2.82011in;" /></a>
+<a class="reference internal image-reference" href="../_images/image821.png"><img alt="../_images/image821.png" class="align-center" src="../_images/image821.png" style="width: 4.21772in; height: 2.82011in;" /></a>
 <p>点击Finish</p>
-<a class="reference internal image-reference" href="../_images/image831.png"><img alt="../_images/image831.png" src="../_images/image831.png" style="width: 4.2307in; height: 2.81704in;" /></a>
+<a class="reference internal image-reference" href="../_images/image831.png"><img alt="../_images/image831.png" class="align-center" src="../_images/image831.png" style="width: 4.2307in; height: 2.81704in;" /></a>
 <p>点击保存</p>
-<a class="reference internal image-reference" href="../_images/image84.png"><img alt="../_images/image84.png" src="../_images/image84.png" style="width: 1.40125in; height: 0.45293in;" /></a>
+<a class="reference internal image-reference" href="../_images/image84.png"><img alt="../_images/image84.png" class="align-center" src="../_images/image84.png" style="width: 1.40125in; height: 0.45293in;" /></a>
 <p>在xdc文件中即可看到添加的ila核约束</p>
-<a class="reference internal image-reference" href="../_images/image85.png"><img alt="../_images/image85.png" src="../_images/image85.png" style="width: 6.00417in; height: 2.87917in;" /></a>
+<a class="reference internal image-reference" href="../_images/image85.png"><img alt="../_images/image85.png" class="align-center" src="../_images/image85.png" style="width: 6.00417in; height: 2.87917in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>重新生成bitstream</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image86.png"><img alt="../_images/image86.png" src="../_images/image86.png" style="width: 1.49148in; height: 0.9485in;" /></a>
+<a class="reference internal image-reference" href="../_images/image86.png"><img alt="../_images/image86.png" class="align-center" src="../_images/image86.png" style="width: 1.49148in; height: 0.9485in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>调试方法与前面一样，不再赘述。</p></li>
 </ol>

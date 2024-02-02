@@ -415,9 +415,9 @@ document.write(`
 <h2>硬件介绍<a class="headerlink" href="#id1" title="此标题的永久链接">#</a></h2>
 <p>开发板没有使用HDMI编码芯片，而是将FPGA的3.3V差分IO直接连接到HDMI连接器，
 FPGA完成24位RGB编码输出TMDS差分信号。</p>
-<a class="reference internal image-reference" href="../_images/image117.png"><img alt="../_images/image117.png" src="../_images/image117.png" style="width: 5.20966in; height: 2.23848in;" /></a>
+<a class="reference internal image-reference" href="../_images/image117.png"><img alt="../_images/image117.png" class="align-center" src="../_images/image117.png" style="width: 5.20966in; height: 2.23848in;" /></a>
 <p>在做HDMI显示之前，我们需要思考一个问题，产生HDMI图像数据需要哪些要素，如果各位了解过图像的时序应该清楚，无非是图像的像素时钟，图像时序，以及图像数据。当然不同的分辨率时钟和时序也是不同的，具体的可以网上搜索各种分辨率的时序参数。在此不再赘述。本实验仅提供了720p的时序参数（color_bar.v文件中）。</p>
-<a class="reference internal image-reference" href="../_images/image210.png"><img alt="../_images/image210.png" src="../_images/image210.png" style="width: 2.95799in; height: 1.22615in;" /></a>
+<a class="reference internal image-reference" href="../_images/image210.png"><img alt="../_images/image210.png" class="align-center" src="../_images/image210.png" style="width: 2.95799in; height: 1.22615in;" /></a>
 </section>
 <section id="vivado">
 <h2>Vivado工程建立<a class="headerlink" href="#vivado" title="此标题的永久链接">#</a></h2>
@@ -431,42 +431,42 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。</p>
 <ol class="arabic simple" start="2">
 <li><p>复制repo文件夹（这个文件夹可以到给的例程工程中找到）到工程目录，这个文件夹里包含了HDMI编码器的IP，是别的厂家提供</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image310.png"><img alt="../_images/image310.png" src="../_images/image310.png" style="width: 5.30732in; height: 1.79221in;" /></a>
+<a class="reference internal image-reference" href="../_images/image310.png"><img alt="../_images/image310.png" class="align-center" src="../_images/image310.png" style="width: 5.30732in; height: 1.79221in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>点击“IP
 Catalog”，默认这些IP和都是Xilinx提供，现在我们要添加第三方IP，或者我们自己做的IP</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image410.png"><img alt="../_images/image410.png" src="../_images/image410.png" style="width: 6.00417in; height: 3.74629in;" /></a>
+<a class="reference internal image-reference" href="../_images/image410.png"><img alt="../_images/image410.png" class="align-center" src="../_images/image410.png" style="width: 6.00417in; height: 3.74629in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>右键“Add Repository…”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image510.png"><img alt="../_images/image510.png" src="../_images/image510.png" style="width: 4.92957in; height: 3.00352in;" /></a>
+<a class="reference internal image-reference" href="../_images/image510.png"><img alt="../_images/image510.png" class="align-center" src="../_images/image510.png" style="width: 4.92957in; height: 3.00352in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>路径选择刚才复制的repo文件夹</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image610.png"><img alt="../_images/image610.png" src="../_images/image610.png" style="width: 6.00417in; height: 2.57412in;" /></a>
+<a class="reference internal image-reference" href="../_images/image610.png"><img alt="../_images/image610.png" class="align-center" src="../_images/image610.png" style="width: 6.00417in; height: 2.57412in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>添加IP成功提示添加了多少个IP</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image710.png"><img alt="../_images/image710.png" src="../_images/image710.png" style="width: 3.99763in; height: 2.40354in;" /></a>
+<a class="reference internal image-reference" href="../_images/image710.png"><img alt="../_images/image710.png" class="align-center" src="../_images/image710.png" style="width: 3.99763in; height: 2.40354in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>找到“RGB to DVI Video Encoder(Source)”，双击</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image87.png"><img alt="../_images/image87.png" src="../_images/image87.png" style="width: 3.81138in; height: 3.4543in;" /></a>
+<a class="reference internal image-reference" href="../_images/image87.png"><img alt="../_images/image87.png" class="align-center" src="../_images/image87.png" style="width: 3.81138in; height: 3.4543in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>弹出下面窗口，“Component
 Name”元件名保持不变，其他参数也不用改，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image94.png"><img alt="../_images/image94.png" src="../_images/image94.png" style="width: 6.00417in; height: 4.90025in;" /></a>
+<a class="reference internal image-reference" href="../_images/image94.png"><img alt="../_images/image94.png" class="align-center" src="../_images/image94.png" style="width: 6.00417in; height: 4.90025in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>弹出一个“Generate Output Products”窗口，其中“Number of
 jobs”指线程数量，越高越快</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image104.png"><img alt="../_images/image104.png" src="../_images/image104.png" style="width: 3.59397in; height: 4.63322in;" /></a>
+<a class="reference internal image-reference" href="../_images/image104.png"><img alt="../_images/image104.png" class="align-center" src="../_images/image104.png" style="width: 3.59397in; height: 4.63322in;" /></a>
 <ol class="arabic simple" start="10">
 <li><p>可以看到一个名为rgb2dvi_0</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image118.png"><img alt="../_images/image118.png" src="../_images/image118.png" style="width: 5.73353in; height: 3.27261in;" /></a>
+<a class="reference internal image-reference" href="../_images/image118.png"><img alt="../_images/image118.png" class="align-center" src="../_images/image118.png" style="width: 5.73353in; height: 3.27261in;" /></a>
 </section>
 <section id="pll">
 <h3>添加像素时钟PLL模块<a class="headerlink" href="#pll" title="此标题的永久链接">#</a></h3>
@@ -474,36 +474,36 @@ jobs”指线程数量，越高越快</p></li>
 <ol class="arabic simple" start="11">
 <li><p>在“IP Catlog”窗口搜索关键字“clock”，双击“Clocking Wizard”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image124.png"><img alt="../_images/image124.png" src="../_images/image124.png" style="width: 5.728in; height: 2.81365in;" /></a>
+<a class="reference internal image-reference" href="../_images/image124.png"><img alt="../_images/image124.png" class="align-center" src="../_images/image124.png" style="width: 5.728in; height: 2.81365in;" /></a>
 <ol class="arabic simple" start="12">
 <li><p>这次给元件起个名字，在“Component
 Name”中填写“video_clock”，“clk_in1”填写50，这里50Mhz和开发板PL端晶振频率一致。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image133.png"><img alt="../_images/image133.png" src="../_images/image133.png" style="width: 6.00417in; height: 4.26319in;" /></a>
+<a class="reference internal image-reference" href="../_images/image133.png"><img alt="../_images/image133.png" class="align-center" src="../_images/image133.png" style="width: 6.00417in; height: 4.26319in;" /></a>
 <ol class="arabic simple" start="13">
 <li><p>输出时钟“clk_out1”用于视频像素时钟，这里填写74.25，这是1280x720&#64;60分辨率的像素时钟，每一种分辨率的像素时钟都不同，需要非常了解视频标准才能知道每一种视频分辨率的像素时钟，“clk_out2”用于编码器串行化，像素时钟的5倍，这里填写371.25，然后点击“OK”生成IP。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image143.png"><img alt="../_images/image143.png" src="../_images/image143.png" style="width: 6.00417in; height: 2.21597in;" /></a>
+<a class="reference internal image-reference" href="../_images/image143.png"><img alt="../_images/image143.png" class="align-center" src="../_images/image143.png" style="width: 6.00417in; height: 2.21597in;" /></a>
 </section>
 <section id="id2">
 <h3>添加彩条发生模块<a class="headerlink" href="#id2" title="此标题的永久链接">#</a></h3>
 <ol class="arabic simple" start="14">
 <li><p>彩条发生模块是一段Verilog代码，用于产生视频时序和水平方向的8个彩条，FPGA不是本开发学习重点，不再详细讲解代码，可以到给的例程中复制现有代码。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image153.png"><img alt="../_images/image153.png" src="../_images/image153.png" style="width: 6.00417in; height: 3.89167in;" /></a>
+<a class="reference internal image-reference" href="../_images/image153.png"><img alt="../_images/image153.png" class="align-center" src="../_images/image153.png" style="width: 6.00417in; height: 3.89167in;" /></a>
 </section>
 <section id="id3">
 <h3>添加顶层模块<a class="headerlink" href="#id3" title="此标题的永久链接">#</a></h3>
 <ol class="arabic simple" start="15">
 <li><p>top模块例化了彩条发生模块，HDMI编码模块，和像素时钟生成模块，代码参考例程给的工程。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image162.png"><img alt="../_images/image162.png" src="../_images/image162.png" style="width: 4.44113in; height: 3.0753in;" /></a>
+<a class="reference internal image-reference" href="../_images/image162.png"><img alt="../_images/image162.png" class="align-center" src="../_images/image162.png" style="width: 4.44113in; height: 3.0753in;" /></a>
 </section>
 </section>
 <section id="xdc">
 <h2>添加XDC约束文件<a class="headerlink" href="#xdc" title="此标题的永久链接">#</a></h2>
 <p>添加以下的xdc约束文件到项目中，在约束文件里添加了时钟和HDMI相关的管脚。</p>
-<a class="reference internal image-reference" href="../_images/image172.png"><img alt="../_images/image172.png" src="../_images/image172.png" style="width: 4.89648in; height: 2.38651in;" /></a>
+<a class="reference internal image-reference" href="../_images/image172.png"><img alt="../_images/image172.png" class="align-center" src="../_images/image172.png" style="width: 4.89648in; height: 2.38651in;" /></a>
 <table class="table">
 <thead>
 <tr class="row-odd"><th class="head"><p>set_property PACKAGE_PIN U18 [get_ports {sys_clk}]</p>
@@ -536,9 +536,9 @@ sys_clk]</p>
 <section id="id4">
 <h2>下载调试<a class="headerlink" href="#id4" title="此标题的永久链接">#</a></h2>
 <p>保存工程并编译生成bit文件，连接HDMI接口到HDMI显示器，需要注意，这里使用1280x720&#64;60Hz，请确保自己的显示器支持这个分辨率。</p>
-<a class="reference internal image-reference" href="../_images/image182.png"><img alt="../_images/image182.png" src="../_images/image182.png" style="width: 6.00417in; height: 2.19931in;" /></a>
+<a class="reference internal image-reference" href="../_images/image182.png"><img alt="../_images/image182.png" class="align-center" src="../_images/image182.png" style="width: 6.00417in; height: 2.19931in;" /></a>
 <p>下载后显示器显示如下图像</p>
-<a class="reference internal image-reference" href="../_images/image192.png"><img alt="../_images/image192.png" src="../_images/image192.png" style="width: 5.24655in; height: 3.23128in;" /></a>
+<a class="reference internal image-reference" href="../_images/image192.png"><img alt="../_images/image192.png" class="align-center" src="../_images/image192.png" style="width: 5.24655in; height: 3.23128in;" /></a>
 </section>
 <section id="id5">
 <h2>实验总结<a class="headerlink" href="#id5" title="此标题的永久链接">#</a></h2>

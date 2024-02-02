@@ -14,12 +14,14 @@ HDMI输出实验
 FPGA完成24位RGB编码输出TMDS差分信号。
 
 .. image:: images/05_media/image1.png
+   :align: center
    :width: 5.20966in
    :height: 2.23848in
 
 在做HDMI显示之前，我们需要思考一个问题，产生HDMI图像数据需要哪些要素，如果各位了解过图像的时序应该清楚，无非是图像的像素时钟，图像时序，以及图像数据。当然不同的分辨率时钟和时序也是不同的，具体的可以网上搜索各种分辨率的时序参数。在此不再赘述。本实验仅提供了720p的时序参数（color_bar.v文件中）。
 
 .. image:: images/05_media/image2.png
+   :align: center
    :width: 2.95799in
    :height: 1.22615in
 
@@ -37,6 +39,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 2) 复制repo文件夹（这个文件夹可以到给的例程工程中找到）到工程目录，这个文件夹里包含了HDMI编码器的IP，是别的厂家提供
 
 .. image:: images/05_media/image3.png
+   :align: center
    :width: 5.30732in
    :height: 1.79221in
 
@@ -44,30 +47,35 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
    Catalog”，默认这些IP和都是Xilinx提供，现在我们要添加第三方IP，或者我们自己做的IP
 
 .. image:: images/05_media/image4.png
+   :align: center
    :width: 6.00417in
    :height: 3.74629in
 
 4) 右键“Add Repository...”
 
 .. image:: images/05_media/image5.png
+   :align: center
    :width: 4.92957in
    :height: 3.00352in
 
 5) 路径选择刚才复制的repo文件夹
 
 .. image:: images/05_media/image6.png
+   :align: center
    :width: 6.00417in
    :height: 2.57412in
 
 6) 添加IP成功提示添加了多少个IP
 
 .. image:: images/05_media/image7.png
+   :align: center
    :width: 3.99763in
    :height: 2.40354in
 
 7) 找到“RGB to DVI Video Encoder(Source)”，双击
 
 .. image:: images/05_media/image8.png
+   :align: center
    :width: 3.81138in
    :height: 3.4543in
 
@@ -75,6 +83,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
    Name”元件名保持不变，其他参数也不用改，点击“OK”
 
 .. image:: images/05_media/image9.png
+   :align: center
    :width: 6.00417in
    :height: 4.90025in
 
@@ -82,12 +91,14 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
    jobs”指线程数量，越高越快
 
 .. image:: images/05_media/image10.png
+   :align: center
    :width: 3.59397in
    :height: 4.63322in
 
 10) 可以看到一个名为rgb2dvi_0
 
 .. image:: images/05_media/image11.png
+   :align: center
    :width: 5.73353in
    :height: 3.27261in
 
@@ -99,6 +110,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 11) 在“IP Catlog”窗口搜索关键字“clock”，双击“Clocking Wizard”
 
 .. image:: images/05_media/image12.png
+   :align: center
    :width: 5.728in
    :height: 2.81365in
 
@@ -106,12 +118,14 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
     Name”中填写“video_clock”，“clk_in1”填写50，这里50Mhz和开发板PL端晶振频率一致。
 
 .. image:: images/05_media/image13.png
+   :align: center
    :width: 6.00417in
    :height: 4.26319in
 
 13) 输出时钟“clk_out1”用于视频像素时钟，这里填写74.25，这是1280x720@60分辨率的像素时钟，每一种分辨率的像素时钟都不同，需要非常了解视频标准才能知道每一种视频分辨率的像素时钟，“clk_out2”用于编码器串行化，像素时钟的5倍，这里填写371.25，然后点击“OK”生成IP。
 
 .. image:: images/05_media/image14.png
+   :align: center
    :width: 6.00417in
    :height: 2.21597in
 
@@ -121,6 +135,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 14) 彩条发生模块是一段Verilog代码，用于产生视频时序和水平方向的8个彩条，FPGA不是本开发学习重点，不再详细讲解代码，可以到给的例程中复制现有代码。
 
 .. image:: images/05_media/image15.png
+   :align: center
    :width: 6.00417in
    :height: 3.89167in
 
@@ -130,6 +145,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 15) top模块例化了彩条发生模块，HDMI编码模块，和像素时钟生成模块，代码参考例程给的工程。
 
 .. image:: images/05_media/image16.png
+   :align: center
    :width: 4.44113in
    :height: 3.0753in
 
@@ -139,6 +155,7 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 添加以下的xdc约束文件到项目中，在约束文件里添加了时钟和HDMI相关的管脚。
 
 .. image:: images/05_media/image17.png
+   :align: center
    :width: 4.89648in
    :height: 2.38651in
 
@@ -186,12 +203,14 @@ to DVI的IP（DVI与HDMI都是TMDS信号）。
 保存工程并编译生成bit文件，连接HDMI接口到HDMI显示器，需要注意，这里使用1280x720@60Hz，请确保自己的显示器支持这个分辨率。
 
 .. image:: images/05_media/image18.png
+   :align: center
    :width: 6.00417in
    :height: 2.19931in
 
 下载后显示器显示如下图像
 
 .. image:: images/05_media/image19.png
+   :align: center
    :width: 5.24655in
    :height: 3.23128in
 

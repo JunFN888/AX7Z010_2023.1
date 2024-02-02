@@ -29,6 +29,7 @@ Vivado工程建立
 2) 点击“Create Block Design”，创建一个Block设计，也就是图形化设计
 
 .. image:: images/06_media/image1.png
+   :align: center
    :width: 3.34815in
    :height: 2.00055in
 
@@ -36,30 +37,35 @@ Vivado工程建立
    name”这里不做修改，保持默认“design_1”，这里可以根据需要修改，不过名字要尽量简短，否则在Windows下编译会有问题。
 
 .. image:: images/06_media/image2.png
+   :align: center
    :width: 3.05899in
    :height: 2.26894in
 
 4) 点击“Add IP”快捷图标
 
 .. image:: images/06_media/image3.png
+   :align: center
    :width: 4.91128in
    :height: 2.09578in
 
 5) 搜索“zynq”，在搜索结果列表中双击“ZYNQ7 Processing System”
 
 .. image:: images/06_media/image4.png
+   :align: center
    :width: 3.80342in
    :height: 2.15037in
 
 6) 双击Block图中的“processing_system7_0”，配置相关参数
 
 .. image:: images/06_media/image5.png
+   :align: center
    :width: 5.42182in
    :height: 3.17215in
 
 7) 首先出现的界面是ZYNQ硬核的架构图，可以很清楚看到它的结构，可以参考ug585文档，里面有对ZYNQ的详细介绍。图中绿色部分是可配置模块，可以点击进入相应的编辑界面，当然也可以在左侧的窗口进入编辑。下面对各个窗口的功能一一介绍。
 
 .. image:: images/06_media/image6.png
+   :align: center
    :width: 5.56559in
    :height: 4.27429in
 
@@ -68,6 +74,7 @@ Vivado工程建立
    核。在这里保持默认，在后面的章节中会对其配置，本章节不与PL端进行交互，保持默认。
 
 .. image:: images/06_media/image7.png
+   :align: center
    :width: 4.97917in
    :height: 3.82508in
 
@@ -78,10 +85,12 @@ Vivado工程建立
    至于该怎么去选择，是由原理图和PCB决定的，可以通过查看原理图或用户手册选择。
 
 .. image:: images/06_media/image8.png
+   :align: center
    :width: 4.82348in
    :height: 3.70547in
 
 .. image:: images/06_media/image9.png
+   :align: center
    :width: 3.34459in
    :height: 4.555in
 
@@ -97,6 +106,7 @@ PS端外设配置
     V”。\ **如果不配置Bank1电平标准，可能导致串口无法接收**\ 。
 
 .. image:: images/06_media/image10.png
+   :align: center
    :width: 6.00417in
    :height: 2.75171in
 
@@ -104,6 +114,7 @@ PS端外设配置
     SPI Flash为Single SS 4bit IO，并且勾选上fb引脚。
 
 .. image:: images/06_media/image11.png
+   :align: center
    :width: 5.55183in
    :height: 4.27721in
 
@@ -111,18 +122,21 @@ PS端外设配置
     0到MIO16-MIO27
 
 .. image:: images/06_media/image12.png
+   :align: center
    :width: 3.54763in
    :height: 1.11197in
 
 MDIO为以太网PHY寄存器配置接口，选择MDIO并配置到MIO52-MIO53
 
 .. image:: images/06_media/image13.png
+   :align: center
    :width: 4.99475in
    :height: 0.94742in
 
 13) 配置USB0到MIO28-MIO39
 
 .. image:: images/06_media/image14.png
+   :align: center
    :width: 3.43515in
    :height: 0.73343in
 
@@ -130,18 +144,21 @@ MDIO为以太网PHY寄存器配置接口，选择MDIO并配置到MIO52-MIO53
     0，配置到MIO40-MIO45，选择Card Detection MIO47，用于检测SD卡的插入。
 
 .. image:: images/06_media/image15.png
+   :align: center
    :width: 4.27071in
    :height: 1.2902in
 
 15) 打开GPIO MIO，PS便可以控制剩余未分配的MIO，用作GPIO
 
 .. image:: images/06_media/image16.png
+   :align: center
    :width: 3.95201in
    :height: 2.04548in
 
 在GPIO MIO中选择MIO46作为USB PHY的复位
 
 .. image:: images/06_media/image17.png
+   :align: center
    :width: 4.61757in
    :height: 0.87748in
 
@@ -154,6 +171,7 @@ MIO配置
 fast，这些参数非常重要，如果不修改，网络可能不通。其他部分保持默认。
 
 .. image:: images/06_media/image18.png
+   :align: center
    :width: 4.79372in
    :height: 4.34625in
 
@@ -164,6 +182,7 @@ fast，这些参数非常重要，如果不修改，网络可能不通。其他�
     Configuration”选项卡中我们可以配置PS时钟输入时钟频率，这里默认是33.333333，和板子上一致，不用修改，CPU频率默认666.666666Mhz，这里也不修改。同时PS还可以给PL端提供4路时钟，频率可以配置，这里不需要，所以保持默认即可。还有PS端外设的时钟等也可以进行配置，这里保持默认。
 
 .. image:: images/06_media/image19.png
+   :align: center
    :width: 6.00417in
    :height: 4.6067in
 
@@ -176,6 +195,7 @@ DDR3配置
     DRAM Bus Width”，选择“32 Bit”
 
 .. image:: images/06_media/image20.png
+   :align: center
    :width: 5.6564in
    :height: 4.33893in
 
@@ -186,30 +206,35 @@ DDR3配置
 18) 点击“Run Block Automation”，vivado软件会自动完成一些导出端口的工作
 
 .. image:: images/06_media/image21.png
+   :align: center
    :width: 4.91608in
    :height: 2.74405in
 
 19) 按照默认点击“OK”
 
 .. image:: images/06_media/image22.png
+   :align: center
    :width: 6.00417in
    :height: 3.71458in
 
 20) 点击“OK”以后我们可以看到PS端导出一些管脚，包括DDR还有FIXED_IO，DDR是DDR3的接口信号，FIXED_IO为PS端固定的一些接口，比如输入时钟，PS端复位信号，MIO等。
 
 .. image:: images/06_media/image23.png
+   :align: center
    :width: 4.37369in
    :height: 2.06594in
 
 21) 连接FCLK_CLK0到M_AXI_GP0_ACLK，按Ctrl+S保存设计
 
 .. image:: images/06_media/image24.png
+   :align: center
    :width: 3.05713in
    :height: 1.44275in
 
 *知识点：DDR和FIXED_IO是PS端引脚，PS_PORB为PS端上电复位信号，不能用于PL端复位，不要将PL端的复位绑定到这个引脚号上，切记！！！*
 
 .. image:: images/06_media/image25.png
+   :align: center
    :width: 3.37722in
    :height: 2.18742in
 
@@ -218,18 +243,21 @@ DDR3配置
     design生成HDL顶层文件。
 
 .. image:: images/06_media/image26.png
+   :align: center
    :width: 2.58607in
    :height: 2.17741in
 
 23) 保持默认选项，点击“OK”
 
 .. image:: images/06_media/image27.png
+   :align: center
    :width: 3.14452in
    :height: 1.81793in
 
 24) 展开设计可以看到PS被当成一个普通IP 来使用。
 
 .. image:: images/06_media/image28.png
+   :align: center
    :width: 2.68788in
    :height: 2.32354in
 
@@ -237,12 +265,14 @@ DDR3配置
     Products”，此步骤会生成block的输出文件，包括IP，例化模板，RTL源文件，XDC约束，第三方综合源文件等等。供后续操作使用。
 
 .. image:: images/06_media/image29.png
+   :align: center
    :width: 3.45098in
    :height: 2.50438in
 
 26) 点击“Generate”
 
 .. image:: images/06_media/image30.png
+   :align: center
    :width: 2.29393in
    :height: 3.17942in
 
@@ -251,6 +281,7 @@ DDR3配置
     Designsdesign_1Synthesis中，可以看到处理器的XDC文件，绑定了PS端的IO，因此不需要再新建XDC绑定这些引脚。
 
 .. image:: images/06_media/image31.png
+   :align: center
    :width: 5.32446in
    :height: 2.70657in
 
@@ -258,6 +289,7 @@ DDR3配置
     Hardware...”导出硬件信息，这里就包含了PS端的配置信息。
 
 .. image:: images/06_media/image32.png
+   :align: center
    :width: 4.72917in
    :height: 5.75in
 
@@ -265,22 +297,27 @@ DDR3配置
     bitstream”，继续步骤直到finish。
 
 .. image:: images/06_media/image33.png
+   :align: center
    :width: 4.97014in
    :height: 4.22222in
 
 .. image:: images/06_media/image34.png
+   :align: center
    :width: 5.00972in
    :height: 4.26181in
 
 .. image:: images/06_media/image35.png
+   :align: center
    :width: 6.00208in
    :height: 5.08472in
 
 .. image:: images/06_media/image36.png
+   :align: center
    :width: 6.00139in
    :height: 5.10833in
 
 .. image:: images/06_media/image37.png
+   :align: center
    :width: 6.00208in
    :height: 5.09236in
 
@@ -302,12 +339,14 @@ Vitis调试
 1) Vitis是独立的软件，我们可以通过ToolsLaunch Vitis打开Vitis软件
 
 .. image:: images/06_media/image39.png
+   :align: center
    :width: 3.50453in
    :height: 3.20913in
 
 也可以需要双击Vitis软件打开
 
 .. image:: images/06_media/image40.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image46.pngimage46
    :width: 1.03556in
    :height: 1.22014in
@@ -315,6 +354,7 @@ Vitis调试
 选择之前新建的文件夹，点击”Launch”
 
 .. image:: images/06_media/image41.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image47.pngimage47
    :width: 4.43472in
    :height: 2.1861in
@@ -322,6 +362,7 @@ Vitis调试
 2) 启动Vitis之后界面如下，点击“Create Application Project”，这个选项会生成APP工程以及Platfrom工程，Platform工程类似于以前版本的hardware platform，包含了硬件支持的相关文件以及BSP。
 
 .. image:: images/06_media/image42.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image48.pngimage48
    :width: 5.97639in
    :height: 3.33264in
@@ -329,6 +370,7 @@ Vitis调试
 3) 点击Next
 
 .. image:: images/06_media/image43.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image49.pngimage49
    :width: 5.04097in
    :height: 3.9625in
@@ -336,6 +378,7 @@ Vitis调试
 4) 点击“Create a new platform hardware(XSA)，软件已经提供了一些板卡的硬件平台，但对于我们自己的硬件平台，可以选择”+”
 
 .. image:: images/06_media/image44.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image50.pngimage50
    :width: 6.00417in
    :height: 4.46389in
@@ -343,6 +386,7 @@ Vitis调试
 5) 选择之前生成的xsa，点击打开
 
 .. image:: images/06_media/image45.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image51.pngimage51
    :width: 6.00417in
    :height: 2.51944in
@@ -350,6 +394,7 @@ Vitis调试
 6) 最下面的Generate boot components选项，如果勾选上，软件会自动生成fsbl工程，我们一般选择默认勾选上。点击Next
 
 .. image:: images/06_media/image46.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image52.pngimage52
    :width: 5.14306in
    :height: 3.95347in
@@ -357,11 +402,13 @@ Vitis调试
 7) 项目名称填入“hello”，也可以根据自己的需要填写,CPU默认选择ps7_cortexa9_0，OS选择standalone，点击Next
 
 .. image:: images/06_media/image47.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image53.pngimage53
    :width: 5.14167in
    :height: 4.08056in
 
 .. image:: images/06_media/image48.png
+   :align: center
    :alt: image535
    :width: 5.09444in
    :height: 4.02222in
@@ -369,6 +416,7 @@ Vitis调试
 8) 模板选择Hello World，点击Finish
 
 .. image:: images/06_media/image49.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image54.pngimage54
    :width: 5.05139in
    :height: 3.95556in
@@ -376,6 +424,7 @@ Vitis调试
 9) 完成之后可以看到生成了两个工程，一个是硬件平台工程，即之前所说的Platfrom工程，一个是APP工程
 
 .. image:: images/06_media/image50.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image55.pngimage55
    :width: 6.07083in
    :height: 3.37708in
@@ -389,6 +438,7 @@ Vitis调试
     ps7_cortexa9_0即是APP工程的BSP。也可以在Platform里添加BSP，在以后的例程中再讲。
 
 .. image:: images/06_media/image51.png
+   :align: center
    :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S1_RSTdocument/images/images_1/image56.pngimage56
    :width: 6.00417in
    :height: 1.40278in
@@ -397,6 +447,7 @@ Vitis调试
     Examples是xilinx提供的example工程，加快学习。
 
 .. image:: images/06_media/image52.png
+   :align: center
    :width: 6.00417in
    :height: 5.15278in
 
@@ -404,18 +455,21 @@ Vitis调试
     Project，或者点击菜单栏的“锤子”按键，进行工程编译
 
 .. image:: images/06_media/image53.png
+   :align: center
    :width: 4.10964in
    :height: 5.19813in
 
 13) 可以在Console看到编译过程
 
 .. image:: images/06_media/image54.png
+   :align: center
    :width: 4.44942in
    :height: 1.1085in
 
 编译结束，生成elf文件
 
 .. image:: images/06_media/image55.png
+   :align: center
    :width: 2.99826in
    :height: 2.28635in
 
@@ -424,6 +478,7 @@ Vitis调试
 15) 使用PuTTY软件做为串口终端调试工具，PuTTY是一个免安装的小软件
 
 .. image:: images/06_media/image56.png
+   :align: center
    :width: 3.07054in
    :height: 2.94624in
 
@@ -431,30 +486,35 @@ Vitis调试
     line填写COM3，Speed填写115200，COM3串口号根据设备管理器里显示的填写，点击“Open”
 
 .. image:: images/06_media/image57.png
+   :align: center
    :width: 4.3799in
    :height: 3.19079in
 
 17) 在上电之前最好将开发板的启动模式设置到JTAG模式
 
 .. image:: images/06_media/image58.png
+   :align: center
    :width: 3.55849in
    :height: 3.24075in
 
 18) 给开发板上电，准备运行程序，开发板出厂时带有程序，这里可以把运行模式选择JTAG模式，然后重新上电。选择“hello”，右键，可以看到很多选项，本实验要用到这里的“Run as”，就是把程序运行起来，“Run as”里又有很对选项，选择第一个“Launch on Hardware(Single Application Debug)”，使用系统调试，直接运行程序。
 
 .. image:: images/06_media/image59.png
+   :align: center
    :width: 6.00417in
    :height: 3.53056in
 
 19) 这个时候观察PuTTY软件，即可以看到输出”Hello World”
 
 .. image:: images/06_media/image60.png
+   :align: center
    :width: 4.30983in
    :height: 2.70652in
 
 20) 为了保证系统的可靠调试，最好是右键“Run As -> Run Configuration...”
 
 .. image:: images/06_media/image61.png
+   :align: center
    :width: 6.00417in
    :height: 3.425in
 
@@ -463,30 +523,35 @@ Vitis调试
     FPGA”。
 
 .. image:: images/06_media/image62.png
+   :align: center
    :width: 6.00417in
    :height: 3.95556in
 
 22) 除了“Run As”，还可以“Debug As”，这样可以设置断点，单步运行
 
 .. image:: images/06_media/image63.png
+   :align: center
    :width: 6.00417in
    :height: 3.67222in
 
 23) 进入Debug模式
 
 .. image:: images/06_media/image64.png
+   :align: center
    :width: 5.66811in
    :height: 4.12088in
 
 24) 和其他C语言开发IDE一样，可以逐步运行、设置断点等
 
 .. image:: images/06_media/image65.png
+   :align: center
    :width: 6.00417in
    :height: 3.35417in
 
 25) 右上角可以切换IDE模式
 
 .. image:: images/06_media/image66.png
+   :align: center
    :width: 6.00417in
    :height: 3.36597in
 
@@ -512,6 +577,7 @@ Stage 1:
 -  交接给second stage bootloader或bare-metal应用程序
 
 .. image:: images/06_media/image67.png
+   :align: center
    :width: 2.26166in
    :height: 2.06761in
 
@@ -526,30 +592,35 @@ FSBL是一个二级引导程序，完成MIO的分配、时钟、PLL、DDR控制�
    components选项，所以Platform已经导入了fsbl的工程，并生成了相应的elf文件。
 
 .. image:: images/06_media/image68.png
+   :align: center
    :width: 2.39014in
    :height: 3.04818in
 
 2) 添加调试宏定义FSBL_DEBUG_INFO，可以在启动输出FSBL的一些状态信息，有利于调试，但是会导致启动时间变长。保存文件。可以看一下fsbl里包含了很多外设的文件，包括ps7_init.c，nand，nor，qspi，sd等，在fsbl的main.c中，第一个运行的函数就是ps7_init，至于后面的工作，大家可以再仔细读读代码。当然这个fsbl模板也是可以修改的，至于怎么修改根据自己的需求来做。
 
 .. image:: images/06_media/image69.png
+   :align: center
    :width: 6.00417in
    :height: 4.03194in
 
 3) 重新Build Project
 
 .. image:: images/06_media/image70.png
+   :align: center
    :width: 2.94418in
    :height: 2.38393in
 
 4) 接下来我们可以点击APP工程的system，右键选择Build project
 
 .. image:: images/06_media/image71.png
+   :align: center
    :width: 3.18331in
    :height: 3.4164in
 
 5) 这个时候就会多出一个Debug文件夹，生成了对应的BOOT.BIN
 
 .. image:: images/06_media/image72.png
+   :align: center
    :width: 2.33828in
    :height: 2.58676in
 
@@ -558,22 +629,26 @@ FSBL是一个二级引导程序，完成MIO的分配、时钟、PLL、DDR控制�
    Flash。
 
 .. image:: images/06_media/image73.png
+   :align: center
    :width: 3.72228in
    :height: 2.95768in
 
 .. image:: images/06_media/image74.png
+   :align: center
    :width: 5.22653in
    :height: 4.44067in
 
 7) 在Boot image partitions列表中有要合成的文件，第一个文件一定是bootloader文件，就是上面生成的fsbl.elf文件，第二个文件是FPGA配置文件bitstream，在本实验中由于没有FPGA的bitstream，不需要添加，第三个是应用程序，在本实验中为hello.elf，由于没有bitstream，在本实验中只添加bootloader和应用程序。点击Create Image生成。
 
 .. image:: images/06_media/image75.png
+   :align: center
    :width: 5.04223in
    :height: 4.34474in
 
 8) 在生成的目录下可以找到BOOT.bin文件
 
 .. image:: images/06_media/image76.png
+   :align: center
    :width: 6.00417in
    :height: 0.83264in
 
@@ -583,12 +658,14 @@ SD卡启动测试
 1) 格式化SD卡，只能格式化为FAT32格式，其他格式无法启动
 
 .. image:: images/06_media/image77.png
+   :align: center
    :width: 2.28024in
    :height: 3.67865in
 
 2) 放入BOOT.bin文件，放在根目录
 
 .. image:: images/06_media/image78.png
+   :align: center
    :width: 3.34931in
    :height: 1.87708in
 
@@ -597,12 +674,14 @@ SD卡启动测试
 4) 启动模式调整为SD卡启动
 
 .. image:: images/06_media/image58.png
+   :align: center
    :width: 3.55849in
    :height: 3.24075in
 
 5) 打开putty软件，上电启动，即可看到打印信息，红色框为FSBL启动信息，黄色箭头部分为执行的应用程序helloworld
 
 .. image:: images/06_media/image79.png
+   :align: center
    :width: 6.00417in
    :height: 4.91875in
 
@@ -612,24 +691,28 @@ QSPI启动测试
 1) 在Vitis菜单Xilinx -> Program Flash
 
 .. image:: images/06_media/image80.png
+   :align: center
    :width: 2.39129in
    :height: 2.53605in
 
 2) Hardware Platform选择最新的，Image FIle文件选择要烧写的BOOT.bin，FSBL file选择生成的fsbl.elf，Flash Type选择qspi_dual_parallel。
 
 .. image:: images/06_media/image81.png
+   :align: center
    :width: 4.77134in
    :height: 2.96622in
 
 3) 点击Program等待烧写完成
 
 .. image:: images/06_media/image82.png
+   :align: center
    :width: 4.65601in
    :height: 2.21438in
 
 4) 设置启动模式为QSPI，再次启动，可以在putty里看到与SD同样的启动效果。
 
 .. image:: images/06_media/image83.png
+   :align: center
    :width: 2.90352in
    :height: 2.25236in
 
@@ -639,24 +722,28 @@ Vivado下烧写QSPI
 1) 在HARDWARE MANGER下选择器件，右键Add Configuration Memory Device
 
 .. image:: images/06_media/image84.png
+   :align: center
    :width: 4.29075in
    :height: 4.51216in
 
 2) 选择尝试Winbond，类型选择qspi，宽度选择x4-single，这时候出现w25q128，选择红框型号，开发板使用w25q256，但是不影响烧录。
 
 .. image:: images/06_media/image85.png
+   :align: center
    :width: 5.05542in
    :height: 3.93377in
 
 3) 右键选择编程文件
 
 .. image:: images/06_media/image86.png
+   :align: center
    :width: 4.97917in
    :height: 2.83958in
 
 4) 选择要烧写的文件和fsbl文件，就可以烧写了，如果烧写时不是JTAG启动模式，软件会给出一个警告，所以建议烧写QSPI的时候设置到JTAG启动模式
 
 .. image:: images/06_media/image87.png
+   :align: center
    :width: 2.78396in
    :height: 3.09601in
 
@@ -685,12 +772,14 @@ Vivado下烧写QSPI
 1) 把要烧录的BOOT.bin、fsbl、bat文件放在一起
 
 .. image:: images/06_media/image88.png
+   :align: center
    :width: 2.40939in
    :height: 0.8858in
 
 2) 插上JTAG线后上电，双击bat文件即可烧写flash。
 
 .. image:: images/06_media/image89.png
+   :align: center
    :width: 5.44792in
    :height: 3.55208in
 
@@ -705,28 +794,33 @@ Vivado下烧写QSPI
 1. 根据本章的PS端添加ZYNQ核并配置，最简单的方法就是在本章工程的基础上添加LED实验的verilog源文件，并进行例化，组成一个系统，并需要生成bitstream。
 
 .. image:: images/06_media/image90.png
+   :align: center
    :width: 3.43315in
    :height: 2.76652in
 
 .. image:: images/06_media/image91.png
+   :align: center
    :width: 1.66589in
    :height: 0.85982in
 
 2. 生成bitstream之后，导出硬件，选择include bitstream
 
 .. image:: images/06_media/image35.png
+   :align: center
    :width: 3.90486in
    :height: 3.30833in
 
 3. 在生成BOOT.BIN时，还是需要一个app工程hello，仅仅是为了生成BOOT.BIN，默认情况下在system右键Build Project，即可生成包含bitstream的BOOT.BIN。
 
 .. image:: images/06_media/image92.png
+   :align: center
    :width: 3.547in
    :height: 3.33835in
 
 打开Create Boot Image界面可以看到，Boot Image Partitions的文件顺序是fsbl、bitstream、app，注意顺序不要颠倒，利用这样生成的BOOT.BIN就可以按照前面的启动方式测试启动了
 
 .. image:: images/06_media/image93.png
+   :align: center
    :width: 3.21597in
    :height: 2.76944in
 
@@ -738,12 +832,14 @@ Vivado下烧写QSPI
 在频繁的修改源文件，并进行编译的时候，最好选择APP工程进行Build Project，这种情况下只会生成elf文件。
 
 .. image:: images/06_media/image94.png
+   :align: center
    :width: 3.17549in
    :height: 3.03621in
 
 如果想生成BOOT.BIN文件，可以选择system进行编译，这种情况既会生成elf也会生成BOOT.BIN，笔者最开始用的时候就吃过亏，每次编译都是选择system，结果每次都要等待生成BOOT.BIN，浪费时间，大家可以注意一下。
 
 .. image:: images/06_media/image95.png
+   :align: center
    :width: 3.25181in
    :height: 2.83321in
 

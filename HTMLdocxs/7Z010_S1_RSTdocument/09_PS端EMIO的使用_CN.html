@@ -416,7 +416,7 @@ GPIO的IP实现控制。本章介绍如何使用EMIO控制PL端LED灯的亮灭�
 <section id="id1">
 <h2>原理介绍<a class="headerlink" href="#id1" title="此标题的永久链接">#</a></h2>
 <p>前面介绍了PS端MIO的结构如下，从图中可知BANK0和BANK1的MIO有54个。BANK2和BANK3的EMIO有64个，本章就是采用EMIO控制PL端LED。</p>
-<a class="reference internal image-reference" href="../_images/image129.png"><img alt="../_images/image129.png" src="../_images/image129.png" style="width: 3.28178in; height: 3.62081in;" /></a>
+<a class="reference internal image-reference" href="../_images/image129.png"><img alt="../_images/image129.png" class="align-center" src="../_images/image129.png" style="width: 3.28178in; height: 3.62081in;" /></a>
 </section>
 <section id="fpga">
 <h2>FPGA工程师工作内容<a class="headerlink" href="#fpga" title="此标题的永久链接">#</a></h2>
@@ -427,38 +427,38 @@ GPIO的IP实现控制。本章介绍如何使用EMIO控制PL端LED灯的亮灭�
 <ol class="arabic simple">
 <li><p>以ps_hello工程为基础，另存为一个名为ps_emio的工程，打开ZYNQ配置，把GPIO EMIO勾选上。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image218.png"><img alt="../_images/image218.png" src="../_images/image218.png" style="width: 4.91219in; height: 3.79294in;" /></a>
+<a class="reference internal image-reference" href="../_images/image218.png"><img alt="../_images/image218.png" class="align-center" src="../_images/image218.png" style="width: 4.91219in; height: 3.79294in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>在MIO配置中选择EMIO的位宽为8位，因为PL端的LED有四个，使用PL端的一个按键。配置结束，点击OK。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image317.png"><img alt="../_images/image317.png" src="../_images/image317.png" style="width: 4.68837in; height: 3.05129in;" /></a>
+<a class="reference internal image-reference" href="../_images/image317.png"><img alt="../_images/image317.png" class="align-center" src="../_images/image317.png" style="width: 4.68837in; height: 3.05129in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>点击多出的GPIO_0端口右键选择Make External，将端口信号导出</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image417.png"><img alt="../_images/image417.png" src="../_images/image417.png" style="width: 3.92291in; height: 2.05538in;" /></a>
+<a class="reference internal image-reference" href="../_images/image417.png"><img alt="../_images/image417.png" class="align-center" src="../_images/image417.png" style="width: 3.92291in; height: 2.05538in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>修改引脚名称为emio</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image516.png"><img alt="../_images/image516.png" src="../_images/image516.png" style="width: 4.60605in; height: 1.97007in;" /></a>
+<a class="reference internal image-reference" href="../_images/image516.png"><img alt="../_images/image516.png" class="align-center" src="../_images/image516.png" style="width: 4.60605in; height: 1.97007in;" /></a>
 <p>修改结果，并保存设计</p>
-<a class="reference internal image-reference" href="../_images/image616.png"><img alt="../_images/image616.png" src="../_images/image616.png" style="width: 6.00417in; height: 1.84861in;" /></a>
+<a class="reference internal image-reference" href="../_images/image616.png"><img alt="../_images/image616.png" class="align-center" src="../_images/image616.png" style="width: 6.00417in; height: 1.84861in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>点击xx.bd右键选择Generate Output Products，重新生成输出文件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image716.png"><img alt="../_images/image716.png" src="../_images/image716.png" style="width: 3.444in; height: 2.17619in;" /></a>
+<a class="reference internal image-reference" href="../_images/image716.png"><img alt="../_images/image716.png" class="align-center" src="../_images/image716.png" style="width: 3.444in; height: 2.17619in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>结束后，顶层文件会更新出新的管脚，下面需要对其进行引脚绑定</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image814.png"><img alt="../_images/image814.png" src="../_images/image814.png" style="width: 3.71917in; height: 2.81583in;" /></a>
+<a class="reference internal image-reference" href="../_images/image814.png"><img alt="../_images/image814.png" class="align-center" src="../_images/image814.png" style="width: 3.71917in; height: 2.81583in;" /></a>
 </section>
 <section id="xdcpl">
 <h2>XDC文件约束PL管脚<a class="headerlink" href="#xdcpl" title="此标题的永久链接">#</a></h2>
 <ol class="arabic simple" start="7">
 <li><p>新建XDC文件，绑定PL端引脚</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image98.png"><img alt="../_images/image98.png" src="../_images/image98.png" style="width: 5.43055in; height: 2.12863in;" /></a>
+<a class="reference internal image-reference" href="../_images/image98.png"><img alt="../_images/image98.png" class="align-center" src="../_images/image98.png" style="width: 5.43055in; height: 2.12863in;" /></a>
 <p>设置文件名称为emio</p>
-<a class="reference internal image-reference" href="../_images/image108.png"><img alt="../_images/image108.png" src="../_images/image108.png" style="width: 4.50097in; height: 3.03605in;" /></a>
+<a class="reference internal image-reference" href="../_images/image108.png"><img alt="../_images/image108.png" class="align-center" src="../_images/image108.png" style="width: 4.50097in; height: 3.03605in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>emio.xdc添加一下内容，端口名称一定要和顶层文件端口一致</p></li>
 </ol>
@@ -483,15 +483,15 @@ GPIO的IP实现控制。本章介绍如何使用EMIO控制PL端LED灯的亮灭�
 <ol class="arabic simple" start="9">
 <li><p>生成bit文件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1113.png"><img alt="../_images/image1113.png" src="../_images/image1113.png" style="width: 1.78165in; height: 0.79274in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1113.png"><img alt="../_images/image1113.png" class="align-center" src="../_images/image1113.png" style="width: 1.78165in; height: 0.79274in;" /></a>
 <ol class="arabic simple" start="10">
 <li><p>导出硬件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1210.png"><img alt="../_images/image1210.png" src="../_images/image1210.png" style="width: 2.33194in; height: 2.83611in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1210.png"><img alt="../_images/image1210.png" class="align-center" src="../_images/image1210.png" style="width: 2.33194in; height: 2.83611in;" /></a>
 <ol class="arabic simple" start="11">
 <li><p>因为要用到PL，所以选择“Include bitstream”，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image137.png"><img alt="../_images/image137.png" src="../_images/image137.png" style="width: 3.75625in; height: 3.18333in;" /></a>
+<a class="reference internal image-reference" href="../_images/image137.png"><img alt="../_images/image137.png" class="align-center" src="../_images/image137.png" style="width: 3.75625in; height: 3.18333in;" /></a>
 </section>
 <section id="id2">
 <h2>软件工程师工作内容<a class="headerlink" href="#id2" title="此标题的永久链接">#</a></h2>
@@ -504,18 +504,18 @@ GPIO的IP实现控制。本章介绍如何使用EMIO控制PL端LED灯的亮灭�
 <ol class="arabic simple">
 <li><p>进入Vitis软件，新建名为emio_led_test的工程</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image147.png"><img alt="../_images/image147.png" src="../_images/image147.png" style="width: 3.01889in; height: 1.51325in;" /></a>
+<a class="reference internal image-reference" href="../_images/image147.png"><img alt="../_images/image147.png" class="align-center" src="../_images/image147.png" style="width: 3.01889in; height: 1.51325in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>代码部分与PS端MIO操作点亮LED类似，由于MIO的编号是0~53，因此EMIO的编号是从54开始的，只要做以下修改即可</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image157.png"><img alt="../_images/image157.png" src="../_images/image157.png" style="width: 2.28077in; height: 3.80709in;" /></a>
+<a class="reference internal image-reference" href="../_images/image157.png"><img alt="../_images/image157.png" class="align-center" src="../_images/image157.png" style="width: 2.28077in; height: 3.80709in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>下载配置</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image166.png"><img alt="../_images/image166.png" src="../_images/image166.png" style="width: 5.4117in; height: 3.16903in;" /></a>
+<a class="reference internal image-reference" href="../_images/image166.png"><img alt="../_images/image166.png" class="align-center" src="../_images/image166.png" style="width: 5.4117in; height: 3.16903in;" /></a>
 <p>由于下载需要bitstream文件，勾选上Program
 FPGA，点击Run，即可看到PL端LED闪烁。</p>
-<a class="reference internal image-reference" href="../_images/image176.png"><img alt="../_images/image176.png" src="../_images/image176.png" style="width: 6.00417in; height: 4.83681in;" /></a>
+<a class="reference internal image-reference" href="../_images/image176.png"><img alt="../_images/image176.png" class="align-center" src="../_images/image176.png" style="width: 6.00417in; height: 4.83681in;" /></a>
 </section>
 <section id="emiopl">
 <h3>EMIO实现PL端按键中断<a class="headerlink" href="#emiopl" title="此标题的永久链接">#</a></h3>
@@ -523,15 +523,15 @@ FPGA，点击Run，即可看到PL端LED闪烁。</p>
 <ol class="arabic simple">
 <li><p>新建名为emio_key的工程，模板为hello world，拷贝例程的程序，保存并编译</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image186.png"><img alt="../_images/image186.png" src="../_images/image186.png" style="width: 3.97632in; height: 2.08198in;" /></a>
+<a class="reference internal image-reference" href="../_images/image186.png"><img alt="../_images/image186.png" class="align-center" src="../_images/image186.png" style="width: 3.97632in; height: 2.08198in;" /></a>
 <ol class="arabic simple">
 <li><p>由PS端MIO的使用的MIO按键中断程序移植过来，并修改按键的编号为58，LED灯编号为54，保存重新生成elf。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image196.png"><img alt="../_images/image196.png" src="../_images/image196.png" style="width: 3.01957in; height: 0.82132in;" /></a>
+<a class="reference internal image-reference" href="../_images/image196.png"><img alt="../_images/image196.png" class="align-center" src="../_images/image196.png" style="width: 3.01957in; height: 0.82132in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>Run Configurations选择Program FPGA，点击Run</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image176.png"><img alt="../_images/image176.png" src="../_images/image176.png" style="width: 6.00417in; height: 4.83681in;" /></a>
+<a class="reference internal image-reference" href="../_images/image176.png"><img alt="../_images/image176.png" class="align-center" src="../_images/image176.png" style="width: 6.00417in; height: 4.83681in;" /></a>
 <ol class="arabic simple">
 <li><p>观察实验现象，按下PL端按键，就可以控制PL端LED的亮灭。</p></li>
 </ol>
@@ -546,8 +546,8 @@ FPGA，点击Run，即可看到PL端LED闪烁。</p>
 <p>前面介绍过没有FPGA加载文件情况下如何生成固化程序（详情参考“体验ARM，裸机输出”Hello
 World”一章）。本章内容生成了FPGA的加载文件，在这里演示一下如何生成固化程序。</p>
 <p>与前面一样，也是点击system，右键Build Project即可</p>
-<a class="reference internal image-reference" href="../_images/image205.png"><img alt="../_images/image205.png" src="../_images/image205.png" style="width: 2.99039in; height: 3.13084in;" /></a>
-<a class="reference internal image-reference" href="../_images/image219.png"><img alt="../_images/image219.png" src="../_images/image219.png" style="width: 2.55926in; height: 1.54636in;" /></a>
+<a class="reference internal image-reference" href="../_images/image205.png"><img alt="../_images/image205.png" class="align-center" src="../_images/image205.png" style="width: 2.99039in; height: 3.13084in;" /></a>
+<a class="reference internal image-reference" href="../_images/image219.png"><img alt="../_images/image219.png" class="align-center" src="../_images/image219.png" style="width: 2.55926in; height: 1.54636in;" /></a>
 <p>软件会自动添加三个文件，第一个引导程序fsbl.elf，第二个为FPGA的bitstream，第三个为应用程序xx.elf，下载方法与前面一样，不再赘述。</p>
 </section>
 <section id="id4">
@@ -556,15 +556,15 @@ World”一章）。本章内容生成了FPGA的加载文件，在这里演示�
 <li><p>在block
 design设计中，比如下图，GPIO模块的引脚名设置为了leds和keys，很多人想当然的在XDC里按照这样的名称绑定引脚。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image225.png"><img alt="../_images/image225.png" src="../_images/image225.png" style="width: 5.76806in; height: 1.73264in;" /></a>
+<a class="reference internal image-reference" href="../_images/image225.png"><img alt="../_images/image225.png" class="align-center" src="../_images/image225.png" style="width: 5.76806in; height: 1.73264in;" /></a>
 <p>如果打开顶层文件就会发现引脚名称是不一样的，一定要仔细检查，以顶层文件里的引脚名称为准。</p>
-<a class="reference internal image-reference" href="../_images/image235.png"><img alt="../_images/image235.png" src="../_images/image235.png" style="width: 5.23695in; height: 1.80891in;" /></a>
+<a class="reference internal image-reference" href="../_images/image235.png"><img alt="../_images/image235.png" class="align-center" src="../_images/image235.png" style="width: 5.23695in; height: 1.80891in;" /></a>
 <p>否则就会出现以下引脚未绑定的错误</p>
-<a class="reference internal image-reference" href="../_images/image245.png"><img alt="../_images/image245.png" src="../_images/image245.png" style="width: 5.76806in; height: 2.63056in;" /></a>
+<a class="reference internal image-reference" href="../_images/image245.png"><img alt="../_images/image245.png" class="align-center" src="../_images/image245.png" style="width: 5.76806in; height: 2.63056in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>如果是手写XDC文件，切记注意空格，这也是非常常见的错误</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image254.png"><img alt="../_images/image254.png" src="../_images/image254.png" style="width: 3.62449in; height: 1.82052in;" /></a>
+<a class="reference internal image-reference" href="../_images/image254.png"><img alt="../_images/image254.png" class="align-center" src="../_images/image254.png" style="width: 3.62449in; height: 1.82052in;" /></a>
 </section>
 <section id="id5">
 <h2>本章小节<a class="headerlink" href="#id5" title="此标题的永久链接">#</a></h2>

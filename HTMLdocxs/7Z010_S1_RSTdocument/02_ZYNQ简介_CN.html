@@ -411,12 +411,12 @@ ARM处理器的子系统也可以独立工作，这与以前的FPGA有本质区�
 <p>Zynq就是两大功能块，PS 部分和 PL部分，
 说白了，就是ARM的SOC部分，和FPGA部分。其中，PS集成了两个ARM
 Cortex™-A9处理器，AMBA®互连，内部存储器，外部存储器接口和外设。这些外设主要包括USB总线接口，以太网接口，SD/SDIO接口，I2C总线接口，CAN总线接口，UART接口，GPIO等。</p>
-<a class="reference internal image-reference" href="../_images/image110.png"><img alt="../_images/image110.png" src="../_images/image110.png" style="width: 5.4953in; height: 3.15609in;" /></a>
+<a class="reference internal image-reference" href="../_images/image110.png"><img alt="../_images/image110.png" class="align-center" src="../_images/image110.png" style="width: 5.4953in; height: 3.15609in;" /></a>
 <p>ZYNQ芯片的总体框图</p>
 <p>PS: 处理系统 （Processing System) , 就是与FPGA无关的ARM的SOC的部分。</p>
 <p>PL: 可编程逻辑 (Progarmmable Logic), 就是FPGA部分。</p>
 <p><em>PL部分是与7系列一样的，在DS190文档中可以看到对应的7系列产品。</em></p>
-<a class="reference internal image-reference" href="../_images/image22.png"><img alt="../_images/image22.png" src="../_images/image22.png" style="width: 6.00417in; height: 1.04722in;" /></a>
+<a class="reference internal image-reference" href="../_images/image22.png"><img alt="../_images/image22.png" class="align-center" src="../_images/image22.png" style="width: 6.00417in; height: 1.04722in;" /></a>
 <section id="pspl">
 <h2>PS和PL互联技术<a class="headerlink" href="#pspl" title="此标题的永久链接">#</a></h2>
 <p>ZYNQ作为首款将高性能ARM
@@ -428,7 +428,7 @@ Microcontroller Bus
 Architecture）的一个部分，是一种高性能、高带宽、低延迟的片内总线，也用来替代以前的AHB和APB总线。第一个版本的AXI（AXI3）包含在2003年发布的AMBA3.0中，AXI的第二个版本AXI（AXI4）包含在2010年发布的AMBA
 4.0之中。</p>
 <p>AXI协议主要描述了主设备和从设备之间的数据传输方式，主设备和从设备之间通过握手信号建立连接。当从设备准备好接收数据时，会发出READY信号。当主设备的数据准备好时，会发出和维持VALID信号，表示数据有效。数据只有在VALID和READY信号都有效的时候才开始传输。当这两个信号持续保持有效，主设备会继续传输下一个数据。主设备可以撤销VALID信号，或者从设备撤销READY信号终止传输。AXI的协议如图，T2时，从设备的READY信号有效，T3时主设备的VILID信号有效，数据传输开始。</p>
-<a class="reference internal image-reference" href="../_images/image31.png"><img alt="../_images/image31.png" src="../_images/image31.png" style="width: 4.22385in; height: 1.70463in;" /></a>
+<a class="reference internal image-reference" href="../_images/image31.png"><img alt="../_images/image31.png" class="align-center" src="../_images/image31.png" style="width: 4.22385in; height: 1.70463in;" /></a>
 <p>AXI握手时序图</p>
 <p>在ZYNQ中，支持AXI-Lite，AXI4和AXI-Stream三种总线，通过表5-1,我们可以看到这三中AXI接口的特性。</p>
 <table class="table">
@@ -469,16 +469,16 @@ Architecture）的一个部分，是一种高性能、高带宽、低延迟的�
 <li><p>Write Response Channel</p></li>
 </ul>
 <p>其中每个通道都是一个独立的AXI握手协议。下面两个图分别显示了读和写的模型：</p>
-<a class="reference internal image-reference" href="../_images/image41.png"><img alt="../_images/image41.png" src="../_images/image41.png" style="width: 3.77612in; height: 1.63024in;" /></a>
+<a class="reference internal image-reference" href="../_images/image41.png"><img alt="../_images/image41.png" class="align-center" src="../_images/image41.png" style="width: 3.77612in; height: 1.63024in;" /></a>
 <p>AXI读数据通道</p>
-<a class="reference internal image-reference" href="../_images/image51.png"><img alt="../_images/image51.png" src="../_images/image51.png" style="width: 3.85128in; height: 2.35547in;" /></a>
+<a class="reference internal image-reference" href="../_images/image51.png"><img alt="../_images/image51.png" class="align-center" src="../_images/image51.png" style="width: 3.85128in; height: 2.35547in;" /></a>
 <p>AXI写数据通道</p>
 <p>在ZYNQ芯片内部用硬件实现了AXI总线协议，包括9个物理接口，分别为AXI-GP0~AXI-GP3，AXI-HP0~AXI-HP3，AXI-ACP接口。</p>
 <p>AXI_ACP接口，是ARM多核架构下定义的一种接口，中文翻译为加速器一致性端口，用来管理DMA之类的不带缓存的AXI外设，PS端是Slave接口。</p>
 <p>AXI_HP接口，是高性能/带宽的AXI3.0标准的接口，总共有四个，PL模块作为主设备连接。主要用于PL访问PS上的存储器（DDR和On-Chip
 RAM）</p>
 <p>AXI_GP接口，是通用的AXI接口，总共有四个，包括两个32位主设备接口和两个32位从设备接口。</p>
-<a class="reference internal image-reference" href="../_images/image61.png"><img alt="../_images/image61.png" src="../_images/image61.png" style="width: 5.53056in; height: 3.16528in;" /></a>
+<a class="reference internal image-reference" href="../_images/image61.png"><img alt="../_images/image61.png" class="align-center" src="../_images/image61.png" style="width: 5.53056in; height: 3.16528in;" /></a>
 <p>可以看到，只有两个AXI-GP是Master Port，即主机接口，其余7个口都是Slave
 Port（从机接口）。主机接口具有发起读写的权限，ARM可以利用两个AXI-GP主机接口主动访问PL逻辑，其实就是把PL映射到某个地址，读写PL寄存器如同在读写自己的存储器。其余从机接口就属于被动接口，接受来自PL的读写，逆来顺受。</p>
 <p>另外这9个AXI接口性能也是不同的。GP接口是32位的低性能接口，理论带宽600MB/s，而HP和ACP接口为64位高性能接口，理论带宽1200MB/s。有人会问，为什么高性能接口不做成主机接口呢？这样可以由ARM发起高速数据传输。答案是高性能接口根本不需要ARM
@@ -486,7 +486,7 @@ CPU来负责数据搬移，真正的搬运工是位于PL中的DMA控制器。</p
 <p>位于PS端的ARM直接有硬件支持AXI接口，而PL则需要使用逻辑实现相应的AXI协议。Xilinx在Vivado开发环境里提供现成IP如AXI-DMA，AXI-GPIO，AXI-Dataover,
 AXI-Stream都实现了相应的接口，使用时直接从Vivado的IP列表中添加即可实现相应的功能。下图为Vivado下的各种DMA
 IP：</p>
-<a class="reference internal image-reference" href="../_images/image71.png"><img alt="../_images/image71.png" src="../_images/image71.png" style="width: 2.6709in; height: 2.49687in;" /></a>
+<a class="reference internal image-reference" href="../_images/image71.png"><img alt="../_images/image71.png" class="align-center" src="../_images/image71.png" style="width: 2.6709in; height: 2.49687in;" /></a>
 <p>下面为几个常用的AXI接口IP的功能介绍：</p>
 <p>AXI-DMA：实现从PS内存到PL高速传输高速通道AXI-HP&lt;—-&gt;AXI-Stream的转换</p>
 <p>AXI-FIFO-MM2S：实现从PS内存到PL通用传输通道AXI-GP&lt;—–&gt;AXI-Stream的转换</p>
@@ -506,16 +506,16 @@ IP核最多可以支持16个主设备、16个从设备，如果需要更多的�
 <li><p>N-to-M Interconnect (Crossbar Mode)</p></li>
 <li><p>N-to-M Interconnect (Shared Access Mode)</p></li>
 </ul>
-<a class="reference internal image-reference" href="../_images/image81.png"><img alt="../_images/image81.png" src="../_images/image81.png" style="width: 3.15811in; height: 1.99139in;" /></a>
+<a class="reference internal image-reference" href="../_images/image81.png"><img alt="../_images/image81.png" class="align-center" src="../_images/image81.png" style="width: 3.15811in; height: 1.99139in;" /></a>
 <p>多对一的情况</p>
-<a class="reference internal image-reference" href="../_images/image91.png"><img alt="../_images/image91.png" src="../_images/image91.png" style="width: 3.31896in; height: 2.18051in;" /></a>
+<a class="reference internal image-reference" href="../_images/image91.png"><img alt="../_images/image91.png" class="align-center" src="../_images/image91.png" style="width: 3.31896in; height: 2.18051in;" /></a>
 <p>一对多的情况</p>
-<a class="reference internal image-reference" href="../_images/image101.png"><img alt="../_images/image101.png" src="../_images/image101.png" style="width: 3.7847in; height: 2.26394in;" /></a>
+<a class="reference internal image-reference" href="../_images/image101.png"><img alt="../_images/image101.png" class="align-center" src="../_images/image101.png" style="width: 3.7847in; height: 2.26394in;" /></a>
 <p>多对多读写地址通道</p>
-<a class="reference internal image-reference" href="../_images/image112.png"><img alt="../_images/image112.png" src="../_images/image112.png" style="width: 3.83584in; height: 2.10589in;" /></a>
+<a class="reference internal image-reference" href="../_images/image112.png"><img alt="../_images/image112.png" class="align-center" src="../_images/image112.png" style="width: 3.83584in; height: 2.10589in;" /></a>
 <p>多对多读写数据通道</p>
 <p>ZYNQ内部的AXI接口设备就是通过互联矩阵的的方式互联起来的，既保证了传输数据的高效性，又保证了连接的灵活性。Xilinx在Vivado里我们提供了实现这种互联矩阵的IP核axi_interconnect，我们只要调用就可以。</p>
-<a class="reference internal image-reference" href="../_images/image121.png"><img alt="../_images/image121.png" src="../_images/image121.png" style="width: 2.59167in; height: 2.3875in;" /></a>
+<a class="reference internal image-reference" href="../_images/image121.png"><img alt="../_images/image121.png" class="align-center" src="../_images/image121.png" style="width: 2.59167in; height: 2.3875in;" /></a>
 <p>AXI Interconnect IP</p>
 </section>
 <section id="id1">

@@ -23,18 +23,21 @@ LWIP库修改
 1) 找到库文件目录“D:\\Xilinx2023.1\\Vitis\\2023.1\\data\\embeddedsw\\ThirdParty\\sw_services”
 
 .. image:: images/12_media/image1.png
+   :align: center
    :width: 4.67986in
    :height: 3.44167in
 
 2) 找到要修改的文件目录“lwip213_v1_0\\src\\contrib\\ports\\xilinx\\netif”中文件“xaxiemacif_physpeed.c”和“xemacpsif_physpeed.c”要修改。
 
 .. image:: images/12_media/image2.png
+   :align: center
    :width: 5.12431in
    :height: 3.84861in
 
 3) 修改“xaxiemacif_physpeed.c”文件，添加相关宏定义
 
 .. image:: images/12_media/image3.png
+   :align: center
    :width: 3.53542in
    :height: 3.52083in
 
@@ -458,6 +461,7 @@ LWIP库修改
 1) 修改“xemacpsif_physpeed.c”文件添加宏定义
 
 .. image:: images/12_media/image4.png
+   :align: center
    :width: 3.4125in
    :height: 2.85139in
 
@@ -834,6 +838,7 @@ LWIP库修改
 ~~~~~~~~~~~~~~~~~~~~~
 
 .. image:: images/12_media/image5.png
+   :align: center
    :width: 4.09444in
    :height: 4.69653in
 
@@ -848,24 +853,28 @@ LWIP库修改
 1) 连接串口打开串口调试终端，连接好PS端以太网网线到路由器，运行Vitis
 
 .. image:: images/12_media/image6.png
+   :align: center
    :width: 6in
    :height: 4.82222in
 
 2) 可以看到串口打印出一些信息，可以看到自动获取到地址为“192.168.1.63”，连接速度1000Mbps，tcp端口为7
 
 .. image:: images/12_media/image7.png
+   :align: center
    :width: 6.00417in
    :height: 3.78056in
 
 3) 使用telnet连接
 
 .. image:: images/12_media/image8.png
+   :align: center
    :width: 4.24508in
    :height: 4.08682in
 
 4) 当输入一个字符时，开发板返回相同字符
 
 .. image:: images/12_media/image9.png
+   :align: center
    :width: 3.71875in
    :height: 2.34167in
 

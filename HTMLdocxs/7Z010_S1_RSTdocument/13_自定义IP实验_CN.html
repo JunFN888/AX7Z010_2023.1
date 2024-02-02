@@ -505,103 +505,103 @@ frequency(clk);</p>
 <ol class="arabic simple">
 <li><p>点击菜单“Tools-&gt;Create and Package IP…”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image150.png"><img alt="../_images/image150.png" src="../_images/image150.png" style="width: 2.77728in; height: 1.75312in;" /></a>
+<a class="reference internal image-reference" href="../_images/image150.png"><img alt="../_images/image150.png" class="align-center" src="../_images/image150.png" style="width: 2.77728in; height: 1.75312in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>选择“Next”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image230.png"><img alt="../_images/image230.png" src="../_images/image230.png" style="width: 4.88143in; height: 3.28534in;" /></a>
+<a class="reference internal image-reference" href="../_images/image230.png"><img alt="../_images/image230.png" class="align-center" src="../_images/image230.png" style="width: 4.88143in; height: 3.28534in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>选择创建一个新的AXI4设备</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image326.png"><img alt="../_images/image326.png" src="../_images/image326.png" style="width: 4.99538in; height: 3.3915in;" /></a>
+<a class="reference internal image-reference" href="../_images/image326.png"><img alt="../_images/image326.png" class="align-center" src="../_images/image326.png" style="width: 4.99538in; height: 3.3915in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>名称填写“ax_pwm”,描述填写“alinx pwm”，然后选择一个合适的位置用来放IP</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image426.png"><img alt="../_images/image426.png" src="../_images/image426.png" style="width: 5.06229in; height: 3.41877in;" /></a>
+<a class="reference internal image-reference" href="../_images/image426.png"><img alt="../_images/image426.png" class="align-center" src="../_images/image426.png" style="width: 5.06229in; height: 3.41877in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>下面参数可以指定接口类型、寄存器数量等，这里不需要修改，使用AXI Lite Slave接口，4个寄存器。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image524.png"><img alt="../_images/image524.png" src="../_images/image524.png" style="width: 5.22717in; height: 3.52226in;" /></a>
+<a class="reference internal image-reference" href="../_images/image524.png"><img alt="../_images/image524.png" class="align-center" src="../_images/image524.png" style="width: 5.22717in; height: 3.52226in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>点击“Finish”完成IP的创建</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image620.png"><img alt="../_images/image620.png" src="../_images/image620.png" style="width: 5.11929in; height: 3.4472in;" /></a>
+<a class="reference internal image-reference" href="../_images/image620.png"><img alt="../_images/image620.png" class="align-center" src="../_images/image620.png" style="width: 5.11929in; height: 3.4472in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>在“IP Catalog”中可以看到刚才创建的IP</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image720.png"><img alt="../_images/image720.png" src="../_images/image720.png" style="width: 6.00417in; height: 1.80069in;" /></a>
+<a class="reference internal image-reference" href="../_images/image720.png"><img alt="../_images/image720.png" class="align-center" src="../_images/image720.png" style="width: 6.00417in; height: 1.80069in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>这个时候的IP只有简单的寄存器读写功能，我们需要修改IP，选择IP，右键“Edit in IP Packager”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image818.png"><img alt="../_images/image818.png" src="../_images/image818.png" style="width: 2.77311in; height: 3.35774in;" /></a>
+<a class="reference internal image-reference" href="../_images/image818.png"><img alt="../_images/image818.png" class="align-center" src="../_images/image818.png" style="width: 2.77311in; height: 3.35774in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>这是弹出一个对话框，可以填写工程名称和路径，这里默认，点击“OK”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image913.png"><img alt="../_images/image913.png" src="../_images/image913.png" style="width: 3.34094in; height: 1.41544in;" /></a>
+<a class="reference internal image-reference" href="../_images/image913.png"><img alt="../_images/image913.png" class="align-center" src="../_images/image913.png" style="width: 3.34094in; height: 1.41544in;" /></a>
 <ol class="arabic simple" start="10">
 <li><p>Vivado打开了一个新的工程</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1011.png"><img alt="../_images/image1011.png" src="../_images/image1011.png" style="width: 6.00417in; height: 3.22778in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1011.png"><img alt="../_images/image1011.png" class="align-center" src="../_images/image1011.png" style="width: 6.00417in; height: 3.22778in;" /></a>
 <ol class="arabic simple" start="11">
 <li><p>添加PWM功能的核心代码</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1116.png"><img alt="../_images/image1116.png" src="../_images/image1116.png" style="width: 6.00417in; height: 3.21788in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1116.png"><img alt="../_images/image1116.png" class="align-center" src="../_images/image1116.png" style="width: 6.00417in; height: 3.21788in;" /></a>
 <ol class="arabic simple" start="12">
 <li><p>添加代码时选择复制代码到IP目录</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1213.png"><img alt="../_images/image1213.png" src="../_images/image1213.png" style="width: 6.00417in; height: 4.03125in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1213.png"><img alt="../_images/image1213.png" class="align-center" src="../_images/image1213.png" style="width: 6.00417in; height: 4.03125in;" /></a>
 <ol class="arabic simple" start="13">
 <li><p>修改“ax_pwm_v1_0.v”，添加一个pwm输出端口</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1311.png"><img alt="../_images/image1311.png" src="../_images/image1311.png" style="width: 6.00417in; height: 3.33125in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1311.png"><img alt="../_images/image1311.png" class="align-center" src="../_images/image1311.png" style="width: 6.00417in; height: 3.33125in;" /></a>
 <ol class="arabic simple" start="14">
 <li><p>修改“ax_pwm_v1_0.v”，在例化“ax_pwm_V1_0_S00_AXI”,中添加pwm端口的例化</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1410.png"><img alt="../_images/image1410.png" src="../_images/image1410.png" style="width: 6.00417in; height: 2.71319in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1410.png"><img alt="../_images/image1410.png" class="align-center" src="../_images/image1410.png" style="width: 6.00417in; height: 2.71319in;" /></a>
 <ol class="arabic simple" start="15">
 <li><p>修改“ax_pwm_v1_0_s00_AXI.v”文件，添加pwm端口，这个文件是实现AXI4 Lite Slave的核心代码</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image1510.png"><img alt="../_images/image1510.png" src="../_images/image1510.png" style="width: 6.00417in; height: 2.32708in;" /></a>
+<a class="reference internal image-reference" href="../_images/image1510.png"><img alt="../_images/image1510.png" class="align-center" src="../_images/image1510.png" style="width: 6.00417in; height: 2.32708in;" /></a>
 <ol class="arabic simple" start="16">
 <li><p>修改“ax_pwm_v1_0_s00_AXI.v”文件，例化pwm核心功能代码，将寄存器slv_reg0和slv_reg1用于pwm模块的参数控制。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image169.png"><img alt="../_images/image169.png" src="../_images/image169.png" style="width: 6.00417in; height: 3.70833in;" /></a>
+<a class="reference internal image-reference" href="../_images/image169.png"><img alt="../_images/image169.png" class="align-center" src="../_images/image169.png" style="width: 6.00417in; height: 3.70833in;" /></a>
 <ol class="arabic simple" start="17">
 <li><p>双击“component.xml”文件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image179.png"><img alt="../_images/image179.png" src="../_images/image179.png" style="width: 6.00417in; height: 2.63819in;" /></a>
+<a class="reference internal image-reference" href="../_images/image179.png"><img alt="../_images/image179.png" class="align-center" src="../_images/image179.png" style="width: 6.00417in; height: 2.63819in;" /></a>
 <ol class="arabic simple" start="18">
 <li><p>在“File Groups”选项中点击“Merge changers from File Groups Wizard”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image189.png"><img alt="../_images/image189.png" src="../_images/image189.png" style="width: 6.00417in; height: 3.51577in;" /></a>
+<a class="reference internal image-reference" href="../_images/image189.png"><img alt="../_images/image189.png" class="align-center" src="../_images/image189.png" style="width: 6.00417in; height: 3.51577in;" /></a>
 <ol class="arabic simple" start="19">
 <li><p>在“Customization Parameters”选项中点击“Merge changes form Customization Parameters Wizard”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image199.png"><img alt="../_images/image199.png" src="../_images/image199.png" style="width: 6.00417in; height: 3.29642in;" /></a>
+<a class="reference internal image-reference" href="../_images/image199.png"><img alt="../_images/image199.png" class="align-center" src="../_images/image199.png" style="width: 6.00417in; height: 3.29642in;" /></a>
 <ol class="arabic simple" start="20">
 <li><p>点击“Re-Package IP”完成IP的修改</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image208.png"><img alt="../_images/image208.png" src="../_images/image208.png" style="width: 4.73234in; height: 3.08867in;" /></a>
+<a class="reference internal image-reference" href="../_images/image208.png"><img alt="../_images/image208.png" class="align-center" src="../_images/image208.png" style="width: 4.73234in; height: 3.08867in;" /></a>
 </section>
 <section id="id2">
 <h3>添加自定义IP到工程<a class="headerlink" href="#id2" title="此标题的永久链接">#</a></h3>
 <ol class="arabic simple">
 <li><p>搜索“pwm”，添加“ax_pwm_v1.0”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image2112.png"><img alt="../_images/image2112.png" src="../_images/image2112.png" style="width: 5.11681in; height: 2.66921in;" /></a>
+<a class="reference internal image-reference" href="../_images/image2112.png"><img alt="../_images/image2112.png" class="align-center" src="../_images/image2112.png" style="width: 5.11681in; height: 2.66921in;" /></a>
 <ol class="arabic simple" start="2">
 <li><p>点击“Run Connection Automation”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image2210.png"><img alt="../_images/image2210.png" src="../_images/image2210.png" style="width: 4.792in; height: 2.62563in;" /></a>
+<a class="reference internal image-reference" href="../_images/image2210.png"><img alt="../_images/image2210.png" class="align-center" src="../_images/image2210.png" style="width: 4.792in; height: 2.62563in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>导出pwm端口</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image237.png"><img alt="../_images/image237.png" src="../_images/image237.png" style="width: 4.31421in; height: 3.34801in;" /></a>
-<a class="reference internal image-reference" href="../_images/image247.png"><img alt="../_images/image247.png" src="../_images/image247.png" style="width: 6.00417in; height: 2.27303in;" /></a>
+<a class="reference internal image-reference" href="../_images/image237.png"><img alt="../_images/image237.png" class="align-center" src="../_images/image237.png" style="width: 4.31421in; height: 3.34801in;" /></a>
+<a class="reference internal image-reference" href="../_images/image247.png"><img alt="../_images/image247.png" class="align-center" src="../_images/image247.png" style="width: 6.00417in; height: 2.27303in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>保存设计，并Generate Output Products</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image256.png"><img alt="../_images/image256.png" src="../_images/image256.png" style="width: 3.50011in; height: 2.6516in;" /></a>
+<a class="reference internal image-reference" href="../_images/image256.png"><img alt="../_images/image256.png" class="align-center" src="../_images/image256.png" style="width: 3.50011in; height: 2.6516in;" /></a>
 <ol class="arabic simple" start="5">
 <li><p>添加xdc文件分配管脚，把pwm_0输出端口分配给PL LED1，做一个呼吸灯</p></li>
 </ol>
@@ -616,8 +616,8 @@ frequency(clk);</p>
 <ol class="arabic simple">
 <li><p>编译生成bit文件，导出硬件</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image265.png"><img alt="../_images/image265.png" src="../_images/image265.png" style="width: 2.33194in; height: 2.83611in;" /></a>
-<a class="reference internal image-reference" href="../_images/image275.png"><img alt="../_images/image275.png" src="../_images/image275.png" style="width: 3.75625in; height: 3.18333in;" /></a>
+<a class="reference internal image-reference" href="../_images/image265.png"><img alt="../_images/image265.png" class="align-center" src="../_images/image265.png" style="width: 2.33194in; height: 2.83611in;" /></a>
+<a class="reference internal image-reference" href="../_images/image275.png"><img alt="../_images/image275.png" class="align-center" src="../_images/image275.png" style="width: 3.75625in; height: 3.18333in;" /></a>
 </section>
 </section>
 <section id="vitis">
@@ -625,17 +625,15 @@ frequency(clk);</p>
 <ol class="arabic simple">
 <li><p>启动Vitis，新建APP，模板选择“Hello World”</p></li>
 </ol>
-<blockquote>
-<div><a class="reference internal image-reference" href="../_images/image284.png"><img alt="../_images/image284.png" src="../_images/image284.png" style="width: 3.02091in; height: 2.19327in;" /></a>
-</div></blockquote>
-<ol class="arabic simple" start="2">
+<a class="reference internal image-reference" href="../_images/image284.png"><img alt="../_images/image284.png" class="align-center" src="../_images/image284.png" style="width: 3.02091in; height: 2.19327in;" /></a>
+<ol class="arabic simple">
 <li><p>前面的例都是使用xilinx的IP，xilinx大多都提供一套API，对于这个自定义IP，我们需要自己开发，先看看APP的目录下的资源，可以找到一个ax_pwm.h的文件，这个文件里包含里对自定义IP寄存器的读写宏定义</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image294.png"><img alt="../_images/image294.png" src="../_images/image294.png" style="width: 6.00417in; height: 2.92986in;" /></a>
+<a class="reference internal image-reference" href="../_images/image294.png"><img alt="../_images/image294.png" class="align-center" src="../_images/image294.png" style="width: 6.00417in; height: 2.92986in;" /></a>
 <ol class="arabic simple" start="3">
 <li><p>在bsp里找到“xparameters.h”文件，这个非常重要的文件，里面找到了自定IP的寄存器基地址，可以找到自定义IP的基地址。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image304.png"><img alt="../_images/image304.png" src="../_images/image304.png" style="width: 3.99522in; height: 1.79071in;" /></a>
+<a class="reference internal image-reference" href="../_images/image304.png"><img alt="../_images/image304.png" class="align-center" src="../_images/image304.png" style="width: 3.99522in; height: 1.79071in;" /></a>
 <ol class="arabic simple" start="4">
 <li><p>有个寄存器读写宏和自定义IP的基地址，我们开始编写代码，测试自定义IP，我们先通过写寄存器AX_PWM_S00_AXI_SLV_REG0_OFFSET，控制PWM输出频率，然后通过写寄存器AX_PWM_S00_AXI_SLV_REG1_OFFSET控制PWM输出的占空比。</p></li>
 </ol>
@@ -675,28 +673,28 @@ AX_PWM_S00_AXI_SLV_REG1_OFFSET<strong>,</strong> duty<strong>);</strong></p>
 <ol class="arabic simple">
 <li><p>通过运行代码，我们可以看到PL LED1呈现出一个呼吸灯的效果。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image3110.png"><img alt="../_images/image3110.png" src="../_images/image3110.png" style="width: 6in; height: 4.82222in;" /></a>
+<a class="reference internal image-reference" href="../_images/image3110.png"><img alt="../_images/image3110.png" class="align-center" src="../_images/image3110.png" style="width: 6in; height: 4.82222in;" /></a>
 <ol class="arabic simple" start="6">
 <li><p>通过debug，我们来查看一下寄存器</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image327.png"><img alt="../_images/image327.png" src="../_images/image327.png" style="width: 4.56255in; height: 3.07653in;" /></a>
+<a class="reference internal image-reference" href="../_images/image327.png"><img alt="../_images/image327.png" class="align-center" src="../_images/image327.png" style="width: 4.56255in; height: 3.07653in;" /></a>
 <ol class="arabic simple" start="7">
 <li><p>进入debug状态，按“F6”可以单步运行。</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image335.png"><img alt="../_images/image335.png" src="../_images/image335.png" style="width: 6.00417in; height: 3.35903in;" /></a>
+<a class="reference internal image-reference" href="../_images/image335.png"><img alt="../_images/image335.png" class="align-center" src="../_images/image335.png" style="width: 6.00417in; height: 3.35903in;" /></a>
 <ol class="arabic simple" start="8">
 <li><p>通过菜单可以查看“Memory”窗口</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image344.png"><img alt="../_images/image344.png" src="../_images/image344.png" style="width: 6.00417in; height: 3.33472in;" /></a>
+<a class="reference internal image-reference" href="../_images/image344.png"><img alt="../_images/image344.png" class="align-center" src="../_images/image344.png" style="width: 6.00417in; height: 3.33472in;" /></a>
 <ol class="arabic simple" start="9">
 <li><p>添加一个监视地址“0x43c00000”</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image354.png"><img alt="../_images/image354.png" src="../_images/image354.png" style="width: 3.69563in; height: 2.11747in;" /></a>
-<a class="reference internal image-reference" href="../_images/image364.png"><img alt="../_images/image364.png" src="../_images/image364.png" style="width: 2.60273in; height: 1.87477in;" /></a>
+<a class="reference internal image-reference" href="../_images/image354.png"><img alt="../_images/image354.png" class="align-center" src="../_images/image354.png" style="width: 3.69563in; height: 2.11747in;" /></a>
+<a class="reference internal image-reference" href="../_images/image364.png"><img alt="../_images/image364.png" class="align-center" src="../_images/image364.png" style="width: 2.60273in; height: 1.87477in;" /></a>
 <ol class="arabic simple" start="10">
 <li><p>单步运行，观察变化</p></li>
 </ol>
-<a class="reference internal image-reference" href="../_images/image374.png"><img alt="../_images/image374.png" src="../_images/image374.png" style="width: 6.00417in; height: 3.39931in;" /></a>
+<a class="reference internal image-reference" href="../_images/image374.png"><img alt="../_images/image374.png" class="align-center" src="../_images/image374.png" style="width: 6.00417in; height: 3.39931in;" /></a>
 </section>
 <section id="id3">
 <h2>实验总结<a class="headerlink" href="#id3" title="此标题的永久链接">#</a></h2>

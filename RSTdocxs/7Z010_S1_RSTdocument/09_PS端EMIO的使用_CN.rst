@@ -12,6 +12,7 @@ GPIO的IP实现控制。本章介绍如何使用EMIO控制PL端LED灯的亮灭�
 前面介绍了PS端MIO的结构如下，从图中可知BANK0和BANK1的MIO有54个。BANK2和BANK3的EMIO有64个，本章就是采用EMIO控制PL端LED。
 
 .. image:: images/09_media/image1.png
+   :align: center
    :width: 3.28178in
    :height: 3.62081in
 
@@ -26,42 +27,49 @@ Vivado工程建立
 1. 以ps_hello工程为基础，另存为一个名为ps_emio的工程，打开ZYNQ配置，把GPIO EMIO勾选上。
 
 .. image:: images/09_media/image2.png
+   :align: center
    :width: 4.91219in
    :height: 3.79294in
 
 2. 在MIO配置中选择EMIO的位宽为8位，因为PL端的LED有四个，使用PL端的一个按键。配置结束，点击OK。
 
 .. image:: images/09_media/image3.png
+   :align: center
    :width: 4.68837in
    :height: 3.05129in
 
 3. 点击多出的GPIO_0端口右键选择Make External，将端口信号导出
 
 .. image:: images/09_media/image4.png
+   :align: center
    :width: 3.92291in
    :height: 2.05538in
 
 4. 修改引脚名称为emio
 
 .. image:: images/09_media/image5.png
+   :align: center
    :width: 4.60605in
    :height: 1.97007in
 
 修改结果，并保存设计
 
 .. image:: images/09_media/image6.png
+   :align: center
    :width: 6.00417in
    :height: 1.84861in
 
 5. 点击xx.bd右键选择Generate Output Products，重新生成输出文件
 
 .. image:: images/09_media/image7.png
+   :align: center
    :width: 3.444in
    :height: 2.17619in
 
 6. 结束后，顶层文件会更新出新的管脚，下面需要对其进行引脚绑定
 
 .. image:: images/09_media/image8.png
+   :align: center
    :width: 3.71917in
    :height: 2.81583in
 
@@ -71,12 +79,14 @@ XDC文件约束PL管脚
 7. 新建XDC文件，绑定PL端引脚
 
 .. image:: images/09_media/image9.png
+   :align: center
    :width: 5.43055in
    :height: 2.12863in
 
 设置文件名称为emio
 
 .. image:: images/09_media/image10.png
+   :align: center
    :width: 4.50097in
    :height: 3.03605in
 
@@ -104,18 +114,21 @@ XDC文件约束PL管脚
 9. 生成bit文件
 
 .. image:: images/09_media/image11.png
+   :align: center
    :width: 1.78165in
    :height: 0.79274in
 
 10. 导出硬件
 
 .. image:: images/09_media/image12.png
+   :align: center
    :width: 2.33194in
    :height: 2.83611in
 
 11. 因为要用到PL，所以选择“Include bitstream”，点击“OK”
 
 .. image:: images/09_media/image13.png
+   :align: center
    :width: 3.75625in
    :height: 3.18333in
 
@@ -133,18 +146,21 @@ EMIO点亮PL端LED灯
 1. 进入Vitis软件，新建名为emio_led_test的工程
 
 .. image:: images/09_media/image14.png
+   :align: center
    :width: 3.01889in
    :height: 1.51325in
 
 2. 代码部分与PS端MIO操作点亮LED类似，由于MIO的编号是0~53，因此EMIO的编号是从54开始的，只要做以下修改即可
 
 .. image:: images/09_media/image15.png
+   :align: center
    :width: 2.28077in
    :height: 3.80709in
 
 3. 下载配置
 
 .. image:: images/09_media/image16.png
+   :align: center
    :width: 5.4117in
    :height: 3.16903in
 
@@ -152,6 +168,7 @@ EMIO点亮PL端LED灯
 FPGA，点击Run，即可看到PL端LED闪烁。
 
 .. image:: images/09_media/image17.png
+   :align: center
    :width: 6.00417in
    :height: 4.83681in
 
@@ -163,18 +180,21 @@ EMIO实现PL端按键中断
 1) 新建名为emio_key的工程，模板为hello world，拷贝例程的程序，保存并编译
 
 .. image:: images/09_media/image18.png
+   :align: center
    :width: 3.97632in
    :height: 2.08198in
 
 1. 由PS端MIO的使用的MIO按键中断程序移植过来，并修改按键的编号为58，LED灯编号为54，保存重新生成elf。
 
 .. image:: images/09_media/image19.png
+   :align: center
    :width: 3.01957in
    :height: 0.82132in
 
 2. Run Configurations选择Program FPGA，点击Run
 
 .. image:: images/09_media/image17.png
+   :align: center
    :width: 6.00417in
    :height: 4.83681in
 
@@ -195,10 +215,12 @@ World”一章）。本章内容生成了FPGA的加载文件，在这里演示�
 与前面一样，也是点击system，右键Build Project即可
 
 .. image:: images/09_media/image20.png
+   :align: center
    :width: 2.99039in
    :height: 3.13084in
 
 .. image:: images/09_media/image21.png
+   :align: center
    :width: 2.55926in
    :height: 1.54636in
 
@@ -213,18 +235,21 @@ World”一章）。本章内容生成了FPGA的加载文件，在这里演示�
 ..
 
 .. image:: images/09_media/image22.png
+   :align: center
    :width: 5.76806in
    :height: 1.73264in
 
 如果打开顶层文件就会发现引脚名称是不一样的，一定要仔细检查，以顶层文件里的引脚名称为准。
 
 .. image:: images/09_media/image23.png
+   :align: center
    :width: 5.23695in
    :height: 1.80891in
 
 否则就会出现以下引脚未绑定的错误
 
 .. image:: images/09_media/image24.png
+   :align: center
    :width: 5.76806in
    :height: 2.63056in
 
@@ -233,6 +258,7 @@ World”一章）。本章内容生成了FPGA的加载文件，在这里演示�
 ..
 
 .. image:: images/09_media/image25.png
+   :align: center
    :width: 3.62449in
    :height: 1.82052in
 
