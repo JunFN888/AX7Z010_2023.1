@@ -20,8 +20,6 @@ speed)，即高速接口，主要用于图像的传输，电压摆幅200mV。而
 具体内容可以参考工程目录下面的\ *mipi_D-PHY_specification_v01-00-00.pdf*
 
 .. image:: images/22_media/image1.png
-   :width: 2.39916in
-   :height: 2.50183in
 
 MIPI协议层(CSI-2)
 ~~~~~~~~~~~~~~~~~
@@ -29,21 +27,15 @@ MIPI协议层(CSI-2)
 以下为协议层的结构图，CSI-2需要将从D-PHY过来的并行数据协议解析，包括bit位的顺序调整，长包，短包数据解析，解析出图像数据。
 
 .. image:: images/22_media/image2.png
-   :width: 3.44191in
-   :height: 3.40051in
 
 在CSI-2协议层很重要的就是短包与长包，短包可用于解释图像的帧起始位置，行号等，用于图像的同步。格式如下：
 
 .. image:: images/22_media/image3.png
-   :width: 2.37343in
-   :height: 1.41276in
 
 长包主要用于图像数据的传输，并指定图像的格式，如RGB888/RGB565/RAW10等，可通过Data
 ID指定。其格式如下：
 
 .. image:: images/22_media/image4.png
-   :width: 4.15754in
-   :height: 3.09868in
 
 关于MIPI CSI-2具体内容，请参考工程目录下的\ *\_MIPI Alliance
 Specification for Camera Serial Interface 2 (CSI-2).pdf*
@@ -61,148 +53,98 @@ CSI-2模块进行协议解析并转换成AXIS流数据，并通过bayertoRGB模�
 1. 首先添加MIPI CSI-2 RX Subsystem模块
 
 .. image:: images/22_media/image6.png
-   :width: 1.50556in
-   :height: 2.19444in
 
 如下图更改成RAW10格式，Serial Data Lanes设置为2，Line
 Rate为1000，勾选Linerate supported和D-PHY选项；校准模式选择FIXED。
 
 .. image:: images/22_media/image7.png
-   :width: 5.99792in
-   :height: 4.27083in
 
 Application Example Design选项中配置为ZCU102
 
 .. image:: images/22_media/image8.png
-   :width: 5.99236in
-   :height: 4.26528in
 
 .. image:: images/22_media/image9.png
-   :width: 3.52083in
-   :height: 3.17708in
 
 2. 添加Sensor Demosaic模块，Gamma LUT校正模块，并将部分信号连接如下
 
 .. image:: images/22_media/image10.png
-   :width: 6.00069in
-   :height: 2.39028in
 
 3. 添加subset模块，调整图像数据的顺序，因为经过实际操作发现，图像的RGB数据顺序R和B需要调整。
 
 .. image:: images/22_media/image11.png
-   :width: 5.99375in
-   :height: 4.28403in
 
 4. 添加VDMA_0配置如下
 
 .. image:: images/22_media/image12.png
-   :width: 6in
-   :height: 4.42569in
 
 .. image:: images/22_media/image13.png
-   :width: 6.00208in
-   :height: 4.42431in
 
 5. 添加VDMA_1配置如下
 
 .. image:: images/22_media/image14.png
-   :width: 5.99306in
-   :height: 4.41111in
 
 .. image:: images/22_media/image15.png
-   :width: 5.99306in
-   :height: 4.41111in
 
 6. 继续连接一些关键信号
 
 .. image:: images/22_media/image16.png
-   :width: 5.99722in
-   :height: 1.79653in
 
 7. 打开ZYNQ核配置，将I2C0配置为EMIO，用于配置MIPI摄像头
 
 .. image:: images/22_media/image17.png
-   :width: 6.00417in
-   :height: 4.51597in
 
 8. 添加一个EMIO GPIO，用于摄像头的使能
 
 .. image:: images/22_media/image18.png
-   :width: 6.00417in
-   :height: 4.29444in
 
 9. 添加一个HP口，用于连接摄像头数据
 
 .. image:: images/22_media/image19.png
-   :width: 6.00417in
-   :height: 4.49167in
 
 10. 添加一个时钟，200MHz，用于MIPI DPHY的参考时钟
 
 .. image:: images/22_media/image20.png
-   :width: 6.00417in
-   :height: 4.47847in
 
 11. 添加一个AXI
     Interconnect模块，M00_AXI连接HP1，S00_AXI连接VDMA，并连接相应时钟
 
 .. image:: images/22_media/image21.png
-   :width: 3.78963in
-   :height: 2.47996in
 
 12. 将流接口时钟与FCLK_CLK1连接
 
 .. image:: images/22_media/image22.png
-   :width: 6.00417in
-   :height: 2.73125in
 
 13. 将CSI-2 RX的dphy_clk与FCLK_CLK2连接
 
 .. image:: images/22_media/image23.png
-   :width: 5.54167in
-   :height: 3.82292in
 
 14. 点击run connection automation
 
 .. image:: images/22_media/image24.png
-   :width: 4.46736in
-   :height: 1.23958in
 
 15. 连接流接口的复位
 
 .. image:: images/22_media/image25.png
-   :width: 5.99653in
-   :height: 2.30069in
 
 16. 连接VDMA的中断
 
 .. image:: images/22_media/image26.png
-   :width: 4.06525in
-   :height: 3.74364in
 
 17. 添加一个复位模块，用于200MHz的复位
 
 .. image:: images/22_media/image27.png
-   :width: 3.83696in
-   :height: 2.58327in
 
 18. 将MIPI的信号导出，并修改引脚名称
 
 .. image:: images/22_media/image28.png
-   :width: 6.00208in
-   :height: 1.78194in
 
 19. 导出GPIO和i2c并修改名称
 
 .. image:: images/22_media/image29.png
-   :width: 4.87558in
-   :height: 1.48421in
 
 20. 如果有模块的地址没有分配，点击自动分配地址
 
 .. image:: images/22_media/image30.png
-   :width: 4.20069in
-   :height: 2.44097in
 
 21. 至此硬件搭建完毕，生成bitstream，并导出硬件信息。
 
@@ -212,32 +154,22 @@ Vitis程序开发
 关于Vitis程序也较为简单，在VDMA的基础上，添加摄像头的初始化，VDMA的配置，前面要进行摄像头的复位，以及I2C的初始化。
 
 .. image:: images/22_media/image31.png
-   :width: 2.64295in
-   :height: 1.28892in
 
 在最后，配置MIPI摄像头，以及启动摄像头的VDMA，这里的摄像头配置为了720p，30fps
 
 .. image:: images/22_media/image32.png
-   :width: 6.00417in
-   :height: 0.97986in
 
 目前程序支持两种分辨率的配置，720p@60fps和1080p@30fps，如果想改成1080p，需要修改三个地方，一是在ov5640.c中，注释掉720p，使能1080p
 
 .. image:: images/22_media/image33.png
-   :width: 2.79585in
-   :height: 3.07897in
 
 二是在main.c中取消注释
 
 .. image:: images/22_media/image34.png
-   :width: 1.83648in
-   :height: 1.07703in
 
 三是在diplay_ctrl.c中修改成VMODE_1920x1080
 
 .. image:: images/22_media/image35.png
-   :width: 4.50298in
-   :height: 1.7463in
 
 板上验证
 --------
@@ -245,8 +177,6 @@ Vitis程序开发
 连接MIPI摄像头如下图所示，由于7z010芯片缺少BANK13，因此AX7Z010开发板不支持MIPI摄像头。
 
 .. image:: images/22_media/image36.png
-   :width: 6.00417in
-   :height: 4.31181in
 
 AX7Z020硬件连接图
 
@@ -255,8 +185,6 @@ AX7Z020硬件连接图
 *注意排线的方向一定不要接反！！！*
 
 .. image:: images/22_media/image39.png
-   :width: 6.00417in
-   :height: 4.38472in
 
 AX7Z035/AX7Z100硬件连接图
 
@@ -267,14 +195,6 @@ AX7Z035/AX7Z100硬件连接图
 下载程序后，显示器则会显示图像。
 
 .. |image1| image:: images/22_media/image37.png
-   :width: 3.01152in
-   :height: 1.64195in
 .. |image2| image:: images/22_media/image38.png
-   :width: 2.69375in
-   :height: 2.67194in
 .. |image3| image:: images/22_media/image37.png
-   :width: 2.69838in
-   :height: 1.47122in
 .. |image4| image:: images/22_media/image40.png
-   :width: 3.29183in
-   :height: 1.69617in

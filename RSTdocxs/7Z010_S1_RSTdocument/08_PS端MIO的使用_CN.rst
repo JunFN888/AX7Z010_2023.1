@@ -8,9 +8,6 @@ PS端MIO的使用
 MIO共有两个BANK，BANK0有16个引脚，BANK1为38个引脚，共54个引脚，两个BANK的电压需要注意选择正确。
 
 .. image:: images/08_media/image1.png
-   :align: center
-   :width: 5.77281in
-   :height: 3.64064in
 
 本实验通过实现PS端LED灯的闪烁演示MIO的操作。
 
@@ -24,9 +21,6 @@ MIO共有两个BANK，BANK0有16个引脚，BANK1为38个引脚，共54个引脚
    BANK2和BANK3共能控制64个PL端引脚，注意每一组都有三个信号，输入EMIOGPIOI，输出EMIOGPIOO，输出使能EMIOGPIOTN，类似于三态门，共192个信号。可以连接到PL端引脚，通过PS控制信号。
 
 .. image:: images/08_media/image2.png
-   :align: center
-   :width: 3.28178in
-   :height: 3.62081in
 
 Vivado工程建立
 --------------
@@ -34,31 +28,22 @@ Vivado工程建立
 本实验基于 “ps_hello”工程。如果想要控制PS端的MIO是需要将 GPIO
 MIO打开的，前面已经配置过。
 
-.. image:: images/08_media/image3.png
-   :align: center
-   :width: 6.00417in
-   :height: 4.61389in
-
+   .. image:: images/08_media/image3.png
+      
 1. 为了方便，将Vitis目录删除
 
-.. image:: images/08_media/image4.png
-   :align: center
-   :width: 2.11432in
-   :height: 1.95809in
+..
 
-1. 由于不需要生成FPGA烧写文件，直接点击FileExportExport Hardware，不用勾选include bitstream选项，生成Hardware信息，此时会生成新的Vitis目录。
+   .. image:: images/08_media/image4.png
+      
+2. 由于不需要生成FPGA烧写文件，直接点击FileExportExport Hardware，不用勾选include bitstream选项，生成Hardware信息，此时会生成新的Vitis目录。
 
+..
 
-.. image:: images/08_media/image5.png
-   :align: center
-   :width: 2.56063in
-   :height: 1.31995in
-
-.. image:: images/08_media/image6.png
-   :align: center
-   :width: 2.00689in
-   :height: 1.58622in
-
+   .. image:: images/08_media/image5.png
+      
+   .. image:: images/08_media/image6.png
+      
 软件工程师工作内容
 ------------------
 
@@ -73,70 +58,45 @@ MIO点亮PS端LED灯
 根据原理图得知，AX7020和AX7010的LED灯连接到了PS端的MIO0和MIO13，可以根据相应的开发板MIO的位置控制LED灯。
 
 .. image:: images/08_media/image7.png
-   :align: center
-   :width: 4.00226in
-   :height: 1.10851in
 
 AX7020/AX7010原理图
 
 1. 点击FileLaunch Vitis进入Vitis
 
-.. image:: images/08_media/image8.png
-   :align: center
-   :width: 3.50453in
-   :height: 3.20913in
+..
 
-1. 新建platform工程过程不再赘述，参考“PS定时器中断实验” 一章
+   .. image:: images/08_media/image8.png
+      
+2. 新建platform工程过程不再赘述，参考“PS定时器中断实验” 一章
 
 .. image:: images/08_media/image9.png
-   :align: center
-   :width: 5.99931in
-   :height: 2.71181in
 
 3. 下图为GPIO的控制框图，实验中会用到输出部分的寄存器，数据寄存器DATA，数据掩码寄存器MASK_DATA_LSW，MASK_DATA_MSW，方向控制寄存器DIRM，输出使能控制器OEN。
 
 .. image:: images/08_media/image10.png
-   :align: center
-   :width: 3.88083in
-   :height: 3.76119in
 
 4. 再来看GPIO的寄存器，可以打开UG585文档的最下面Register
    Details，找到General Purpose I/O部分。
 
 .. image:: images/08_media/image11.png
-   :align: center
-   :width: 5.61947in
-   :height: 4.21625in
 
 5. 实验中可能会用到的寄存器：
 
 数据掩码寄存器，例如MIO 9在GPIO的BANK0，可以屏蔽其他BANK0中的其他31位。
 
 .. image:: images/08_media/image12.png
-   :align: center
-   :width: 5.1134in
-   :height: 0.88499in
 
 方向寄存器，控制数据的方向
 
 .. image:: images/08_media/image13.png
-   :align: center
-   :width: 5.08385in
-   :height: 0.34759in
 
 输出使能寄存器
 
 .. image:: images/08_media/image14.png
-   :align: center
-   :width: 5.19617in
-   :height: 0.36799in
 
 数据寄存器，有效的数据
 
 .. image:: images/08_media/image15.png
-   :align: center
-   :width: 5.12066in
-   :height: 0.36933in
 
 具体的寄存器含义就不一一讲解了，大家自行研究。
 
@@ -144,97 +104,66 @@ AX7020/AX7010原理图
    Examples
 
 .. image:: images/08_media/image16.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.91875in
 
 在弹出窗口选择“xgpiops_polled_example”，点击OK
 
 .. image:: images/08_media/image17.png
-   :align: center
-   :width: 4.06572in
-   :height: 2.61455in
 
 会出现一个新的APP工程
 
 .. image:: images/08_media/image18.png
-   :align: center
-   :width: 3.15424in
-   :height: 2.98254in
 
 7. 这个example工程是测试PS端MIO的输入输出的，由于开发板PS端的LED是MIO0和MIO13，需要在文件中修改Output_pin为0，测试MIO0的LED灯。
 
 .. image:: images/08_media/image19.png
-   :align: center
-   :width: 3.90531in
-   :height: 3.14647in
 
 由于只测试LED灯，也就是输出，我们把输入功能注释掉。保存文件。
 
 .. image:: images/08_media/image20.png
-   :align: center
-   :width: 3.94961in
-   :height: 2.46449in
 
 8. 编译工程
 
-.. image:: images/08_media/image21.png
-   :align: center
-   :width: 3.86431in
-   :height: 3.45982in
+..
 
-1. Run AsLaunch on Hardware(Single Application Debug)，下载结束后，即可看到PS_LED1快速闪烁16次
+   .. image:: images/08_media/image21.png
+      
+9. Run AsLaunch on Hardware(Single Application Debug)，下载结束后，即可看到PS_LED1快速闪烁16次
 
-.. image:: images/08_media/image22.png
-   :align: center
-   :width: 5.15589in
-   :height: 2.97272in
+..
 
+   .. image:: images/08_media/image22.png
+      
 大家也可以改成MIO13观察PS_LED2的变化。
 
-1.  虽然用官方的例子比较方便，但是它的代码看起来比较臃肿，我们可以通过学习它的方法，自己简化写一遍。在ps_led_test的helloworld.c中修改。其实程序步骤很简单，初始化GPIO设置方向输出使能控制GPIO输出值。
+10. 虽然用官方的例子比较方便，但是它的代码看起来比较臃肿，我们可以通过学习它的方法，自己简化写一遍。在ps_led_test的helloworld.c中修改。其实程序步骤很简单，初始化GPIO设置方向输出使能控制GPIO输出值。
 
 .. image:: images/08_media/image23.png
-   :align: center
-   :width: 3.57592in
-   :height: 1.71393in
 
 11. 选择platform
 
 .. image:: images/08_media/image24.png
-   :align: center
-   :width: 4.22723in
-   :height: 3.15894in
 
 12. 选择Domain，Domain的含义类似于BSP
 
 .. image:: images/08_media/image25.png
-   :align: center
-   :width: 4.20454in
-   :height: 3.12836in
 
 13. 模板选择Hellow World即可
 
 .. image:: images/08_media/image26.png
-   :align: center
-   :width: 4.96454in
-   :height: 3.74954in
 
 14. 可以看到多了一个APP工程，仍然是基于名为standalone on
     ps7_cortexa9_0的BSP，也就是一个Domain，与前面的example工程共用一个BSP
 
-.. image:: images/08_media/image27.png
-   :align: center
-   :width: 6.07286in
-   :height: 1.53964in
+..
 
-1.  可以将例程的代码复制到helloworld.c中，保存并Build Project
+   .. image:: images/08_media/image27.png
+      
+15. 可以将例程的代码复制到helloworld.c中，保存并Build Project
 
-.. image:: images/08_media/image28.png
-   :align: center
-   :width: 3.0677in
-   :height: 4.19678in
+..
 
+   .. image:: images/08_media/image28.png
+      
 下载方法与前面一样，就可以看到PS端的LED1和LED2灯开始闪烁。
 
 MIO按键中断
@@ -260,9 +189,6 @@ INT_ANY: 边沿触发方式，需要INT_TYPE设置为边沿敏感才能使用
 Register Details部分。
 
 .. image:: images/08_media/image29.png
-   :align: center
-   :width: 3.20266in
-   :height: 3.09212in
 
 在原理图中可以看出PS端的按键接在了MIO50和MIO51，本实验采用MIO50
 
@@ -283,44 +209,26 @@ GPIO初始化设置按键和LED方向设置产生中断方式设置中断打开�
 3. 新建Vitis工程
 
 .. image:: images/08_media/image32.png
-   :align: center
-   :width: 2.36359in
-   :height: 2.26258in
 
 4. 定义PS按键编号为50，PS LED为0
 
 .. image:: images/08_media/image33.png
-   :align: center
-   :width: 3.14551in
-   :height: 0.91139in
 
 5. 在main函数中，设置LED和按键，将按键中断类型设置为上升沿产生中断。在本实验中，即按键信号的上升沿产生中断。
 
 .. image:: images/08_media/image34.png
-   :align: center
-   :width: 4.03823in
-   :height: 1.43549in
 
 6. 中断控制器设置函数IntrInitFuntions是参考PS定时器中断实验所做，而下面的语句是设置中断优先级和触发方式。即操作ICDIPR和ICDICFR寄存器。
 
 .. image:: images/08_media/image35.png
-   :align: center
-   :width: 3.05in
-   :height: 0.25073in
 
 7. 在中断服务程序GpioHandler中，判断中断状态寄存器，清除中断，并将按键标志置1。
 
 .. image:: images/08_media/image36.png
-   :align: center
-   :width: 3.40843in
-   :height: 1.40623in
 
 8. 在main函数中，判断按键标志key_flag，向LED写入数据。
 
 .. image:: images/08_media/image37.png
-   :align: center
-   :width: 2.24014in
-   :height: 1.03447in
 
 9.  编译工程并下载程序
 
@@ -338,56 +246,32 @@ GPIO初始化设置按键和LED方向设置产生中断方式设置中断打开�
 1. 在bsp的include文件夹下包含了xilinx的各种头文件，如本章用到的GPIO，用到了xgpiops.h，在此文件中可以看到各种宏定义，在调用GPIO函数时可以使用这些宏定义，提高可读性。
 
 .. image:: images/08_media/image38.png
-   :align: center
-   :width: 3.46973in
-   :height: 4.55408in
 
 同时也包含外设自带的函数声明
 
 .. image:: images/08_media/image39.png
-   :align: center
-   :width: 2.95621in
-   :height: 1.29315in
 
 2. 在xparameters.h头文件中定义了各个外设的基地址，器件ID，中断等
 
 .. image:: images/08_media/image40.png
-   :align: center
-   :width: 5.92639in
-   :height: 2.60676in
 
 比如程序中的DEVICE_ID宏定义就是在这个文件里找到的。
 
 .. image:: images/08_media/image41.png
-   :align: center
-   :width: 3.59456in
-   :height: 1.33414in
 
 3. 在libsrc文件夹中，包含外设函数的定义，使用说明
 
 .. image:: images/08_media/image42.png
-   :align: center
-   :width: 4.91821in
-   :height: 3.45401in
 
 4. 在src文件夹下的lscript.ld中，定义了可用memory空间，栈和堆空间大小等，可根据需要修改。
 
 .. image:: images/08_media/image43.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.81667in
 
 5. 把鼠标光标放到宏定义或函数上，按下F3即可看到在哪里定义的，也可以按Ctrl+鼠标左键进入。比如下面的DEVICE_ID即可进入xparameter.h中
 
 .. image:: images/08_media/image44.png
-   :align: center
-   :width: 2.92546in
-   :height: 0.77678in
 
 .. image:: images/08_media/image45.png
-   :align: center
-   :width: 2.78295in
-   :height: 1.06863in
 
 本章小结
 --------
@@ -395,11 +279,6 @@ GPIO初始化设置按键和LED方向设置产生中断方式设置中断打开�
 本章介绍了MIO的输入输出控制，以及GPIO的使用，相信大家也有了一定的认识。在学习过程中，一定要多看文档，结合模块结构以及寄存器含义加深理解。参考文档UG585。
 
 .. |image1| image:: images/08_media/image30.png
-   :width: 2.91864in
-   :height: 1.09889in
 .. |image2| image:: images/08_media/image31.png
-   :width: 2.90124in
-   :height: 0.81893in
  
 
-*ZYNQ-7000开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_

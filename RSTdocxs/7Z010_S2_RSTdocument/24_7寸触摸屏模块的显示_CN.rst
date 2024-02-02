@@ -10,8 +10,6 @@ AN970 LCD触摸屏模块由TFT
 液晶屏，电容触摸屏和驱动板组成，详细信息查看AN970用户手册。AN970实物照片如下：
 
 .. image:: images/24_media/image1.png
-   :width: 5.12708in
-   :height: 3.07431in
 
 硬件环境搭建
 ------------
@@ -30,26 +28,18 @@ IP来产生LCD屏的像数显示时钟信号。构架好的系统大致如下所
 在工程中增加了背光的PWM调节模块，可以调节背光亮度
 
 .. image:: images/24_media/image3.png
-   :width: 4.19807in
-   :height: 0.92764in
 
 添加了I2C的接口，用于读取触摸信息
 
 .. image:: images/24_media/image4.png
-   :width: 3.03564in
-   :height: 1.33061in
 
 添加接口lcd_intr，连接到触摸屏的中断信号，低电平表示产生中断，因此加了反向器连接到中断
 
 .. image:: images/24_media/image5.png
-   :width: 6.00417in
-   :height: 0.76098in
 
 设计好后的vivado工程如下图所示：
 
 .. image:: images/24_media/image6.png
-   :width: 6.00417in
-   :height: 2.76736in
 
 Vitis程序开发
 -------------
@@ -61,20 +51,14 @@ Vitis的软件程序跟HDMI
 IP来产生正确的LCD屏驱动时序。
 
 .. image:: images/24_media/image7.png
-   :width: 6.00417in
-   :height: 2.28472in
 
 在display_ctrl.c文件里修改dispPtr->vMode的值为VMOD_800_480。
 
 .. image:: images/24_media/image8.png
-   :width: 6.00417in
-   :height: 1.67917in
 
 在main.c文件中配置PWM的频率和点空比，set_pwm_frequency第二个参数为基础时钟，Vivado中连接的是100MHz，第三个参数是要设置的PWM频率，单位为Hz。Set_pwm_duty第二个参数为占空比。
 
 .. image:: images/24_media/image9.png
-   :width: 2.77659in
-   :height: 1.46389in
 
 板上验证
 --------
@@ -82,35 +66,23 @@ IP来产生正确的LCD屏驱动时序。
 和前面的例程一样，编译生成bit文件，然后导出硬件，运行Vitis。7寸液晶屏连接到开发板的扩展口，按下图所示的运行配置，点击run，可看到和VDMA测试例程一样，液晶屏上会显示小猫的图片。
 
 .. image:: images/24_media/image10.png
-   :width: 6.00417in
-   :height: 3.28056in
 
 .. image:: images/24_media/image11.png
-   :width: 5.06628in
-   :height: 3.74144in
 
 AX7015硬件连接及显示效果
 
 .. image:: images/24_media/image12.png
-   :width: 5.35806in
-   :height: 3.64876in
 
 AX7021硬件连接(J15扩展口)及显示效果
 
 .. image:: images/24_media/image13.png
-   :width: 5.40801in
-   :height: 2.82509in
 
 AX7020/AX7010硬件连接（J11扩展口）及显示效果
 
 .. image:: images/24_media/image14.png
-   :width: 4.89108in
-   :height: 3.59383in
 
 AX7Z035/AX7Z100硬件连接及显示效果
 
 .. image:: images/24_media/image15.png
-   :width: 6.00417in
-   :height: 3.90694in
 
 AX7Z020/AX7Z010硬件连接图（扩展口J21）

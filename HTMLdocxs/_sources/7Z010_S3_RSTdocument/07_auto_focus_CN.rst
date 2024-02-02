@@ -14,7 +14,7 @@
 代码
 ========================================
 
-::
+.. code:: c
 
   #include "sobel_focus.h"
 
@@ -31,7 +31,7 @@
   }
   
   template<int ROWS, int COLS>
-  void sum_of_stream(xf::cv::Mat<XF_8UC1,ROWS,COLS,XF_NPPC1>	&_src, unsigned int &average)
+  void sum_of_stream(xf.. code:: ccv.. code:: cMat<XF_8UC1,ROWS,COLS,XF_NPPC1>	&_src, unsigned int &average)
   {
   	XF_TNAME(XF_8UC1,XF_NPPC1)pix;
   	unsigned int sum=0;
@@ -49,7 +49,7 @@
   }
   
   template<int ROWS,int COLS>
-  void xfrgb2gray(xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1> &src,xf::cv::Mat<XF_8UC1,ROWS,COLS,XF_NPPC1> &dst)
+  void xfrgb2gray(xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1> &src,xf.. code:: ccv.. code:: cMat<XF_8UC1,ROWS,COLS,XF_NPPC1> &dst)
   {
   	XF_TNAME(XF_8UC3,XF_NPPC1)rgb_packed;
   	XF_TNAME(XF_8UC1,XF_NPPC1)gray_packed;
@@ -71,12 +71,12 @@
   }
   
   template<int ROWS,int COLS>
-  void AddWeightedKernel(xf::cv::Mat<XF_8UC1,ROWS,COLS,XF_NPPC1>&src1,
+  void AddWeightedKernel(xf.. code:: ccv.. code:: cMat<XF_8UC1,ROWS,COLS,XF_NPPC1>&src1,
   					   float alpha,
-  					   xf::cv::Mat<XF_8UC1,ROWS,COLS,XF_NPPC1>&src2,
+  					   xf.. code:: ccv.. code:: cMat<XF_8UC1,ROWS,COLS,XF_NPPC1>&src2,
   					   float beta,
   					   float gamma,
-  					   xf::cv::Mat<XF_8UC1,ROWS,COLS,XF_NPPC1>&dst
+  					   xf.. code:: ccv.. code:: cMat<XF_8UC1,ROWS,COLS,XF_NPPC1>&dst
   					)
   {
   	ap_fixed<16,8,AP_RND>value_src1=alpha;
@@ -120,7 +120,7 @@
   }
   
   template<int ROWS,int COLS>
-  void duplicate(xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1>&src,xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1>&dst1,xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1>&dst2)
+  void duplicate(xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1>&src,xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1>&dst1,xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1>&dst2)
   {
   	unsigned int i,j=0;
   	XF_TNAME(XF_8UC3,XF_NPPC1)pixel_src;
@@ -144,25 +144,25 @@
   #pragma HLS INTERFACE s_axilite port=average
   #pragma HLS INTERFACE ap_ctrl_none port=return
   
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> srcImg, split0, split1;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> srcImg, split0, split1;
   #pragma HLS STREAM depth=1920 type=fifo variable=split1
   #pragma HLS STREAM depth=1920 type=fifo variable=split0
   #pragma HLS STREAM depth=1920 type=fifo variable=srcImg
-  	xf::cv::Mat<XF_8UC1,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>grayImg,sobelImg_x,sobelImg_y,sobelImg;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC1,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>grayImg,sobelImg_x,sobelImg_y,sobelImg;
   #pragma HLS STREAM depth=1920 type=fifo variable=sobelImg
   #pragma HLS STREAM depth=1920 type=fifo variable=sobelImg_y
   #pragma HLS STREAM depth=1920 type=fifo variable=sobelImg_x
   #pragma HLS STREAM depth=1920 type=fifo variable=grayImg
   #pragma HLS DATAFLOW
-  	xf::cv::AXIvideo2xfMat(src, srcImg);
+  	xf.. code:: ccv.. code:: cAXIvideo2xfMat(src, srcImg);
   	duplicate<IMG_MAX_ROWS,IMG_MAX_COLS>(srcImg, split0, split1);
   	xfrgb2gray<IMG_MAX_ROWS,IMG_MAX_COLS>(split0, grayImg);
-      xf::cv::xFSobelFilter3x3<XF_8UC1, XF_8UC1,IMG_MAX_ROWS, IMG_MAX_COLS, XF_CHANNELS(XF_8UC1,XF_NPPC1), XF_DEPTH(XF_8UC1,XF_NPPC1), XF_DEPTH(XF_8UC1,XF_NPPC1),
+      xf.. code:: ccv.. code:: cxFSobelFilter3x3<XF_8UC1, XF_8UC1,IMG_MAX_ROWS, IMG_MAX_COLS, XF_CHANNELS(XF_8UC1,XF_NPPC1), XF_DEPTH(XF_8UC1,XF_NPPC1), XF_DEPTH(XF_8UC1,XF_NPPC1),
                       XF_NPPC1, _XFCVDEPTH_DEFAULT,_XFCVDEPTH_DEFAULT,_XFCVDEPTH_DEFAULT,XF_WORDWIDTH(XF_8UC1,XF_NPPC1), XF_WORDWIDTH(XF_8UC1,XF_NPPC1), (IMG_MAX_COLS >> XF_BITSHIFT(XF_NPPC1)),false>(
           grayImg,sobelImg_x,sobelImg_y,grayImg.rows,grayImg.cols>>XF_BITSHIFT(XF_NPPC1));
   	AddWeightedKernel<IMG_MAX_ROWS,IMG_MAX_COLS>(sobelImg_x,0.5f,sobelImg_y,0.5f,0.0f,sobelImg);
   	sum_of_stream(sobelImg, average);
-  	xf::cv::xfMat2AXIvideo(split1, dst);
+  	xf.. code:: ccv.. code:: cxfMat2AXIvideo(split1, dst);
   }
 
 工程路径
@@ -180,16 +180,17 @@
 
 实验结果
 ===========================================
+
 默认焦点在最远处
 
-    .. image:: images/images6/image60.png
-      :align: center   
+.. image:: images/images6/image60.png
+      
 
 焦点拉近至最佳点
 
-    .. image:: images/images6/image61.png
-      :align: center   
+.. image:: images/images6/image61.png
+      
 
 
 
-*ZYNQ 7000 开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_
+

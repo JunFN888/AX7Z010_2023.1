@@ -7,9 +7,7 @@
 软件开发环境基于Vivado 2023.1
 
 .. image:: images/000_media/image1.png
-   :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/../7z010_S2_RSTdocument/images/images_1/image3.pngimage3
-   :width: 0.76875in
-   :height: 0.80559in
+   :alt: C:/Users/Administrator/Desktop/vivado_2023.1/AX7010_2023.1/7010_S2文档/images/images_1/image3.pngimage3
 
 硬件环境
 --------
@@ -102,29 +100,19 @@
 所有的工程目录下都有个bootimage文件夹，存放了对应的BOOT.bin文件，可将此文件拷贝到Vitis_image_download文件夹，覆盖原有的BOOT.bin。
 
 .. image:: images/000_media/image2.png
-   :width: 6.00278in
-   :height: 1.26944in
 
 Vitis_image_download文件夹在course_s2_Vitis目录下面，进入文件夹，右键点击program_qspi.bat，打开编辑
 
 .. image:: images/000_media/image3.png
-   :width: 5.29167in
-   :height: 1.27083in
 
 .. image:: images/000_media/image4.png
-   :width: 5.99931in
-   :height: 1.41389in
 
 将program_flash路径改成自己的软件安装路径，保存并关闭。
 
 .. image:: images/000_media/image5.png
-   :width: 6.00139in
-   :height: 0.33611in
 
 双击program_qspi.bat，即可下载BOOT.BIN到QSPI FLASH，建议用JTAG模式下载。
 
 .. image:: images/000_media/image6.png
-   :width: 4.60153in
-   :height: 2.68832in
 
 也可以采用SD卡启动方法，把BOOT.bin文件拷贝到SD内，启动方法前面在基础篇已经讲过，不再赘述。

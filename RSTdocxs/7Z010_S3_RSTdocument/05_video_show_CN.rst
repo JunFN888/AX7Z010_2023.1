@@ -8,8 +8,7 @@
 首先,将镜头的图像(转换为RGB888)存储至DDR,然后通过读取DDR来显示视频图像。这里需要解决图像刷新速率不一致时,可能造成的图像割裂状问题。
 这里共设计了二个HLS模块：stream2mem模块,mem2stream模块,流程图如下。
 
-    .. image:: images/images4/image54.png
-      :align: center
+.. image:: images/images4/image54.png
 
 这里需要解决的一个问题是,若写DDR与读DDR速度不匹配,则会造成图像显示时裂开的现像。解决的方法是：DDR使用三帧缓存,HLS读模块与写模块分别向对方反馈帧索引号。
 
@@ -17,7 +16,7 @@
 ========================================
 mem2stream 部分
 
-::
+.. code:: c
 
   #include "mem2stream.h"
 
@@ -44,7 +43,7 @@ mem2stream 部分
   }
   
   template<int ROWS, int COLS>
-  void mem2mat(xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1> &img, unsigned int *pMemPort,int baseAddr[3],int w, int &r)
+  void mem2mat(xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1> &img, unsigned int *pMemPort,int baseAddr[3],int w, int &r)
   {
   	XF_TNAME(XF_8UC3,XF_NPPC1) pixel;
   	unsigned int cacheBuff[COLS];
@@ -94,17 +93,17 @@ mem2stream 部分
   #pragma HLS INTERFACE s_axilite port=return
   #pragma HLS INTERFACE ap_none port=indexw
   #pragma HLS INTERFACE ap_none port=indexr
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> img;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> img;
   #pragma HLS STREAM depth=1080 type=fifo variable=img
   
   #pragma HLS dataflow
   	mem2mat<IMG_MAX_ROWS,IMG_MAX_COLS>(img, pMemPort,baseAddr,indexw,indexr);
-  	xf::cv::xfMat2AXIvideo(img, vstream);
+  	xf.. code:: ccv.. code:: cxfMat2AXIvideo(img, vstream);
   }
 
 stream2mem 部分
 
-::
+.. code:: c
 
  #include "stream2mem.h"
 
@@ -118,7 +117,7 @@ stream2mem 部分
  }
  
  template<int ROWS, int COLS>
- void mat2mem(xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1> &img, unsigned int *pMemPort,int baseAddr[3],int &w, int r)
+ void mat2mem(xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1> &img, unsigned int *pMemPort,int baseAddr[3],int &w, int r)
  {
  	XF_TNAME(XF_8UC3,XF_NPPC1) pixelA, pixelB, pixelC, pixelD;
  	unsigned int cacheBuff[COLS*3/4];
@@ -160,11 +159,11 @@ stream2mem 部分
  #pragma HLS INTERFACE ap_none port=indexw
  #pragma HLS INTERFACE ap_none port=indexr
  
- 	xf::cv::Mat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> img;
+ 	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1> img;
  #pragma HLS STREAM depth=1920 type=pipo variable=img
  
  #pragma HLS dataflow
- 	xf::cv::AXIvideo2xfMat(vstream, img);
+ 	xf.. code:: ccv.. code:: cAXIvideo2xfMat(vstream, img);
  	mat2mem(img, pMemPort,baseAddr,indexw, indexr);
  }
 
@@ -188,16 +187,14 @@ stream2mem 部分
 
 显示双目视频中的一个视频图像。当视频中出现快速移动物体时,不会有割裂状。当前视频在几个分辨率之间不断切换。低分辨率时,仅能显示部分图像。
 
-    .. image:: images/images4/image55.png
-      :align: center
+.. image:: images/images4/image55.png
 
 需要注意,显示输出分辨率在不断变化,所以画面会隔一段时间黑掉,属于正常现象。
 
-    .. image:: images/images4/image57.png
-      :align: center
+.. image:: images/images4/image57.png
 
 AX7020硬件连接图（J16扩展口）
 
  
 
-*ZYNQ 7000 开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_
+

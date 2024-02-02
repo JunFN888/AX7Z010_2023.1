@@ -13,8 +13,6 @@ SG DMA原理介绍
    Engine，这时会出现M_AXI_SG接口，用于读写链表（后面会有介绍）。
 
 .. image:: images/15_media/image2.png
-   :width: 6.00417in
-   :height: 4.04722in
 
 2. 先来了解链表，需要在内存中开辟一片空间保存链表，链表内容如下所示，以Descriptor为基本单元，每个Descriptor有13个寄存器，但每个Descriptor地址需要以64字节对齐，也就是0x00,
    0x40, 0x80;
@@ -22,34 +20,24 @@ SG DMA原理介绍
    Control Stream时有效，否则DMA不会抓取此信息）。
 
 .. image:: images/15_media/image3.png
-   :width: 4.31998in
-   :height: 2.54445in
 
 下图为MM2S的链表结构，在SG
 DMA启动后，DMA会通过M_AXI_SG抓取第一个Descriptor，读取BufferAddr，Control等信息，等传输完Control设置的长度后，开始抓取下一个Descriptor信息。依次类推，直到最后一个Descriptor。
 
 .. image:: images/15_media/image4.png
-   :width: 1.48654in
-   :height: 4.50305in
 
 3. 有点要注意，MM2S_CONTRL的TXSOF（Frame开始）和TXEOF（Frame结束）需要软件设置。
 
 .. image:: images/15_media/image5.png
-   :width: 4.39872in
-   :height: 3.51658in
 
 而S2MM_CONTRL的RXSOF和RXEOF不需要软件设置，在接收数据后由DMA控制。
 
 .. image:: images/15_media/image6.png
-   :width: 4.40079in
-   :height: 3.42671in
 
 4. 再来看SG
    DMA的寄存器，MM2S_CURDESC表示当前的Descriptor地址，MM2S_TAILDESC表示尾部Descriptor地址，也就是最后一个Descriptor。同样，S2MM_CURDESC和S2MM_TAILDESC是指S2MM通路寄存器。这些寄存器通过AXI4_LITE总线配置。
 
 .. image:: images/15_media/image7.png
-   :width: 3.9959in
-   :height: 3.05071in
 
 5. SG DMA使用流程
 
@@ -81,113 +69,77 @@ Vitis程序开发
 1. 基于AN108的实验，定义了两个链表数组，每个链表设置为最大16个Descriptor，BD_ALIGNMENT宏定义为0x40。
 
 .. image:: images/15_media/image8.png
-   :width: 3.4867in
-   :height: 0.44135in
 
 2. 添加了两个文件dma_bd.c和dma_bd.h
 
 .. image:: images/15_media/image9.png
-   :width: 1.43451in
-   :height: 0.9278in
 
 CreateBdChain为创建链表函数，BdCount为要创建的Descriptor个数，TotalByteLen为DMA传输的总字节数
 
 .. image:: images/15_media/image10.png
-   :width: 4.52455in
-   :height: 0.31204in
 
 只需要配置NEXDESC，BUFFER_ADDRESS，CONTROL三个部分，如果是TXPATH需要设置TXSOF和TXEOF，本实验是RXPATH，不需要设置。
 
 .. image:: images/15_media/image11.png
-   :width: 3.99786in
-   :height: 1.24369in
 
 为了匹配Cyclic DMA Mode，将最后一个Descriptor指向第一个Descriptor的地址
 
 .. image:: images/15_media/image12.png
-   :width: 1.58264in
-   :height: 1.0083in
 
 3. 为了方便理解，在本实验中将ADC的缓存区域划分为了4个连续的空间，下面通过Debug查看memory信息，首先Run
    Debug进入Debug界面，在CreateBdChain中设置断点，
 
 .. image:: images/15_media/image13.png
-   :width: 4.37691in
-   :height: 0.83553in
 
 4. 点击Resume按钮，运行至断点处
 
 .. image:: images/15_media/image14.png
-   :width: 2.43254in
-   :height: 0.40618in
 
 .. image:: images/15_media/image15.png
-   :width: 4.27612in
-   :height: 1.03169in
 
 5. 找到链表的地址
 
 .. image:: images/15_media/image16.png
-   :width: 3.75197in
-   :height: 1.27654in
 
 6. 在Memory窗口点击添加按钮，填入链表地址
 
 .. image:: images/15_media/image17.png
-   :width: 3.2351in
-   :height: 1.47607in
 
 7. 取消当前断点，再添加断点到函数结尾，再次点击Resume按钮运行到断点处
 
 .. image:: images/15_media/image18.png
-   :width: 3.68102in
-   :height: 0.71242in
 
 8. 可以看到第一个Descriptor的NEXDESC指向下一个Descriptor地址也就是0x00277700，第一个BUFFER_ADDRESS为0x002767C0，CONTROL为0x00000280，在本实验中设置缓存空间是连续的，0x002767C0+0x00000280=0x00276A40，也就是下一个的BUFFER_ADDRESS，用户也可以设置为不连续的空间。
 
 .. image:: images/15_media/image19.png
-   :width: 2.94191in
-   :height: 1.10528in
 
 9. 最后一个Descriptor的NEXDESC指向第一个Descriptor的地址
 
 .. image:: images/15_media/image20.png
-   :width: 2.88998in
-   :height: 1.14721in
 
 10. 以上是Buffer Descriptor的设置，下是开始配置寄存器启动SG
     DMA，采用Bd_Start函数，只需要写CURDESC，DMACR，TAILDESC寄存器即可。
 
 .. image:: images/15_media/image21.png
-   :width: 5.32915in
-   :height: 0.85925in
 
 11. 可以在逻辑分析仪中看到M_AXI_SG总线波形，有四次读操作
 
 .. image:: images/15_media/image22.png
-   :width: 5.27688in
-   :height: 0.49926in
 
 放大之后可看到读的是链表的内容。
 
 .. image:: images/15_media/image23.png
-   :width: 6.03588in
-   :height: 0.49041in
 
 12. 在一个package传输结束后，DMA会通过M_AXI_SG向链表STATUS写入信息，可以在看到第一个Descriptor的值为0x88000280，RXSOF为1，也就是包的起始
 
 .. image:: images/15_media/image24.png
-   :width: 2.44695in
-   :height: 1.01409in
 
 13. 每次处理完数据后，需要清除状态，也就是STATUS内容，程序中用Bd_StatusClr函数
 
 ..
 
    .. image:: images/15_media/image25.png
-      :width: 3.01468in
-      :height: 1.37712in
-
+      
 本章小节
 --------
 

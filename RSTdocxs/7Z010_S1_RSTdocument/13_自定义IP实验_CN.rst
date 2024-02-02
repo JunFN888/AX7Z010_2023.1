@@ -14,154 +14,97 @@ PWM介绍
 
 在其他开发板中我们使用过的一个pwm模块如下：
 
-+-----------------------------------------------------------------------+
-|                                                                       |
-| // Author: meisq //                                                   |
-|                                                                       |
-| // msq@qq.com //                                                      |
-|                                                                       |
-| // ALINX(shanghai) Technology Co.,Ltd //                              |
-|                                                                       |
-| // heijin //                                                          |
-|                                                                       |
-| // WEB: *http://www.alinx.cn/* //                                     |
-|                                                                       |
-| // BBS: *http://www.heijin.org/* //                                   |
-|                                                                       |
-|                                                                       |
-| // Copyright (c) 2017,ALINX(shanghai) Technology Co.,Ltd //           |
-|                                                                       |
-| // All rights reserved //                                             |
-|                                                                       |
-|                                                                       |
-| // This source file may be used and distributed without restriction   |
-| provided //                                                           |
-|                                                                       |
-| // that this copyright statement is not removed from the file and     |
-| that any //                                                           |
-|                                                                       |
-| // derivative work contains the original copyright notice and the     |
-| associated //                                                         |
-|                                                                       |
-| // disclaimer. //                                                     |
-|                                                                       |
-| // Description: pwm model                                             |
-|                                                                       |
-| // pwm out period = frequency(pwm_out) \* (2 \*\* N) /                |
-| frequency(clk);                                                       |
-|                                                                       |
-| // Revision History:                                                  |
-|                                                                       |
-| // Date By Revision Change Description                                |
-|                                                                       |
-|                                                                       |
-| // 2017/5/3 meisq 1.0 Original                                        |
-|                                                                       |
-|                                                                       |
-| \`timescale 1ns **/** 1ps                                             |
-|                                                                       |
-| **module** ax_pwm                                                     |
-|                                                                       |
-| **#(**                                                                |
-|                                                                       |
-| **parameter** N **=** 32 //pwm bit width                              |
-|                                                                       |
-| **)**                                                                 |
-|                                                                       |
-| **(**                                                                 |
-|                                                                       |
-| **input** clk\ **,**                                                  |
-|                                                                       |
-| **input** rst\ **,**                                                  |
-|                                                                       |
-| **input[**\ N **-** 1\ **:**\ 0\ **]**\ period\ **,**                 |
-|                                                                       |
-| **input[**\ N **-** 1\ **:**\ 0\ **]**\ duty\ **,**                   |
-|                                                                       |
-| **output** pwm_out                                                    |
-|                                                                       |
-| **);**                                                                |
-|                                                                       |
-| **reg[**\ N **-** 1\ **:**\ 0\ **]** period_r\ **;**                  |
-|                                                                       |
-| **reg[**\ N **-** 1\ **:**\ 0\ **]** duty_r\ **;**                    |
-|                                                                       |
-| **reg[**\ N **-** 1\ **:**\ 0\ **]** period_cnt\ **;**                |
-|                                                                       |
-| **reg** pwm_r\ **;**                                                  |
-|                                                                       |
-| **assign** pwm_out **=** pwm_r\ **;**                                 |
-|                                                                       |
-| **always@(posedge** clk **or** **posedge** rst\ **)**                 |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| **if(**\ rst\ **==**\ 1\ **)**                                        |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| period_r **<=** **{** N **{**\ 1'b0\ **}** **};**                     |
-|                                                                       |
-| duty_r **<=** **{** N **{**\ 1'b0\ **}** **};**                       |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **else**                                                              |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| period_r **<=** period\ **;**                                         |
-|                                                                       |
-| duty_r **<=** duty\ **;**                                             |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **always@(posedge** clk **or** **posedge** rst\ **)**                 |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| **if(**\ rst\ **==**\ 1\ **)**                                        |
-|                                                                       |
-| period_cnt **<=** **{** N **{**\ 1'b0\ **}** **};**                   |
-|                                                                       |
-| **else**                                                              |
-|                                                                       |
-| period_cnt **<=** period_cnt **+** period_r\ **;**                    |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **always@(posedge** clk **or** **posedge** rst\ **)**                 |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| **if(**\ rst\ **==**\ 1\ **)**                                        |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| pwm_r **<=** 1'b0\ **;**                                              |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **else**                                                              |
-|                                                                       |
-| **begin**                                                             |
-|                                                                       |
-| **if(**\ period_cnt **>=** duty_r\ **)**                              |
-|                                                                       |
-| pwm_r **<=** 1'b1\ **;**                                              |
-|                                                                       |
-| **else**                                                              |
-|                                                                       |
-| pwm_r **<=** 1'b0\ **;**                                              |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **end**                                                               |
-|                                                                       |
-| **endmodule**                                                         |
-+-----------------------------------------------------------------------+
+.. code:: verilog
+
+ //////////////////////////////////////////////////////////////////////////////////
+ //                                                                              //
+ //                                                                              //
+ //  Author: meisq                                                               //
+ //          msq@qq.com                                                          //
+ //          ALINX(shanghai) Technology Co.,Ltd                                  //
+ //          heijin                                                              //
+ //     WEB: http://www.alinx.cn/                                                //
+ //     BBS: http://www.heijin.org/                                              //
+ //                                                                              //
+ //////////////////////////////////////////////////////////////////////////////////
+ //                                                                              //
+ // Copyright (c) 2017,ALINX(shanghai) Technology Co.,Ltd                        //
+ //                    All rights reserved                                       //
+ //                                                                              //
+ // This source file may be used and distributed without restriction provided    //
+ // that this copyright statement is not removed from the file and that any      //
+ // derivative work contains the original copyright notice and the associated    //
+ // disclaimer.                                                                  //
+ //                                                                              //
+ //////////////////////////////////////////////////////////////////////////////////
+ 
+ //================================================================================
+ //   Description:  pwm model
+ //   pwm out period = frequency(pwm_out) * (2 ** N) / frequency(clk);
+ //
+ //================================================================================
+ //  Revision History:
+ //  Date          By            Revision    Change Description
+ //--------------------------------------------------------------------------------
+ //  2017/5/3     meisq          1.0         Original
+ //********************************************************************************/
+ `timescale 1ns / 1ps
+ module ax_pwm
+ #(
+ 	parameter N = 32 //pwm bit width 
+ )
+ (
+     input         clk,
+     input         rst,
+     input[N - 1:0]period,
+     input[N - 1:0]duty,
+     output        pwm_out 
+     );
+  
+ reg[N - 1:0] period_r;
+ reg[N - 1:0] duty_r;
+ reg[N - 1:0] period_cnt;
+ reg pwm_r;
+ assign pwm_out = pwm_r;
+ always@(posedge clk or posedge rst)
+ begin
+     if(rst==1)
+     begin
+         period_r <= { N {1'b0} };
+         duty_r <= { N {1'b0} };
+     end
+     else
+     begin
+         period_r <= period;
+         duty_r   <= duty;
+     end
+ end
+ 
+ always@(posedge clk or posedge rst)
+ begin
+     if(rst==1)
+         period_cnt <= { N {1'b0} };
+     else
+         period_cnt <= period_cnt + period_r;
+ end
+ 
+ always@(posedge clk or posedge rst)
+ begin
+     if(rst==1)
+     begin
+         pwm_r <= 1'b0;
+     end
+     else
+     begin
+         if(period_cnt >= duty_r)
+             pwm_r <= 1'b1;
+         else
+             pwm_r <= 1'b0;
+     end
+ end
+ 
+ endmodule
+
 
 可以看到这个PWM模块需要2个参数“period”、“duty”来控制频率和占空比，”period”为步进值，也就是计数器每个周期要加的值。Duty为占空比的值。我们需要设计一些寄存器来控制这些参数，这里需要使用AXI总线，PS通过AXI总线来读写寄存器。
 
@@ -180,142 +123,82 @@ Vivado工程建立
 1) 点击菜单“Tools->Create and Package IP...”
 
 .. image:: images/13_media/image1.png
-   :align: center
-   :width: 2.77728in
-   :height: 1.75312in
 
 2) 选择“Next”
 
 .. image:: images/13_media/image2.png
-   :align: center
-   :width: 4.88143in
-   :height: 3.28534in
 
 3) 选择创建一个新的AXI4设备
 
 .. image:: images/13_media/image3.png
-   :align: center
-   :width: 4.99538in
-   :height: 3.3915in
 
 4) 名称填写“ax_pwm”,描述填写“alinx pwm”，然后选择一个合适的位置用来放IP
 
 .. image:: images/13_media/image4.png
-   :align: center
-   :width: 5.06229in
-   :height: 3.41877in
 
 5) 下面参数可以指定接口类型、寄存器数量等，这里不需要修改，使用AXI Lite Slave接口，4个寄存器。
 
 .. image:: images/13_media/image5.png
-   :align: center
-   :width: 5.22717in
-   :height: 3.52226in
 
 6) 点击“Finish”完成IP的创建
 
 .. image:: images/13_media/image6.png
-   :align: center
-   :width: 5.11929in
-   :height: 3.4472in
 
 7) 在“IP Catalog”中可以看到刚才创建的IP
 
 .. image:: images/13_media/image7.png
-   :align: center
-   :width: 6.00417in
-   :height: 1.80069in
 
 8) 这个时候的IP只有简单的寄存器读写功能，我们需要修改IP，选择IP，右键“Edit in IP Packager”
 
 .. image:: images/13_media/image8.png
-   :align: center
-   :width: 2.77311in
-   :height: 3.35774in
 
 9) 这是弹出一个对话框，可以填写工程名称和路径，这里默认，点击“OK”
 
 .. image:: images/13_media/image9.png
-   :align: center
-   :width: 3.34094in
-   :height: 1.41544in
 
 10) Vivado打开了一个新的工程
 
 .. image:: images/13_media/image10.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.22778in
 
 11) 添加PWM功能的核心代码
 
 .. image:: images/13_media/image11.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.21788in
 
 12) 添加代码时选择复制代码到IP目录
 
 .. image:: images/13_media/image12.png
-   :align: center
-   :width: 6.00417in
-   :height: 4.03125in
 
 13) 修改“ax_pwm_v1_0.v”，添加一个pwm输出端口
 
 .. image:: images/13_media/image13.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.33125in
 
 14) 修改“ax_pwm_v1_0.v”，在例化“ax_pwm_V1_0_S00_AXI”,中添加pwm端口的例化
 
 .. image:: images/13_media/image14.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.71319in
 
 15) 修改“ax_pwm_v1_0_s00_AXI.v”文件，添加pwm端口，这个文件是实现AXI4 Lite Slave的核心代码
 
 .. image:: images/13_media/image15.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.32708in
 
 16) 修改“ax_pwm_v1_0_s00_AXI.v”文件，例化pwm核心功能代码，将寄存器slv_reg0和slv_reg1用于pwm模块的参数控制。
 
 .. image:: images/13_media/image16.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.70833in
 
 17) 双击“component.xml”文件
 
 .. image:: images/13_media/image17.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.63819in
 
 18) 在“File Groups”选项中点击“Merge changers from File Groups Wizard”
 
 .. image:: images/13_media/image18.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.51577in
 
 19) 在“Customization Parameters”选项中点击“Merge changes form Customization Parameters Wizard”
 
 .. image:: images/13_media/image19.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.29642in
 
 20) 点击“Re-Package IP”完成IP的修改
 
 .. image:: images/13_media/image20.png
-   :align: center
-   :width: 4.73234in
-   :height: 3.08867in
 
 添加自定义IP到工程
 ~~~~~~~~~~~~~~~~~~
@@ -323,55 +206,34 @@ Vivado工程建立
 1) 搜索“pwm”，添加“ax_pwm_v1.0”
 
 .. image:: images/13_media/image21.png
-   :align: center
-   :width: 5.11681in
-   :height: 2.66921in
 
 2) 点击“Run Connection Automation”
 
 .. image:: images/13_media/image22.png
-   :align: center
-   :width: 4.792in
-   :height: 2.62563in
 
 3) 导出pwm端口
 
 .. image:: images/13_media/image23.png
-   :align: center
-   :width: 4.31421in
-   :height: 3.34801in
 
 .. image:: images/13_media/image24.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.27303in
 
 4) 保存设计，并Generate Output Products
 
 .. image:: images/13_media/image25.png
-   :align: center
-   :width: 3.50011in
-   :height: 2.6516in
 
 5) 添加xdc文件分配管脚，把pwm_0输出端口分配给PL LED1，做一个呼吸灯
 
-+-----------------------------------------------------------------------+
-| set_property IOSTANDARD LVCMOS33 [get_ports pwm_0]                    |
-|                                                                       |
-| set_property PACKAGE_PIN J14 [get_ports pwm_0]                        |
-+-----------------------------------------------------------------------+
+::
+
+ set_property IOSTANDARD LVCMOS33 [get_ports pwm_0]                                                    
+ set_property PACKAGE_PIN J14 [get_ports pwm_0] 
+
 
 1) 编译生成bit文件，导出硬件
 
 .. image:: images/13_media/image26.png
-   :align: center
-   :width: 2.33194in
-   :height: 2.83611in
 
 .. image:: images/13_media/image27.png
-   :align: center
-   :width: 3.75625in
-   :height: 3.18333in
 
 Vitis软件编写调试
 -----------------
@@ -379,125 +241,75 @@ Vitis软件编写调试
 1) 启动Vitis，新建APP，模板选择“Hello World”
 
 .. image:: images/13_media/image28.png
-   :align: center
-   :width: 3.02091in
-   :height: 2.19327in
-
+      
 1) 前面的例都是使用xilinx的IP，xilinx大多都提供一套API，对于这个自定义IP，我们需要自己开发，先看看APP的目录下的资源，可以找到一个ax_pwm.h的文件，这个文件里包含里对自定义IP寄存器的读写宏定义
 
 .. image:: images/13_media/image29.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.92986in
 
 3) 在bsp里找到“xparameters.h”文件，这个非常重要的文件，里面找到了自定IP的寄存器基地址，可以找到自定义IP的基地址。
 
 .. image:: images/13_media/image30.png
-   :align: center
-   :width: 3.99522in
-   :height: 1.79071in
 
 4) 有个寄存器读写宏和自定义IP的基地址，我们开始编写代码，测试自定义IP，我们先通过写寄存器AX_PWM_S00_AXI_SLV_REG0_OFFSET，控制PWM输出频率，然后通过写寄存器AX_PWM_S00_AXI_SLV_REG1_OFFSET控制PWM输出的占空比。
 
-+-----------------------------------------------------------------------+
-| #include <stdio.h>                                                    |
-|                                                                       |
-| #include "platform.h"                                                 |
-|                                                                       |
-| #include "xil_printf.h"                                               |
-|                                                                       |
-| #include "ax_pwm.h"                                                   |
-|                                                                       |
-| #include "xil_io.h"                                                   |
-|                                                                       |
-| #include "xparameters.h"                                              |
-|                                                                       |
-| #include "sleep.h"                                                    |
-|                                                                       |
-| unsigned int duty\ **;**                                              |
-|                                                                       |
-| int main\ **()**                                                      |
-|                                                                       |
-| **{**                                                                 |
-|                                                                       |
-| init_platform\ **();**                                                |
-|                                                                       |
-| print\ **(**"Hello World\\n\\r"**);**                                 |
-|                                                                       |
-| //pwm out period = frequency(pwm_out) \* (2^N) / frequency(clk);      |
-|                                                                       |
-| AX_PWM_mWriteReg\ **(**\ XPAR_AX_PWM_0_S00_AXI_BASEADDR\ **,**        |
-| AX_PWM_S00_AXI_SLV_REG0_OFFSET\ **,** 17179\ **);**//200hz            |
-|                                                                       |
-| //duty = (2^N) \* (1 - (duty cycle)) - 1                              |
-|                                                                       |
-| **while** **(**\ 1\ **)** **{**                                       |
-|                                                                       |
-| **for** **(**\ duty **=** 0x8fffffff\ **;** duty **<**                |
-| 0xffffffff\ **;** duty **=** duty **+** 100000\ **)** **{**           |
-|                                                                       |
-| AX_PWM_mWriteReg\ **(**\ XPAR_AX_PWM_0_S00_AXI_BASEADDR\ **,**        |
-| AX_PWM_S00_AXI_SLV_REG1_OFFSET\ **,** duty\ **);**                    |
-|                                                                       |
-| usleep\ **(**\ 100\ **);**                                            |
-|                                                                       |
-| **}**                                                                 |
-|                                                                       |
-| **}**                                                                 |
-|                                                                       |
-| cleanup_platform\ **();**                                             |
-|                                                                       |
-| **return** 0\ **;**                                                   |
-|                                                                       |
-| **}**                                                                 |
-+-----------------------------------------------------------------------+
+.. code:: verilog
+
+ #include <stdio.h>
+ #include "platform.h"
+ #include "xil_printf.h"
+ #include "ax_pwm.h"
+ #include "xil_io.h"
+ #include "xparameters.h"
+ #include "sleep.h"
+ 
+ unsigned int duty;
+ 
+ int main()
+ {
+     init_platform();
+ 
+     print("Hello World\n\r");
+ 
+ 	//pwm out period = frequency(pwm_out) * (2^N) / frequency(clk);
+ 	AX_PWM_mWriteReg(XPAR_AX_PWM_0_S00_AXI_BASEADDR, AX_PWM_S00_AXI_SLV_REG0_OFFSET, 17179);//200hz
+ 	//duty = (2^N) * (1 - (duty cycle)) - 1
+ 	while (1) {
+ 		for (duty = 0x8fffffff; duty < 0xffffffff; duty = duty + 100000) {
+ 			AX_PWM_mWriteReg(XPAR_AX_PWM_0_S00_AXI_BASEADDR, AX_PWM_S00_AXI_SLV_REG1_OFFSET, duty);
+ 			usleep(100);
+ 		}
+ 	}
+ 
+     cleanup_platform();
+     return 0;
+ }
+
 
 1) 通过运行代码，我们可以看到PL LED1呈现出一个呼吸灯的效果。
 
 .. image:: images/13_media/image31.png
-   :align: center
-   :width: 6in
-   :height: 4.82222in
 
 6) 通过debug，我们来查看一下寄存器
 
 .. image:: images/13_media/image32.png
-   :align: center
-   :width: 4.56255in
-   :height: 3.07653in
 
 7) 进入debug状态，按“F6”可以单步运行。
 
 .. image:: images/13_media/image33.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.35903in
 
 8) 通过菜单可以查看“Memory”窗口
 
 .. image:: images/13_media/image34.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.33472in
 
 9) 添加一个监视地址“0x43c00000”
 
 .. image:: images/13_media/image35.png
-   :align: center
-   :width: 3.69563in
-   :height: 2.11747in
 
 .. image:: images/13_media/image36.png
-   :align: center
-   :width: 2.60273in
-   :height: 1.87477in
 
 10) 单步运行，观察变化
 
 .. image:: images/13_media/image37.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.39931in
 
 实验总结
 --------
@@ -505,4 +317,3 @@ Vitis软件编写调试
 通过本实验我们掌握了更多的Vitis调试技巧，掌握了ARM +
 FPGA开发的核心内容，就是ARM和FPGA数据交互。
 
-*ZYNQ-7000开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_

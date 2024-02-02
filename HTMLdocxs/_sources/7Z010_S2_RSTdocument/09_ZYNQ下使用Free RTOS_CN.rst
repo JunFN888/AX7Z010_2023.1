@@ -18,27 +18,19 @@ Vitis程序开发
 1. 新建工程，OS Platform选择freertos10_xilinx
 
 .. image:: images/09_media/image1.png
-   :width: 5.99444in
-   :height: 4.75486in
 
 2. 本实验选择FreeRTOS Hello World做举例
 
 .. image:: images/09_media/image2.png
-   :width: 5.99792in
-   :height: 4.75069in
 
 Hello
 World例子中建立了两个任务，发送任务和接收任务，接收任务的优先级高于发送任务。并且创建队列，由发送任务向队列发送数据，接收任务从队列中读取数据并打印。例子中设设置了timer，但在本实验中删除了timer，让发送和接收任务一直工作。
 
 .. image:: images/09_media/image3.png
-   :width: 5.28094in
-   :height: 1.42471in
 
 3. 在此基础上增加PS和PL端LED闪烁任务，PS端闪烁间隔为100ms，PL端闪烁间隔为1S
 
 .. image:: images/09_media/image4.png
-   :width: 2.50397in
-   :height: 1.40958in
 
 板上验证
 --------
@@ -46,14 +38,10 @@ World例子中建立了两个任务，发送任务和接收任务，接收任务
 1. 下载界面设置，下载程序
 
 .. image:: images/09_media/image5.png
-   :width: 5.99653in
-   :height: 3.70486in
 
 2. 打开putty，正在持续打印数据
 
 .. image:: images/09_media/image6.png
-   :width: 4.18847in
-   :height: 2.63749in
 
 3. 同时也能看到开发板上PS端和PL端LED闪烁，直观地体现了多任务并行处理。
 

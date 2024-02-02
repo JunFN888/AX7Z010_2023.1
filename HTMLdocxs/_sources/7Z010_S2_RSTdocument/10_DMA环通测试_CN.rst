@@ -9,8 +9,6 @@ Access，直接内存存取），是指外部设备不通过CPU直接与系统�
 本章中采用Vitis给的DMA例子，稍做修改，在DMA工作结束后，发出结束中断，告知CPU，使CPU读取内存数据。
 
 .. image:: images/10_media/image1.png
-   :width: 2.05991in
-   :height: 2.37583in
 
 实验说明
 --------
@@ -34,8 +32,6 @@ Access，直接内存存取），是指外部设备不通过CPU直接与系统�
    AXI Stream数据宽度支持8，16，32，64，128，256，512，1024bits
 
 .. image:: images/10_media/image2.png
-   :width: 4.39608in
-   :height: 3.4035in
 
 2. 本实验中采用直接寄存器模式，如下图为寄存器说明，主要分为两部分，一是MM2S，包括Control
    Register，Status Register，Source Address，Transfer
@@ -44,40 +40,26 @@ Access，直接内存存取），是指外部设备不通过CPU直接与系统�
    Address和Destination Address指的是内存地址。
 
 .. image:: images/10_media/image3.png
-   :width: 4.84727in
-   :height: 1.94086in
 
 .. image:: images/10_media/image4.png
-   :width: 4.83079in
-   :height: 1.38663in
 
 3. 以下为MM2S_DMACR控制寄存器说明，比较重要的是Bit0，Run/Stop，表示开启或停止DMA。
 
 其他内容不再讲述。
 
 .. image:: images/10_media/image5.png
-   :width: 4.72849in
-   :height: 1.69149in
 
 .. image:: images/10_media/image6.png
-   :width: 4.64069in
-   :height: 2.31089in
 
 在这里有几个中断可以设置，IOC_IrqEn，使能完成中断，Dly_IrqEn使能延迟中断，Err_IrqEn使能错误中断。
 
 .. image:: images/10_media/image7.png
-   :width: 4.55495in
-   :height: 1.9265in
 
 4. MM2S_DMASR为状态寄存器说明，bit12,13,14为中断状态，写1可清除中断。
 
 .. image:: images/10_media/image8.png
-   :width: 5.04592in
-   :height: 1.74897in
 
 .. image:: images/10_media/image9.png
-   :width: 4.0187in
-   :height: 2.88502in
 
 5. MM2S_DA，MM2S_LENGTH代表地址和长度设置，S2MM端的寄存器与MM2S类似，不再讲述，本实验功能是MM2S从DDR3中读取数据，写到AXI
    Stream Data
@@ -91,32 +73,22 @@ Access，直接内存存取），是指外部设备不通过CPU直接与系统�
 1. 以”ps_hello”工程为基础。实验中，需要用到HP接口，高速访问DDR3：
 
 .. image:: images/10_media/image11.png
-   :width: 4.19823in
-   :height: 2.62498in
 
 设置如下：
 
 .. image:: images/10_media/image12.png
-   :width: 4.48711in
-   :height: 3.4773in
 
 2. 打开PL-PS中断接口，连接DMA中断
 
 .. image:: images/10_media/image13.png
-   :width: 4.97165in
-   :height: 3.86295in
 
 3. 设置时钟100MHz，用于PL端AXI的时钟
 
 .. image:: images/10_media/image14.png
-   :width: 4.75245in
-   :height: 3.68716in
 
 4. 点击”+”，添加DMA模块。
 
 .. image:: images/10_media/image15.png
-   :width: 1.80732in
-   :height: 3.19179in
 
 5. DMA设置如下，Width of Buffer Length
    Register指的是LENGTH寄存器的宽度，如23bits，也就是最大传输2^23=
@@ -126,80 +98,54 @@ Access，直接内存存取），是指外部设备不通过CPU直接与系统�
    Busrt Size可以设置为2, 4, 8, 16, 32, 64, 128, 256。
 
 .. image:: images/10_media/image16.png
-   :width: 5.40989in
-   :height: 3.96888in
 
 6. AXI Stream Data FIFO设置如下，设置深度为1024，TDATA
    Width为4字节，也就是32位，打开TKEEP，TLAST信号
 
 .. image:: images/10_media/image17.png
-   :width: 5.44147in
-   :height: 3.98953in
 
 7. 自动连接
 
 .. image:: images/10_media/image18.png
-   :width: 2.82918in
-   :height: 2.1125in
 
 继续自动连接
 
 .. image:: images/10_media/image19.png
-   :width: 5.00348in
-   :height: 2.59665in
 
 8. 连接FIFO的S_AXIS和M_AXIS到dma（AXIS为AXI Stream的缩写），继续点击Run
    Connection Automation
 
 .. image:: images/10_media/image20.png
-   :width: 4.89967in
-   :height: 2.4878in
 
 9. 添加Concat，连接MM2S和S2MM中断输出到IRQ_F2P
 
 .. image:: images/10_media/image21.png
-   :width: 5.22312in
-   :height: 1.29965in
 
 10. 最终连线如下图所示
 
 .. image:: images/10_media/image22.png
-   :width: 5.48926in
-   :height: 1.42798in
 
 11. 选择fifo的S_AXI,M_AXI，count信号，右键选择Debug，添加ILA逻辑分析仪，观察数据变化。
 
 .. image:: images/10_media/image23.png
-   :width: 3.8808in
-   :height: 2.15254in
 
 .. image:: images/10_media/image24.png
-   :width: 5.09076in
-   :height: 3.15891in
 
 12. 自动连接后，打开ila配置
 
 .. image:: images/10_media/image25.png
-   :width: 4.84026in
-   :height: 2.29081in
 
 将Number of Probes改为4，添加两个Probe接口
 
 .. image:: images/10_media/image26.png
-   :width: 6.00417in
-   :height: 4.27014in
 
 连接新添加的两个Probe到DMA的中断输出
 
 .. image:: images/10_media/image27.png
-   :width: 4.57604in
-   :height: 2.1303in
 
 13. 保存设计，生成bitstream
 
 .. image:: images/10_media/image28.png
-   :width: 1.64719in
-   :height: 0.87798in
 
 Vitis程序开发
 -------------
@@ -207,56 +153,38 @@ Vitis程序开发
 1. 本实验程序是根据simple_poll例子做的修改，在platform.spr的BSP里可以通过导入例子来学习模块的应用。
 
 .. image:: images/10_media/image29.png
-   :width: 4.75646in
-   :height: 3.86414in
 
 2. 设置MAX_PKT_LEN，也就是长度，单位为字节，TEST_START_VALUE为起始的数据值，NUMBER_OF_TRANSFERS为测试次数。
 
 .. image:: images/10_media/image30.png
-   :width: 2.58055in
-   :height: 0.81889in
 
 3. 定义发送和接收数组
 
 .. image:: images/10_media/image31.png
-   :width: 1.77143in
-   :height: 0.39954in
 
 4. 在XAxiDma_Setup函数中，打开S2MM的IOC中断，关闭MM2S的所有中断。在S2MM接收完数据后会发出中断。
 
 .. image:: images/10_media/image32.png
-   :width: 2.91966in
-   :height: 0.72887in
 
 5. 在XAxiDma_Setup函数，初始化TxBufferPtr之后，需要将Cache里的数据刷新到内存中，这里非常重要，由于DMA需要访问DDR3，而CPU与DDR3之间是通过Cache交互的，数据暂存在Cache里，可能没有真正刷新到DDR3，如果外部设备也就是DMA想要读取DDR3的值，必须将Cache里的数据刷新到DDR3中，这样DMA才能读到正确的值。调用Xil_DCacheFlushRang函数，需要给出内存地址和长度。
 
 .. image:: images/10_media/image33.png
-   :width: 3.58061in
-   :height: 1.22929in
 
 6. 打开MM2S通路和S2MM通路。
 
 .. image:: images/10_media/image34.png
-   :width: 3.50641in
-   :height: 2.38587in
 
 7. 中断设置方法与前面例程一样
 
 .. image:: images/10_media/image35.png
-   :width: 3.71159in
-   :height: 3.28671in
 
 8. 在中断服务程序中，首先清除中断，由于DDR3中的数据已经更新，但Cache中的数据并没有更新，CPU如果想从DDR3中读取数据，需要调用Xil_DCacheInvalidateRang函数，将Cache数据作废，这样CPU就能从DDR3中读取正确的数据。同样也要给出内存地址和长度。
 
 .. image:: images/10_media/image36.png
-   :width: 3.64978in
-   :height: 0.95149in
 
 9. 之后CPU从DDR3中读取数据进行对比，检验数据的正确性。
 
 .. image:: images/10_media/image37.png
-   :width: 2.37458in
-   :height: 1.03614in
 
 程序验证
 --------
@@ -264,45 +192,31 @@ Vitis程序开发
 1. 选择Debug Configurations，采用Debug模式，点击Debug
 
 .. image:: images/10_media/image38.png
-   :width: 5.29395in
-   :height: 3.27642in
 
 2. 打开ILA，设置触发条件axi_dma_0_s2mm_introut上升沿，点击运行
 
 .. image:: images/10_media/image39.png
-   :width: 6.00417in
-   :height: 2.30556in
 
 3. 回到Vitis的Debug界面，不用设置断点，点击Resume
 
 .. image:: images/10_media/image40.png
-   :width: 3.99952in
-   :height: 0.44073in
 
 4. 此时可以看到ILA已经触发，可以观察采集到的数据。
 
 .. image:: images/10_media/image41.png
-   :width: 4.99434in
-   :height: 2.68606in
 
 5. 在串口调试工具中可以看到打印信息，中断了两次，并且测试成功
 
 .. image:: images/10_media/image42.png
-   :width: 4.4593in
-   :height: 2.80694in
 
 6. 也可以在Vitis调试中，观察memory信息，设置断点如下图，在中断服务函数中设置断点
 
 .. image:: images/10_media/image43.png
-   :width: 3.32841in
-   :height: 2.30812in
 
 7. 重新Run
    Configurations，再点击Resume按键运行至断点处，在Memory窗口添加TxBufferPtr和RxBufferPtr，即可观察对比数据
 
 .. image:: images/10_media/image44.png
-   :width: 4.43577in
-   :height: 1.58622in
 
 本章小结
 --------

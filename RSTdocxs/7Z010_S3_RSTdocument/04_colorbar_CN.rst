@@ -21,10 +21,10 @@ Vitis HLS视频库函数
 - HLS视频库是包含在hls命名空间内的C++代码。使用时需要包含头文件“hls_video.h”。
 - 该库与OpenCV等具有相似的接口和等效的行为,例如：
 - OpenCV库：cvScale(src, dst, scale, shift);
-- HLS视频库：xf::hls:Scale<...>(src, dst, scale, shift);
+- HLS视频库：xf.. code:: chls:Scale<...>(src, dst, scale, shift);
 - 一些构造函数具有类似的或替代性的模板参数,例如：
-- OpenCV库：xf::cv::Mat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>;
-- HLS视频库：xf::cv::xfMat2AXIvideo mat(rows, cols);
+- OpenCV库：xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>;
+- HLS视频库：xf.. code:: ccv.. code:: cxfMat2AXIvideo mat(rows, cols);
 
 实验介绍
 ========================================
@@ -37,38 +37,34 @@ HLS IP创建
 ----------------------------------------
 自从2020.1版本开始,vitis_hls对于图像处理常用的算法函数需要额外从赛灵思官方github上下载,网址为：https://github.com/Xilinx/Vitis_Libraries,下载完成之后解压,如果要用到其中的函数我们按照如下步骤进行操作
 
- 1) 打开vitis_hls ,点击图标
+1) 打开vitis_hls ,点击图标
  
-     .. image:: images/images3/image49.png
-       :align: center
+.. image:: images/images3/image49.png
  
- 2) 选择综合
+2) 选择综合
 
-    .. image:: images/images3/image50.png
-       :align: center
+.. image:: images/images3/image50.png
 
- 3) 单击edit CFLAGS 
+3) 单击edit CFLAGS 
  
-    .. image:: images/images3/image51.png
-       :align: center
+.. image:: images/images3/image51.png
  
- 4) 输入-I+安装的Vitis_Libraries文件夹路径+-std=c++0x,这里输入的是绝对路径
+4) 输入-I+安装的Vitis_Libraries文件夹路径+-std=c++0x,这里输入的是绝对路径
 
-    .. image:: images/images3/image52.png
-       :align: center
+.. image:: images/images3/image52.png
 
 单击ok,接下来就可以调用需要的库函数对图像进行对应的处理
 
 源代码
 ----------------------------------------
 
-::
+.. code:: c
 
     
  #include "colorbar.h"
  
  template<int ROWS, int COLS>
- void createColorBar(xf::cv::Mat<XF_8UC3,ROWS,COLS,XF_NPPC1> &imgColorbar)
+ void createColorBar(xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS,COLS,XF_NPPC1> &imgColorbar)
  {
  	XF_TNAME(XF_8UC3,XF_NPPC1) pixel;
  	int move, wBar;
@@ -157,26 +153,26 @@ HLS IP创建
  #pragma HLS INTERFACE s_axilite port=return
  #pragma HLS INTERFACE ap_ctrl_none port=return
  #pragma HLS dataflow
- 	xf::cv::Mat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>imgColorbar;
+ 	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_ROWS,IMG_MAX_COLS,XF_NPPC1>imgColorbar;
  	createColorBar<IMG_MAX_ROWS,IMG_MAX_COLS>(imgColorbar);
- 	xf::cv::xfMat2AXIvideo(imgColorbar, dst);
+ 	xf.. code:: ccv.. code:: cxfMat2AXIvideo(imgColorbar, dst);
  }
 
 接口介绍
 ----------------------------------------------
 
-数据类型pixel_stream的定义为hls::stream< ap_axiu<24,1,1,1> > 。这是HLS的流接口,其中24指RGB数据位宽共24Bit,其它位为流控制信号。通常,各模块之间视频数据接口都使用流接口。这里,我们将“dst”定义为视频输出流。
+数据类型pixel_stream的定义为hls.. code:: cstream< ap_axiu<24,1,1,1> > 。这是HLS的流接口,其中24指RGB数据位宽共24Bit,其它位为流控制信号。通常,各模块之间视频数据接口都使用流接口。这里,我们将“dst”定义为视频输出流。
 
 “rows”与“cols”分别定义输出图像的高与宽,”mode”用于表明当前是否处于配置状态,若处于配置状态,则不输出图像。这里,我们使用axi-lite来管理这些接口,包括模块的控制接口。
 
-xf::cv::Mat介绍
+xf.. code:: ccv.. code:: cMat介绍
 ----------------------------------------------
 
 OpenCV中常见的与图像操作有关的数据容器有Mat,CvMat和IplImage,这三种类型都可以代表和显示图像,但是,Mat类型侧重于计算,数学性较高,openCV对Mat类型的计算也进行了优化。而CvMat和IplImage类型更侧重于“图像”,opencv对其中的图像操作（缩放、单通道提取、图像阈值操作等）进行了优化。M at类型较CvMat与IplImage类型来说,有更强的矩阵运算能力,支持常见的矩阵运算。在计算密集型的应用当中,将CvMat与IplImage类型转化为Mat类型将大大减少计算时间花费。
 
-Vitis HLS视频处理函数库使用xf::cv::Mat<>数据类型,这种类型用于模型化视频像素流处理,在HLS实现OpenCV的设计中,需要将输入和输出HLS可综合的视频设计接口,修改为Video stream接口,也就是采用HLS提供的video接口可综合函数,实现AXI4 video stream到VivadoHLS中hls::Mat<>类型间的转换。
+Vitis HLS视频处理函数库使用xf.. code:: ccv.. code:: cMat<>数据类型,这种类型用于模型化视频像素流处理,在HLS实现OpenCV的设计中,需要将输入和输出HLS可综合的视频设计接口,修改为Video stream接口,也就是采用HLS提供的video接口可综合函数,实现AXI4 video stream到VivadoHLS中hls.. code:: cMat<>类型间的转换。
 
-在本例程中,我们在顶层函数中定义了xf::cv::Mat<XF_8U3,1080, 1920, XF_NPPC1> imgColorbar。其中,前面的尖括号内分别表示我们的图像最大支持分辨率为1920x1080,bit24的图像,后面括号参数表示当前实际的高与宽分别为rows、cols。
+在本例程中,我们在顶层函数中定义了xf.. code:: ccv.. code:: cMat<XF_8U3,1080, 1920, XF_NPPC1> imgColorbar。其中,前面的尖括号内分别表示我们的图像最大支持分辨率为1920x1080,bit24的图像,后面括号参数表示当前实际的高与宽分别为rows、cols。
 
 优化
 ----------------------------------------------
@@ -201,11 +197,10 @@ Vitis HLS视频处理函数库使用xf::cv::Mat<>数据类型,这种类型用于
 
 显示一个colorbar,中间部分滚动显示。
 
-    .. image:: images/images3/image53.png
-       :align: center
+.. image:: images/images3/image53.png
 
 需要注意,显示输出分辨率在不断变化,所以画面会隔一段时间黑掉,属于正常现象。
 
  
 
-*ZYNQ 7000 开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_
+

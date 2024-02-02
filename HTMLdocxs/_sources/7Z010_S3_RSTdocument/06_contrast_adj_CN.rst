@@ -10,7 +10,7 @@
 模块主要代码
 =========================================
 
-::
+.. code:: c
 
   #include "contrastadj.h"
 
@@ -38,8 +38,8 @@
   
   template<int ROWS, int COLS, int N>
   void dualAryEqualize(
-  		xf::cv::Mat<XF_8UC3,ROWS, COLS,XF_NPPC1>	&_src,
-  		xf::cv::Mat<XF_8UC3,ROWS, COLS,XF_NPPC1>	&_dst,
+  		xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS, COLS,XF_NPPC1>	&_src,
+  		xf.. code:: ccv.. code:: cMat<XF_8UC3,ROWS, COLS,XF_NPPC1>	&_dst,
   		int filter)
   {
   	static ap_uint<8> map[N];
@@ -102,8 +102,8 @@
   }
   
   template <int ROWS, int COLS>
-  void xfrgb2ycrcb(xf::cv::Mat<XF_8UC3, ROWS, COLS,XF_NPPC1>& src,
-                   xf::cv::Mat<XF_8UC3, ROWS, COLS,XF_NPPC1>& dst)
+  void xfrgb2ycrcb(xf.. code:: ccv.. code:: cMat<XF_8UC3, ROWS, COLS,XF_NPPC1>& src,
+                   xf.. code:: ccv.. code:: cMat<XF_8UC3, ROWS, COLS,XF_NPPC1>& dst)
   {
   	XF_TNAME(XF_8UC3,XF_NPPC1)rgb_packed;
   	XF_TNAME(XF_8UC3,XF_NPPC1)ycrcb_packed;
@@ -127,8 +127,8 @@
   }
   
   template<int ROWS,int COLS>
-  void xfycrcb2rgb(xf::cv::Mat<XF_8UC3, ROWS, COLS,XF_NPPC1>& src,
-          		 xf::cv::Mat<XF_8UC3, ROWS, COLS,XF_NPPC1>& dst)
+  void xfycrcb2rgb(xf.. code:: ccv.. code:: cMat<XF_8UC3, ROWS, COLS,XF_NPPC1>& src,
+          		 xf.. code:: ccv.. code:: cMat<XF_8UC3, ROWS, COLS,XF_NPPC1>& dst)
   {
   	XF_TNAME(XF_8UC3,XF_NPPC1)rgb_packed;
   	XF_TNAME(XF_8UC3,XF_NPPC1)ycrcb_packed;
@@ -151,7 +151,7 @@
   	}
   }
   
-  void contrastadj(hls::stream<ap_axiu<24,1,1,1>> &src_axi,hls::stream<ap_axiu<24,1,1,1>> &dst_axi,int adj)
+  void contrastadj(hls.. code:: cstream<ap_axiu<24,1,1,1>> &src_axi,hls.. code:: cstream<ap_axiu<24,1,1,1>> &dst_axi,int adj)
   {
   
   #pragma HLS INTERFACE mode=s_axilite port=return
@@ -160,23 +160,23 @@
   #pragma HLS INTERFACE axis port=src_axi
   #pragma HLS INTERFACE axis port=dst_axi
   
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img1;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img1;
   #pragma HLS STREAM depth=1920 type=fifo variable=img1
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img2;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img2;
   #pragma HLS STREAM depth=1920 type=fifo variable=img2
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img3;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img3;
   #pragma HLS STREAM depth=1920 type=fifo variable=img3
-  	xf::cv::Mat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img4;
+  	xf.. code:: ccv.. code:: cMat<XF_8UC3,IMG_MAX_HEIGHT, IMG_MAX_WIDTH, XF_NPPC1> img4;
   #pragma HLS STREAM depth=1920 type=fifo variable=img4
   
   #pragma HLS dataflow
   
   // AXIvideoTest<IMG_MAX_HEIGHT,IMG_MAX_WIDTH>(src_axi,dst_axi);
-   xf::cv::AXIvideo2xfMat<24,XF_8UC3,IMG_MAX_HEIGHT,IMG_MAX_WIDTH,XF_NPPC1>(src_axi, img1);
+   xf.. code:: ccv.. code:: cAXIvideo2xfMat<24,XF_8UC3,IMG_MAX_HEIGHT,IMG_MAX_WIDTH,XF_NPPC1>(src_axi, img1);
   	xfrgb2ycrcb<IMG_MAX_HEIGHT,IMG_MAX_WIDTH>(img1, img2);
   	dualAryEqualize<IMG_MAX_HEIGHT, IMG_MAX_WIDTH, 256>(img2, img3,adj);
      xfycrcb2rgb<IMG_MAX_HEIGHT,IMG_MAX_WIDTH>(img3, img4);
-   xf::cv::xfMat2AXIvideo<24,XF_8UC3,IMG_MAX_HEIGHT,IMG_MAX_WIDTH,XF_NPPC1>(img4,dst_axi);
+   xf.. code:: ccv.. code:: cxfMat2AXIvideo<24,XF_8UC3,IMG_MAX_HEIGHT,IMG_MAX_WIDTH,XF_NPPC1>(img4,dst_axi);
   }
 
 这里进行数据统计的时候,我们一次处理了两个像素点。因为在一个时钟内,我们无法完成“hist_out1[pos1] += 1;”,即读一个ram内容,将其加一并写回。但可以在两个时钟周期,完成一个读写操作
@@ -200,14 +200,13 @@
 对比度由0至100由SDK动态调整,0为原图,100为对比度最高。
 对比度为0时
 
-    .. image:: images/images5/image58.png
-      :align: center
+.. image:: images/images5/image58.png
 
 对比度为100时
 
-    .. image:: images/images5/image59.png
-      :align: center    
+.. image:: images/images5/image59.png
+       
 
  
 
-*ZYNQ 7000 开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_
+

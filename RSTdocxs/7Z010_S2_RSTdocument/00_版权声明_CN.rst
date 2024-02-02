@@ -25,7 +25,7 @@ avic@alinx.com
 
 ALINX微信公众号：
 
-.. image:: ../7z010_S1_RSTdocument/images/00_media/image1.png
+.. image:: images/00_media/image1.png
    :width: 1.54167in
    :height: 1.53125in
 

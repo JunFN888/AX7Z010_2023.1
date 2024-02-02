@@ -13,8 +13,6 @@ PIC, AVR, SH, Z80, H8, ARM等等，不需要做任何修改。
 应用程序通过API函数来调用FatFs系统模块，从而来控制SD卡这些存储设备。
 
 .. image:: images/20_media/image1.png
-   :width: 2.02429in
-   :height: 1.80618in
 
 FatFs 系统提供了很多 API 函数，我们在下面列举了以下我们例程中会用的的
 API 函数。
@@ -49,8 +47,6 @@ Vitis程序开发
    Settings里选择xilffs项，使能项目支持xilffs文件系统。
 
 .. image:: images/20_media/image2.png
-   :width: 5.99167in
-   :height: 3.50278in
 
 关于xilffs库是Xilinx提供的FAT文件系统支持包，用户可以调用库里的API函数实现对
 
@@ -77,29 +73,21 @@ Files)和驱动层文件(Glue Layer Files)。
 
    由于BMP的存储是上下颠倒的，因此在bmp_read函数中调整了顺序，存入frame缓存区。
 
-   .. image:: images/20_media/image3.png
-      :width: 3.037in
-      :height: 3.14939in
-
+.. image:: images/20_media/image3.png
+      
 4. 同时我们也准备了BMP文件头结构体，以及一些常用分辨率的图像头设置，放在bmp.h文件中。
 
 .. image:: images/20_media/image4.png
-   :width: 6.45914in
-   :height: 3.01805in
 
 5. 结合之前小猫图片的显示，将小猫图片保存成bmp格式，保存到SD卡里，在bmp_write函数中，结合bmp头和bmp数据，保存到SD卡。
 
 .. image:: images/20_media/image5.png
-   :width: 3.81408in
-   :height: 4.09309in
 
 6. 在main函数里，调用bmp_read函数实现一副图像从SD卡读取到VDMA显示缓冲的存储，这里的
    BMP
    图像的文件名1.bmp需要和存储在SD卡里的文件名一样。用bmp_write，将小猫图片写入SD卡。
 
 .. image:: images/20_media/image6.png
-   :width: 4.26924in
-   :height: 0.95572in
 
 板上验证
 --------
@@ -107,43 +95,29 @@ Files)和驱动层文件(Glue Layer Files)。
 1. 首先需要先存一副1920*1080像素，24bit的BMP文件到SD卡里，文件名为1.bmp（文件在工程目录下），开发板断电情况下，把SD卡插入卡座里。
 
 .. image:: images/20_media/image7.png
-   :width: 4.91819in
-   :height: 0.80693in
 
 2. 开发板连接HDMI显示器，然后上电，下载程序运行之后我们可以在HDMI显示器上显示SD卡里存储的1.bmp文件的图像。
 
 .. image:: images/20_media/image8.png
-   :width: 4.6912in
-   :height: 5.8602in
 
 AX7015硬件连接图
 
 .. image:: images/20_media/image9.png
-   :width: 4.62777in
-   :height: 2.93218in
 
 AX7021硬件连接图
 
 .. image:: images/20_media/image10.png
-   :width: 4.15382in
-   :height: 3.31331in
 
 AX7020/AX7010硬件连接图
 
 .. image:: images/20_media/image11.png
-   :width: 5.29654in
-   :height: 3.0863in
 
 AX7Z035/AX7Z100硬件连接图
 
 .. image:: images/20_media/image12.png
-   :width: 6.00417in
-   :height: 4.775in
 
 AX7Z020/AX7Z010硬件连接图
 
 3. 之后可将开发板断电，将SD卡插到电脑上，可以看到多了CAT.BMP
 
 .. image:: images/20_media/image13.png
-   :width: 4.44641in
-   :height: 1.80407in

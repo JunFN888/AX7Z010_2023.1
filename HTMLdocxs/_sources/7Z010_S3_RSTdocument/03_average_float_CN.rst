@@ -12,7 +12,7 @@ IP创建
 HLS源代码
 ----------------------------------------
 
-::
+.. code:: c
 
   #include <string.h>
   double sum;
@@ -73,4 +73,4 @@ vitis运行后,串口将会打印出arm和fpga进行1024个浮点数求和平均
 
 
 
-*ZYNQ 7000 开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_
+

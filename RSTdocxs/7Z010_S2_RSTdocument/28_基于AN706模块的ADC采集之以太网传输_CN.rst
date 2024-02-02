@@ -9,14 +9,10 @@
 基于AN706 SG DMA的工程，将显示部分的的模块都删除，最终连接结果如下：
 
 .. image:: images/28_media/image1.png
-   :width: 4.92342in
-   :height: 2.03497in
 
 只保留AD7606引脚绑定
 
 .. image:: images/28_media/image2.png
-   :width: 1.95386in
-   :height: 1.0272in
 
 重新生成下载文件，导出硬件信息。
 
@@ -29,14 +25,10 @@ ADC采集部分
 1. ADC的采集在前面已经讲过，在本章的Vitis中加入dma_bd和adc_dma.h
 
 .. image:: images/28_media/image3.png
-   :width: 1.52774in
-   :height: 2.20249in
 
 2. 在main.c文件的main函数中，中断初始化，进行DMA的初始化，中断连接，建立BD链表
 
 .. image:: images/28_media/image4.png
-   :width: 3.98898in
-   :height: 1.36991in
 
 LWIP控制部分
 ~~~~~~~~~~~~
@@ -46,14 +38,10 @@ LWIP控制部分请参考AN108以太网传输，基本一致。
 需要注意的是上位机设置的缓存大小为1MB，由于AD7606的采样速度比较低，为了上位机显示效果，将adc_dma.h中的采样数设置成1024*32
 
 .. image:: images/28_media/image5.png
-   :width: 1.66827in
-   :height: 0.27175in
 
 在lwip_app.c文件的while循环中，只取了CH1的数据。
 
 .. image:: images/28_media/image6.png
-   :width: 3.69285in
-   :height: 1.41641in
 
 板上验证
 --------
@@ -61,62 +49,42 @@ LWIP控制部分请参考AN108以太网传输，基本一致。
 1. 连接开发板如下所示，需要保证PC网卡为千兆网卡，否则会因为网络速度过低，导致无法显示。将AN706模块插到扩展口，连接SMA接口到波形发生器，为了方便观察显示效果，波形发生器采样频率设置范围为50Hz~10KHz，电压幅度最大为10V
 
 .. image:: images/28_media/image7.png
-   :width: 4.43671in
-   :height: 3.32361in
 
 AX7015硬件连接图
 
 .. image:: images/28_media/image8.png
-   :width: 4.39597in
-   :height: 3.27869in
 
 AX7021硬件连接图（J15扩展口）
 
 .. image:: images/28_media/image9.png
-   :width: 4.59183in
-   :height: 3.22955in
 
 AX7020/AX7010硬件连接图(J11扩展口)
 
 .. image:: images/28_media/image10.png
-   :width: 5.14236in
-   :height: 4.03632in
 
 AX7Z035/AX7Z100硬件连接图
 
 .. image:: images/28_media/image11.png
-   :width: 6.00417in
-   :height: 4.43472in
 
 AX7Z020/AX7Z010硬件连接图（扩展口J21）
 
 2. 如果有DHCP服务器，会自动分配IP给开发板；如果没有DHCP服务器，默认开发板IP地址为192.168.1.11，需要将PC的IP地址设为同一网段，如下图所示。同时要确保网络里没有192.168.1.11的IP地址，否则会造成IP冲突，导致无法显示。可以在板子未上电前在CMD里输入ping
-   192.168.1.11查看是否能ping通，如果ping通，说明网络中有此IP地址，就无法验证。
+192.168.1.11查看是否能ping通，如果ping通，说明网络中有此IP地址，就无法验证。
 
-..
-
-   没有问题之后打开putty软件。
+没有问题之后打开putty软件。
 
 .. image:: images/28_media/image12.png
-   :width: 2.49786in
-   :height: 3.12482in
 
-3. 下载程序到开发板，在putty中可以看到打印信息如下
+1. 下载程序到开发板，在putty中可以看到打印信息如下
 
 .. image:: images/28_media/image13.png
-   :width: 4.06532in
-   :height: 2.55995in
 
 4. 在工程目录下，打开示波器.exe
 
 .. image:: images/28_media/image14.png
-   :width: 3.05833in
-   :height: 1.03125in
 
 5. 显示结果如下
 
 .. image:: images/28_media/image15.png
-   :width: 4.96434in
-   :height: 2.88308in
 
 上位机软件使用方法，请参考AN108以太网传输的上位机软件使用说明一节。

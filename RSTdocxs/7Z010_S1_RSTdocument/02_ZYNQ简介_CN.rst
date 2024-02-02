@@ -11,9 +11,6 @@ Zynq就是两大功能块，PS 部分和 PL部分，
 Cortex™-A9处理器，AMBA®互连，内部存储器，外部存储器接口和外设。这些外设主要包括USB总线接口，以太网接口，SD/SDIO接口，I2C总线接口，CAN总线接口，UART接口，GPIO等。
 
 .. image:: images/02_media/image1.png
-   :align: center
-   :width: 5.4953in
-   :height: 3.15609in
 
 ZYNQ芯片的总体框图
 
@@ -24,9 +21,6 @@ PL: 可编程逻辑 (Progarmmable Logic), 就是FPGA部分。
 *PL部分是与7系列一样的，在DS190文档中可以看到对应的7系列产品。*
 
 .. image:: images/02_media/image2.png
-   :align: center
-   :width: 6.00417in
-   :height: 1.04722in
 
 PS和PL互联技术 
 ---------------
@@ -45,9 +39,6 @@ Architecture）的一个部分，是一种高性能、高带宽、低延迟的�
 AXI协议主要描述了主设备和从设备之间的数据传输方式，主设备和从设备之间通过握手信号建立连接。当从设备准备好接收数据时，会发出READY信号。当主设备的数据准备好时，会发出和维持VALID信号，表示数据有效。数据只有在VALID和READY信号都有效的时候才开始传输。当这两个信号持续保持有效，主设备会继续传输下一个数据。主设备可以撤销VALID信号，或者从设备撤销READY信号终止传输。AXI的协议如图，T2时，从设备的READY信号有效，T3时主设备的VILID信号有效，数据传输开始。
 
 .. image:: images/02_media/image3.png
-   :align: center
-   :width: 4.22385in
-   :height: 1.70463in
 
 AXI握手时序图
 
@@ -92,16 +83,10 @@ AXI4和AXI4-Lite接口包含5个不同的通道：
 其中每个通道都是一个独立的AXI握手协议。下面两个图分别显示了读和写的模型：
 
 .. image:: images/02_media/image4.png
-   :align: center
-   :width: 3.77612in
-   :height: 1.63024in
 
 AXI读数据通道
 
 .. image:: images/02_media/image5.png
-   :align: center
-   :width: 3.85128in
-   :height: 2.35547in
 
 AXI写数据通道
 
@@ -115,9 +100,6 @@ RAM）
 AXI_GP接口，是通用的AXI接口，总共有四个，包括两个32位主设备接口和两个32位从设备接口。
 
 .. image:: images/02_media/image6.png
-   :align: center
-   :width: 5.53056in
-   :height: 3.16528in
 
 可以看到，只有两个AXI-GP是Master Port，即主机接口，其余7个口都是Slave
 Port（从机接口）。主机接口具有发起读写的权限，ARM可以利用两个AXI-GP主机接口主动访问PL逻辑，其实就是把PL映射到某个地址，读写PL寄存器如同在读写自己的存储器。其余从机接口就属于被动接口，接受来自PL的读写，逆来顺受。
@@ -130,9 +112,6 @@ AXI-Stream都实现了相应的接口，使用时直接从Vivado的IP列表中�
 IP：
 
 .. image:: images/02_media/image7.png
-   :align: center
-   :width: 2.6709in
-   :height: 2.49687in
 
 下面为几个常用的AXI接口IP的功能介绍：
 
@@ -167,39 +146,24 @@ AXI Interconnect基本连接模式有以下几种：
 -  N-to-M Interconnect (Shared Access Mode)
 
 .. image:: images/02_media/image8.png
-   :align: center
-   :width: 3.15811in
-   :height: 1.99139in
 
 多对一的情况
 
 .. image:: images/02_media/image9.png
-   :align: center
-   :width: 3.31896in
-   :height: 2.18051in
 
 一对多的情况
 
 .. image:: images/02_media/image10.png
-   :align: center
-   :width: 3.7847in
-   :height: 2.26394in
 
 多对多读写地址通道
 
 .. image:: images/02_media/image11.png
-   :align: center
-   :width: 3.83584in
-   :height: 2.10589in
 
 多对多读写数据通道
 
 ZYNQ内部的AXI接口设备就是通过互联矩阵的的方式互联起来的，既保证了传输数据的高效性，又保证了连接的灵活性。Xilinx在Vivado里我们提供了实现这种互联矩阵的IP核axi_interconnect，我们只要调用就可以。
 
 .. image:: images/02_media/image12.png
-   :align: center
-   :width: 2.59167in
-   :height: 2.3875in
 
 AXI Interconnect IP
 
@@ -274,4 +238,3 @@ ZYNQ的开发也是先硬件后软件的方法。具体流程如下：
 
 -  良好的英语阅读基础
 
-*ZYNQ-7000开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_

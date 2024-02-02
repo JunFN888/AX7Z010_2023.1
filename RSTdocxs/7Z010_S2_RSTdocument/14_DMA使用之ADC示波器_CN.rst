@@ -4,14 +4,10 @@ DMA使用之ADC示波器（AN706）
 本实验练习使用ADC，实验中使用的ADC模块型号为AN706，最大采样率200Khz，精度为16位。实验中把AN706的8路输入以波形方式在VGA上显示出来，我们可以用更加直观的方式观察波形，是一个数字示波器雏形。
 
 .. image:: images/14_media/image1.png
-   :width: 4.28068in
-   :height: 2.66862in
 
 8路200K采样16位ADC模块
 
 .. image:: images/14_media/image2.png
-   :width: 5.1354in
-   :height: 3.14927in
 
 实验预期效果
 
@@ -34,15 +30,11 @@ AD7606抗混叠滤波器的3dB截至频率为22kHz; 当采样速率为200kSPS时
 可以改善信噪比(SNR), 并降低3dB带宽。
 
 .. image:: images/14_media/image3.png
-   :width: 5.1471in
-   :height: 3.52708in
 
 AD7606时序
 ~~~~~~~~~~
 
 .. image:: images/14_media/image4.png
-   :width: 5.18575in
-   :height: 2.0543in
 
 AD7606可以对所有8路的模拟输入通道进行同步采样。当两个CONVST引脚(CONVSTA和CONVSTB)连在一起时，所有通道同步采样。此共用CONVST信号的上升沿启动对所有模拟输入通道的同步采样(V1至V8)。
 
@@ -84,8 +76,6 @@ AD7606的AD模拟信号的输入范围可以设置为±5V或者是±10V，当设
 AD7606内置一个可选的数字一阶sinc滤波器，在使用较低吞吐率或需要更高信噪比的应用中，应使用滤波器。数字滤波器的过采样倍率由过采样引脚OS[2:0]控制。下表提供了用来选择不同过采样倍率的过采样位解码。
 
 .. image:: images/14_media/image5.png
-   :width: 5.27049in
-   :height: 1.38449in
 
 在AN706模块的硬件设计中, OS[2:0]
 已经引到外部的接口中，FPGA或CPU可以通过控制OS[2:0]的管脚电平来选择是否使用滤波器，以达到更高的测量精度。
@@ -96,8 +86,6 @@ AD7606 AD转换
 AD7606的输出编码方式为二进制补码。所设计的码转换在连续LSB整数的中间(既1/2LSB和3/2LSB)进行。AD7606的LSB大小为FSR/65536。AD7606的理想传递特性如下图所示：
 
 .. image:: images/14_media/image6.png
-   :width: 3.7425in
-   :height: 3.17123in
 
 硬件环境搭建
 ------------
@@ -110,27 +98,19 @@ AD7606的输出编码方式为二进制补码。所设计的码转换在连续LS
 1. 基于AN108的工程，删除ad9280_sample模块，添加ad7606_sample模块，并将AD7606的引脚引出，修改名称。IP核在repo文件夹。
 
 .. image:: images/14_media/image8.png
-   :width: 2.48437in
-   :height: 1.82343in
 
 2. 修改FCLK_CLK2频率为50MHz，用于AD7606采集
 
 .. image:: images/14_media/image9.png
-   :width: 4.2787in
-   :height: 3.32051in
 
 3. 修改AXIS-Stream Register
    Slice的TDATA宽度为2，因为ad7606的数据宽度是16bit。DMA的流接口宽度不需要修改，自动适应位宽。
 
 .. image:: images/14_media/image10.png
-   :width: 6.00417in
-   :height: 4.28958in
 
 4. 连接相关信号，Generate Output Products
 
 .. image:: images/14_media/image11.png
-   :width: 2.39473in
-   :height: 1.80326in
 
 5. 在XDC文件中绑定AD7606引脚，之后生成bit文件。
 
@@ -152,20 +132,14 @@ Vitis程序开发
 1. 与AN108的使用类似，但需要进行8通道叠加，由于ADC数据写入FIFO中是按CH1~CH8顺序存储，因此定义了二维数组，将每个通道数据独立出来，在XAxiDma_Adc_Wave函数中调整顺序。
 
 .. image:: images/14_media/image12.png
-   :width: 2.98696in
-   :height: 0.97587in
 
 2. 在XAxiDma_ADC函数中，为了能够看到每个通道的数据，将每个通道的系数coe做了微调，因此显示的位置有些偏移。
 
 .. image:: images/14_media/image13.png
-   :width: 5.15291in
-   :height: 0.57474in
 
 3. ADC的参数定义如下
 
 .. image:: images/14_media/image14.png
-   :width: 3.80203in
-   :height: 0.99452in
 
 板上验证
 --------
@@ -173,51 +147,35 @@ Vitis程序开发
 1. 连接电路如下，插入AD706模块，连接SMA到波形发生器，为了方便观察显示效果，波形发生器采样频率设置范围为500Hz~10KHz，电压幅度最大为10V
 
 .. image:: images/14_media/image15.png
-   :width: 5.13245in
-   :height: 3.41613in
 
 AX7015硬件连接图
 
 .. image:: images/14_media/image16.png
-   :width: 4.30534in
-   :height: 3.35757in
 
 AX7021硬件连接图（J15扩展口）
 
 .. image:: images/14_media/image17.png
-   :width: 4.31559in
-   :height: 3.24847in
 
 AX7020/AX7010硬件连接图（J11扩展口）
 
 .. image:: images/14_media/image18.png
-   :width: 4.41071in
-   :height: 3.42384in
 
 AX7Z035/AX7Z100硬件连接图
 
 .. image:: images/14_media/image19.png
-   :width: 6.00417in
-   :height: 4.53194in
 
 AX7Z020/AX7Z010硬件连接图（扩展口J21）
 
 2. 下载程序
 
 .. image:: images/14_media/image20.png
-   :width: 5.22112in
-   :height: 3.2555in
 
 3. 结果如下
 
 .. image:: images/14_media/image21.jpeg
-   :width: 3.99246in
-   :height: 5.17968in
 
 AX7015连接及显示结果
 
 .. image:: images/14_media/image22.png
-   :width: 4.60634in
-   :height: 2.31412in
 
 波形细节图

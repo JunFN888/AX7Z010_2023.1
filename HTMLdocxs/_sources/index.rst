@@ -14,7 +14,7 @@
    :caption: 公司简介
 
    7Z010_S1_RSTdocument/00_关于ALINX_CN
-
+   
 .. toctree::
    :maxdepth: 2
    :caption: AX7350型号板卡S1_FPGA教程
@@ -85,6 +85,30 @@
    7Z010_S3_RSTdocument/07_auto_focus_CN
    7Z010_S3_RSTdocument/08_edge_detector_CN
    7Z010_S3_RSTdocument/09_dual_corner_CN
+
+.. toctree::
+   :maxdepth: 2
+   :caption: AX7350型号板卡S4_LINUX教程
+
+   7Z010_S4_RSTdocument/01_安装虚拟机和Ubuntu系统_CN
+   7Z010_S4_RSTdocument/02_Ubuntu安装Linux版Vitis软件_CN
+   7Z010_S4_RSTdocument/03_Petalinux工具安装_CN
+   7Z010_S4_RSTdocument/04_NFS服务软件安装_CN
+   7Z010_S4_RSTdocument/05_使用Petalinux定制Linux系统_CN
+   7Z010_S4_RSTdocument/06_使用Vitis开发Linux程序_CN
+   7Z010_S4_RSTdocument/07_Linux下GPIO实验_CN
+   7Z010_S4_RSTdocument/08_Petalinux下的HDMI显示_CN
+   7Z010_S4_RSTdocument/09_使用Debian桌面系统_CN
+   7Z010_S4_RSTdocument/10_制作QSPI Flash启动的Linux_CN
+   7Z010_S4_RSTdocument/11_QT在ZYNQ上的应用_CN
+   7Z010_S4_RSTdocument/12_OpenCV应用_CN
+   7Z010_S4_RSTdocument/13_双目摄像头模块OpenCV显示_CN
+   7Z010_S4_RSTdocument/14_触摸屏模块应用_CN
+   7Z010_S4_RSTdocument/15_AXI DMA读写测试_CN
+   7Z010_S4_RSTdocument/16_基于DMA的ADC波形显示AN9238_CN
+   7Z010_S4_RSTdocument/17_基于DMA的ADC波形显示AN706_CN
+   7Z010_S4_RSTdocument/18_自动运行的petalinux应用程序_CN
+
 
 .. toctree::
    :maxdepth: 1

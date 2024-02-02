@@ -13,8 +13,6 @@ Slave设备，我们可以通过这4个HP接口实现高带宽的数据交互。
 
 .. image:: images/06_media/image1.png
    :alt: QQ截图20170207094140.bmp
-   :width: 6.00417in
-   :height: 4.72361in
 
 以”ps_hello”工程为基础，另存为一个工程
 
@@ -22,99 +20,67 @@ Slave设备，我们可以通过这4个HP接口实现高带宽的数据交互。
    AXI GP0接口取消，在本实验中不需要。
 
 .. image:: images/06_media/image2.png
-   :width: 5.07388in
-   :height: 3.71239in
 
 我们的实验启用HP0配置为64bit位宽，使用的时钟是150Mhz，HP的带宽是150Mhz
 \* 64bit，对于视频处理，ADC数据采集等应用都有足够的带宽。
 
 .. image:: images/06_media/image3.png
-   :width: 5.12903in
-   :height: 3.71241in
 
 2. 如下图所示，配置完HP端口以后，zynq会多出一个AXI
    Slave端口，名称为S_AXI_HP0，不过这些端口都是AXI3标准的，我们常用的是AXI4协议，这里添加1个AXI
    Interconnect IP，用于协议转换（AXI3<->AXI4）。
 
 .. image:: images/06_media/image4.png
-   :width: 4.98686in
-   :height: 1.0508in
 
 3. 将FCLK_CLK0时钟和S00_AXI导出，并修改名称
 
 .. image:: images/06_media/image5.png
-   :width: 4.17774in
-   :height: 0.91212in
 
 4. 在空白处右键选择Create Port，添加一个时钟输入接口
 
 .. image:: images/06_media/image6.png
-   :width: 3.34106in
-   :height: 2.73437in
 
 .. image:: images/06_media/image7.png
-   :width: 2.30835in
-   :height: 1.98389in
 
 5. 添加一个复位模块，并连接时钟如下
 
 .. image:: images/06_media/image8.png
-   :width: 3.58666in
-   :height: 1.812in
 
 6. 单击S00_AXI接口，选择时钟接口为axi_hp_clk
 
 .. image:: images/06_media/image9.png
-   :width: 2.81928in
-   :height: 2.39766in
 
 7. 双击S00_AXI引脚进行配置，改为AXI4接口
 
 .. image:: images/06_media/image10.png
-   :width: 4.6429in
-   :height: 2.93846in
 
 再次双击，打开配置将AXI的Burst长度设置为最大256，如果与上一步同时设置，可能会不成功。
 
 .. image:: images/06_media/image11.png
-   :width: 4.51642in
-   :height: 2.8626in
 
 .. image:: images/06_media/image12.png
-   :width: 3.42471in
-   :height: 3.25122in
 
 8. 导出复位引脚，修改名称，并连接对应信号
 
 .. image:: images/06_media/image13.png
-   :width: 5.03334in
-   :height: 2.22967in
 
 9. 修改复位的关联时钟为axi_hp_clk
 
 .. image:: images/06_media/image14.png
-   :width: 4.40655in
-   :height: 2.07382in
 
 10. 在Address Editor里点击自动分配地址空间
 
 .. image:: images/06_media/image15.png
-   :width: 4.40645in
-   :height: 1.0667in
 
 11. 保存设计，并按F6检查设计
 
 .. image:: images/06_media/image16.png
-   :width: 4.84308in
-   :height: 1.98448in
 
 12. Generate Output Products生成输出文件。
 
 13. 添加其他hdl文件
 
 .. image:: images/06_media/image17.png
-   :width: 3.23752in
-   :height: 2.3834in
 
 PL端AXI Master
 --------------
@@ -126,8 +92,6 @@ AXI4所采用的是一种READY，VALID握手通信机制，即主从模块进行
 
 .. image:: images/06_media/image18.jpeg
    :alt: http://www.eefocus.com/include/picture/500/400/data/12-03/1331912255_8bbd37e.jpg
-   :width: 5.14792in
-   :height: 2.32153in
 
 AXI总线分为五个通道：
 
@@ -148,14 +112,10 @@ AXI总线分为五个通道：
 读操作顺序为主与从进行读地址通道握手并传输地址内容，然后在读数据通道握手并传输所读内容以及读取操作的回应，时钟上升沿有效。如图所示：
 
 .. image:: images/06_media/image19.png
-   :width: 2.57765in
-   :height: 2.00273in
 
 写操作顺序为主与从进行写地址通道握手并传输地址内容，然后在写数据通道握手并传输所读内容，最后再写回应通道握手，并传输写回应数据，时钟上升沿有效。如图所示：
 
 .. image:: images/06_media/image20.png
-   :width: 2.52559in
-   :height: 2.24084in
 
 在我们不擅长写FPGA的一些代码时我们往往要借鉴别人的代码或者使用IP
 core。在这里笔者从github上找到一个AXI
@@ -178,8 +138,6 @@ II软件中有signal tap工具，xilinx
 Up Debug可直接进入调试配置界面。
 
 .. image:: images/06_media/image21.png
-   :width: 3.23286in
-   :height: 2.02587in
 
 具体的添加方法在course_s1中的”PL的“Hello
 World”LED实验”中已经讲过，可参考。
@@ -187,8 +145,6 @@ World”LED实验”中已经讲过，可参考。
 并在XDC文件里绑定error信号到PL端LED灯上。
 
 .. image:: images/06_media/image22.png
-   :width: 6.00417in
-   :height: 2.18333in
 
 上电验证
 --------
@@ -196,27 +152,19 @@ World”LED实验”中已经讲过，可参考。
 生成bit文件后导出到Vitis，运行Vitis，如下图所示。因为工程移动位置后Vitis找不到硬件信息，所以又重新建了一个硬件平台，top_hw_platform_1，这里的top_hw_platform_0，是笔者调试时产生的。大家可以直接删除，同时将文件也删除，删除以后可将留下top_hw_platform_1改名为top_hw_platform_0。我们在Vitis里建立了一个helloworld程序，虽然我们仅仅测试PL端读取PS端DDR，但是PS如果不工作起来，DDR控制器也是没有工作的，所以这个简单的helloword程序就是为了让DDR控制器工作起来。注意一定要从Vitis下载，如果直接在Vivado中下载bit文件，将无法正常运行。我们配置运行选项，如下图所示：
 
 .. image:: images/06_media/image23.png
-   :width: 4.63352in
-   :height: 4.06007in
 
 点击运行后系统会复位并且下载FPGA的bit文件。然后回到vivado界面点击Program
 and Debug栏自动连接目标如下图所示：
 
 .. image:: images/06_media/image24.png
-   :width: 2.58839in
-   :height: 1.69395in
 
 自动连接硬件后可发现JTAG连上的设备，其中有一个hw_ila_1的设备，这个设备就是我们debug设备，选中后可点击上方黄色三角按钮捕捉波形。如果有些信号没有显示完整，可点击波形旁边的“+”按钮添加。
 
 .. image:: images/06_media/image25.png
-   :width: 5.4064in
-   :height: 1.93181in
 
 点击捕获波形以后如下图所示，如果error一直为低，并且读写状态有变化，说明读写DDR数据正常，用户在这里可以自己查看其它的信号来观察写入DDR的数据和从DDR读出的数据。
 
 .. image:: images/06_media/image26.png
-   :width: 5.00986in
-   :height: 3.28301in
 
 本章小结
 --------

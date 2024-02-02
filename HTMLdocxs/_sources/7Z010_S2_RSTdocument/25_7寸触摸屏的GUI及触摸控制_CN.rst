@@ -12,8 +12,6 @@
 ----------
 
 .. image:: images/25_media/image1.jpeg
-   :width: 4.91801in
-   :height: 5.8597in
 
 µGUI运行效果图
 
@@ -24,12 +22,8 @@ http://embeddedlightning.com/ugui/。
 µGUI有一个简单的窗口管理系统，可以定义按钮、文本框等常规的图像界面元素。
 
 .. image:: images/25_media/image2.png
-   :width: 5.32432in
-   :height: 4.34966in
 
 .. image:: images/25_media/image3.png
-   :width: 6.00417in
-   :height: 4.3093in
 
 详细的使用方法见µGUI的《Reference Guide》，不是本文讨论的重点。
 
@@ -41,8 +35,6 @@ Vitis程序开发
 和ugui.h)。
 
 .. image:: images/25_media/image4.png
-   :width: 3.65107in
-   :height: 3.7344in
 
 下面对新增的代码做一下简单的介绍：
 
@@ -94,16 +86,12 @@ Reference Guide文档。
 首先我们来看一下main函数，在main函数里我们在前面添加了pwm设置，中断，触摸初始化，定时器初始化和定时器中断使能。
 
 .. image:: images/25_media/image5.png
-   :width: 4.54626in
-   :height: 3.16055in
 
 在main函数的后面我们调用uGUI函数在7寸LCD屏上实现一个窗口，并在这个窗口上显示不同的图案，这里添加了一个菜单条，菜单条上显示"%UI
 For
 ALINX!"字符，再在窗口不同的位置添加6个按键，各个按键上显示不同的文字用来表示不同的功能。
 
 .. image:: images/25_media/image6.png
-   :width: 5.15975in
-   :height: 4.73448in
 
 在display_demo.c程序里还有2个函数，一个是定时器中断处理函数Timer_Handler。当定时器溢出是会产生中断，会进入Timer_Handler中断程序，在中断程序里读取触摸屏的寄存器的值，计算触摸的状态和触摸的位置。
 
@@ -122,32 +110,22 @@ brightness+/-按键，屏幕亮度会改变。
 和前面的例程一样，编译生成bit文件，然后导出硬件，运行Vitis。7寸触摸液晶屏连接到开发板的扩展口，按前面几章的方法运行配置，点击run，可看到7寸屏上显示以下的窗口界面。
 
 .. image:: images/25_media/image7.jpeg
-   :width: 4.80072in
-   :height: 3.58051in
 
 AX7015硬件连接及显示效果
 
 .. image:: images/25_media/image8.png
-   :width: 4.84064in
-   :height: 3.53952in
 
 AX7021硬件连接（J15扩展口）及显示效果
 
 .. image:: images/25_media/image9.png
-   :width: 5.43932in
-   :height: 2.69233in
 
 AX7020/AX7010硬件连接（J11扩展口）及显示效果
 
 .. image:: images/25_media/image10.png
-   :width: 4.53717in
-   :height: 3.66488in
 
 AX7Z035/AX7Z100硬件连接及显示效果
 
 .. image:: images/25_media/image11.png
-   :width: 6.00417in
-   :height: 3.78125in
 
 AX7Z020/AX7Z010硬件连接图（扩展口J21）
 
@@ -155,17 +133,11 @@ AX7Z020/AX7Z010硬件连接图（扩展口J21）
 led的按键，每碰一次，按键上的数字会加1。
 
 .. image:: images/25_media/image12.jpeg
-   :width: 4.67893in
-   :height: 2.90941in
 
 如果我们按一下LCD brightness+/-按钮，可以改变LCD显示亮度
 
 .. image:: images/25_media/image13.jpeg
-   :width: 6.00417in
-   :height: 3.67942in
 
 如果按下Resize Window，窗口会变小，再按一次会还原。
 
 .. image:: images/25_media/image14.jpeg
-   :width: 6.00417in
-   :height: 4.28336in

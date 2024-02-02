@@ -19,9 +19,6 @@ GPIO的IP核，让PS端通过AXI总线控制PL端的LED灯，实验虽然简单�
 GPIO模块有两个GPIO，分别是GPIO和GPIO2，也就是channel1和channel2，为双向IO。
 
 .. image:: images/10_media/image1.png
-   :align: center
-   :width: 4.19719in
-   :height: 2.91123in
 
 AXI GPIO结构
 
@@ -36,21 +33,12 @@ Vivado工程建立
 1) 打开“ps_hello”另存为一个名为“ps_axi_gpio”Vivado工程，表示PS通过AXI总线控制gpio
 
 .. image:: images/10_media/image2.png
-   :align: center
-   :width: 1.88843in
-   :height: 1.61964in
 
 .. image:: images/10_media/image3.png
-   :align: center
-   :width: 3.19279in
-   :height: 1.71738in
 
 2) 双击xx.bd打开block design
 
 .. image:: images/10_media/image4.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.87847in
 
 添加AXI GPIO
 ~~~~~~~~~~~~
@@ -58,128 +46,74 @@ Vivado工程建立
 3) 添加一个AXI GPIO的IP 核
 
 .. image:: images/10_media/image5.png
-   :align: center
-   :width: 4.75982in
-   :height: 2.9976in
 
 4) 双击刚才添加的“axi_gpio_0”配置参数
 
 .. image:: images/10_media/image6.png
-   :align: center
-   :width: 3.4527in
-   :height: 1.90525in
 
 5) 选择“All Outputs”，因为这里控制LED，只要输出就可以了，“GPIO Width”填4，控制4颗LED，点击OK。如果想使用channel2，需要把”Enable Dual Channel”打开，也就使能了GPIO2。
 
 .. image:: images/10_media/image7.png
-   :align: center
-   :width: 6.00417in
-   :height: 4.60621in
 
 6) 点击“Run Connection Automation”，可以完成部分自动连线
 
 .. image:: images/10_media/image8.png
-   :align: center
-   :width: 3.74875in
-   :height: 2.22254in
 
 7) 选择要自动连接的端口，这里全选，点击OK
 
 .. image:: images/10_media/image9.png
-   :align: center
-   :width: 4.40171in
-   :height: 2.71148in
 
 8) 点击“Optimize Routing”，可以优化布局，同时可以看到多了两个模块，一个是Processor System Reset模块，为同步复位模块，提供同一时钟域的复位信号。AXI Interconnect模块为AXI总线互联模块，用于AXI模块的交叉互联。
 
 .. image:: images/10_media/image10.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.96389in
 
 在这个应用中，我们可以看到用到了ZYNQ的GP口，M_AXI_GP0，M代表的是master，此接口用于访问PL端数据，大部分应用中是为了配置PL端模块的寄存器。
 
 .. image:: images/10_media/image11.png
-   :align: center
-   :width: 5.54083in
-   :height: 1.79183in
 
 复位信号由ZYNQ的复位输出提供，最好是每个时钟域都加一个复位模块，可以根据模块下面的名称搜索添加。
 
 .. image:: images/10_media/image12.png
-   :align: center
-   :width: 6.00417in
-   :height: 1.91389in
 
 9) 修改GPIO端口的名称
 
 .. image:: images/10_media/image13.png
-   :align: center
-   :width: 5.25111in
-   :height: 3.0258in
 
 10) 名称修改为leds
 
 .. image:: images/10_media/image14.png
-   :align: center
-   :width: 4.8464in
-   :height: 2.98822in
 
 11) 再添加一个AXI GPIO，连接PL端按键
 
 .. image:: images/10_media/image15.png
-   :align: center
-   :width: 2.85638in
-   :height: 2.91113in
 
 12) 配置GPIO参数，都为输入，宽度为1，使能中断
 
 .. image:: images/10_media/image16.png
-   :align: center
-   :width: 5.47418in
-   :height: 4.23448in
 
 13) 使用自动连接
 
 .. image:: images/10_media/image17.png
-   :align: center
-   :width: 4.39949in
-   :height: 2.8636in
 
 14) 再把端口名称改为keys
 
 .. image:: images/10_media/image18.png
-   :align: center
-   :width: 4.29793in
-   :height: 2.38649in
 
 15) 由于是PL端过来的中断，在这里需要配置ZYNQ处理器的中断，勾选IRQ_F2P
 
 .. image:: images/10_media/image19.png
-   :align: center
-   :width: 6.00417in
-   :height: 4.60569in
 
 16) 连接ip2intc_irpt到IRQ_F2P
 
 .. image:: images/10_media/image20.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.39822in
 
 17) 保存设计，点击xx.bd，右键Generate Output Products
 
 .. image:: images/10_media/image21.png
-   :align: center
-   :width: 2.97266in
-   :height: 2.05315in
 
 18) 在生成的Verilog文件中，可以看到有个“leds_tri_o”和”keys_tri_i”的端口，要为他们分配管脚，在绑定引脚时，以这个文件里的引脚名称为准。
 
 .. image:: images/10_media/image22.png
-   :align: center
-   :width: 3.62798in
-   :height: 2.81267in
 
 XDC文件约束PL管脚
 -----------------
@@ -187,62 +121,40 @@ XDC文件约束PL管脚
 1. 创建一个新的xdc约束文件
 
 .. image:: images/10_media/image23.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.60903in
 
 2. 文件名称为led
 
 .. image:: images/10_media/image24.png
-   :align: center
-   :width: 4.58931in
-   :height: 3.12324in
 
 3. led.xdc添加一下内容，端口名称一定要和顶层文件端口一致
 
-+-----------------------------------------------------------------------+
-| set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[3]}]          |
-|                                                                       |
-| set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[2]}]          |
-|                                                                       |
-| set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[1]}]          |
-|                                                                       |
-| set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[0]}]          |
-|                                                                       |
-| set_property PACKAGE_PIN J14 [get_ports {leds_tri_o[0]}]              |
-|                                                                       |
-| set_property PACKAGE_PIN K14 [get_ports {leds_tri_o[1]}]              |
-|                                                                       |
-| set_property PACKAGE_PIN J18 [get_ports {leds_tri_o[2]}]              |
-|                                                                       |
-| set_property PACKAGE_PIN H18 [get_ports {leds_tri_o[3]}]              |
-|                                                                       |
-| set_property IOSTANDARD LVCMOS33 [get_ports {keys_tri_i[0]}]          |
-|                                                                       |
-| set_property PACKAGE_PIN M15 [get_ports {keys_tri_i[0]}]              |
-+=======================================================================+
-+-----------------------------------------------------------------------+
+::
+
+ set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[3]}]
+ set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[2]}]
+ set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[1]}]
+ set_property IOSTANDARD LVCMOS33 [get_ports {leds_tri_o[0]}]
+ set_property PACKAGE_PIN J14 [get_ports {leds_tri_o[0]}]
+ set_property PACKAGE_PIN K14 [get_ports {leds_tri_o[1]}]
+ set_property PACKAGE_PIN J18 [get_ports {leds_tri_o[2]}]
+ set_property PACKAGE_PIN H18 [get_ports {leds_tri_o[3]}]
+ 
+ set_property IOSTANDARD LVCMOS33 [get_ports {keys_tri_i[0]}]
+ set_property PACKAGE_PIN M15 [get_ports {keys_tri_i[0]}]
+
+
 
 4. 生成bit文件
 
 .. image:: images/10_media/image25.png
-   :align: center
-   :width: 1.78165in
-   :height: 0.79274in
 
 5. 导出硬件FileExportExport Hardware
 
 .. image:: images/10_media/image26.png
-   :align: center
-   :width: 2.33194in
-   :height: 2.83611in
 
 6. 因为要用到PL，所以选择“Include bitstream”，点击“OK”
 
 .. image:: images/10_media/image27.png
-   :align: center
-   :width: 3.75625in
-   :height: 3.18333in
 
 软件工程师工作内容
 ------------------
@@ -258,48 +170,30 @@ AXI GPIO点亮PL端LED灯
 1) 创建一个platform，创建过程参考“PS定时器中断实验”一章
 
 .. image:: images/10_media/image28.png
-   :align: center
-   :width: 2.53363in
-   :height: 1.70873in
 
 2) 面对一个不熟悉AXI GPIO，我们如何控制呢？我们可以尝试一下Vitis自带的例程
 
 3) 双击“system.mss”,找到“axi_gpio_0”,这里可以点击“Documentation”来看相关文档，这里就不演示，点击“Import Examples”
 
 .. image:: images/10_media/image29.png
-   :align: center
-   :width: 5.11462in
-   :height: 2.27691in
 
 4) 在弹出的对话框中有多个例程，从名称中可以猜个大概，这里选第一个“xgpio_example”
 
 .. image:: images/10_media/image30.png
-   :align: center
-   :width: 4.43264in
-   :height: 2.29583in
 
 5) 可以看到例程比较简单，短短几行代码，完成了AXI GPIO的操作
 
 .. image:: images/10_media/image31.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.33958in
 
 里面用到很多GPIO相关的API函数，通过文档可以了解详细，也可以选中该函数，按“F3”查看具体定义。如果有了这些信息你还不能理解如何使用AXI GPIO，说明你需要补充C语言基础。
 
 其实这些函数都是在操作GPIO的寄存器，AXI GPIO的寄存器也不多，主要是两个channel的数据寄存器GPIO_DATA和GPIO2_DATA，两个channel的方向控制GPIO_TRI和GPIO2_TRI，以及全局中断使能寄存器GIER，IP的中断使能IP IER和中断状态寄存器ISR，具体的功能可以看AXI GPIO的文档pg144。
 
 .. image:: images/10_media/image32.png
-   :align: center
-   :width: 4.31798in
-   :height: 1.68055in
 
 比如进入到设置GPIO方向的函数中，就可以看到是在向GPIO的GPIO_TRI寄存器写数据，从而控制方向。
 
 .. image:: images/10_media/image33.png
-   :align: center
-   :width: 3.88805in
-   :height: 1.33406in
 
 其他的函数也可以按此法自行研究。
 
@@ -309,23 +203,14 @@ AXI GPIO点亮PL端LED灯
 1) 虽然Vitis可以提供一些例程，但有一部分例程是需要自己修改的，这个简单的LED例程就不修改了，尝试运行一下，发现不能达到预期效果，甚至提示一些错误。
 
 .. image:: images/10_media/image34.png
-   :align: center
-   :width: 5.26068in
-   :height: 3.22419in
 
 2) 前面的教程已经提到，“Run As”最好复位系统，有PL的设计要“Program FPGA”，如果你的PL多次修改，别忘了重新导出硬件。按照下图配置后再次运行，可以看到开发板PL LED1快速闪烁。
 
 .. image:: images/10_media/image35.png
-   :align: center
-   :width: 4.29137in
-   :height: 4.03959in
 
 3) 修改代码让4个LED灯都闪烁
 
 .. image:: images/10_media/image36.png
-   :align: center
-   :width: 3.22378in
-   :height: 1.64755in
 
 寄存器方式实现
 ~~~~~~~~~~~~~~
@@ -339,16 +224,10 @@ AXI GPIO点亮PL端LED灯
 其中定义的基地址GPIO_BASEADDR可以在xxxxx.xsa里找到
 
 .. image:: images/10_media/image39.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.56458in
 
 由于我们只启用了channel1，因此定义了下面的寄存器地址
 
 .. image:: images/10_media/image40.png
-   :align: center
-   :width: 5.47811in
-   :height: 0.93333in
 
 这样直接操作寄存器的方式效率会比调用Xilinx
 API函数高，而且更直观，对于理解程序如何运行有很大帮助。但是对于大工程来讲，这种方式使用起来就比较复杂，主要依据个人需求选择。
@@ -359,54 +238,30 @@ AXI GPIO之PL端按键中断
 前面的定时器中断实验的中断属于PS内部的中断，本实验中断来自PL，PS最大可以接收16个来自PL的中断信号，都是上升沿或高电平触发。
 
 .. image:: images/10_media/image41.png
-   :align: center
-   :width: 5.05212in
-   :height: 3.17579in
 
 1) 和前面的教程一样，在不熟悉Vitis程序编写的情况下，我们尽量使用Vitis自带例程来修改，选择“xgpio_intr_tapp_example”
 
 .. image:: images/10_media/image42.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.51528in
 
 2) 导入例程以后有未定义的错误，我们需要修改部分代码，可以回到vivado工程看到按键的axi gpio模块叫做axi_gpio_1，以及它的偏移地址
 
 .. image:: images/10_media/image43.png
-   :align: center
-   :width: 5.46218in
-   :height: 1.38608in
 
 因此就可以在xparameters.h中找到它的device id
 
 .. image:: images/10_media/image44.png
-   :align: center
-   :width: 3.56102in
-   :height: 2.25262in
 
 .. image:: images/10_media/image45.png
-   :align: center
-   :width: 4.85695in
-   :height: 1.49109in
 
 .. image:: images/10_media/image46.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.92672in
 
 3) 然后可以修改GPIO和中断号的宏定义如下
 
 .. image:: images/10_media/image47.png
-   :align: center
-   :width: 4.76266in
-   :height: 3.62812in
 
 4) 修改测试延时时间，让我们有足够的时间去按按键
 
 .. image:: images/10_media/image48.png
-   :align: center
-   :width: 4.52157in
-   :height: 3.58058in
 
 .. _下载调试-1:
 
@@ -418,9 +273,6 @@ AXI GPIO之PL端按键中断
 2) 如果一直不按按键，串口显示“No button pressed.”，如果按下“PL KEY1”按键显示“Successfully ran Gpio Interrupt Tapp Example”。
 
 .. image:: images/10_media/image49.png
-   :align: center
-   :width: 5.43905in
-   :height: 3.41538in
 
 实验总结
 --------
@@ -438,50 +290,27 @@ PL端可以给PS发送中断信号，这提高了PL和PS数据交互的效率，
    Editor中，已经为AXI外设分配好了地址空间，其中偏移地址和空间大小是可以修改的。
 
 .. image:: images/10_media/image50.png
-   :align: center
-   :width: 5.65471in
-   :height: 1.40485in
 
 但是修改偏移地址是有限制的，详情参考UG585文档System Address一章，
 AXI外设连接到了M_AXI_GP0口， 在4000_0000到7FFF_FFFF地址空间内修改。
 
 .. image:: images/10_media/image51.png
-   :align: center
-   :width: 6.00417in
-   :height: 3.44861in
 
 2) 在使用一个模块时，需要配套的文档辅助开发，但是这些文档该如何去找呢，例如XILINX的IP，打开模块的配置，在左上角点击Documentation，再点击Product Guide，如果在安装Vivado的时候安装了DocNav，就会跳转过去打开文档。
 
 .. image:: images/10_media/image52.png
-   :align: center
-   :width: 4.80677in
-   :height: 3.67207in
 
 .. image:: images/10_media/image53.png
-   :align: center
-   :width: 0.38215in
-   :height: 0.46986in
 
 .. image:: images/10_media/image54.png
-   :align: center
-   :width: 5.17601in
-   :height: 3.4411in
 
 此功能需要电脑联网，DocNav会从网站加载文档。可以点击下载按钮下载到本地。
 
 还有一种方法是在Xilinx官网根据模块的名称搜索资料下载（页面可能会有所变化）
 
 .. image:: images/10_media/image55.png
-   :align: center
-   :width: 6.00417in
-   :height: 2.84653in
 
 .. |image1| image:: images/10_media/image37.png
-   :width: 2.80808in
-   :height: 2.52801in
 .. |image2| image:: images/10_media/image38.png
-   :width: 3.22503in
-   :height: 2.76093in
   
 
-*ZYNQ-7000开发平台 FPGA教程*    - `Alinx官方网站 <http://www.alinx.com>`_

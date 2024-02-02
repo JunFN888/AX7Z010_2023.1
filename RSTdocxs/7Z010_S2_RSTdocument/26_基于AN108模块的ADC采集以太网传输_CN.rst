@@ -107,32 +107,22 @@
 DMA的工程，将显示部分的的模块都删除，注意要把Ethernet0打开，使能MDIO
 
 .. image:: images/26_media/image1.png
-   :width: 4.09886in
-   :height: 1.11902in
 
 .. image:: images/26_media/image2.png
-   :width: 4.46216in
-   :height: 0.59216in
 
 AX7015和AX7021开发板需要使能Ethernet PHY
 Reset并连接到MIO7，AX7020和AX7010开发板不需要使能Ethernet PHY
 Reset，具体参考提供的例程。
 
 .. image:: images/26_media/image3.png
-   :width: 2.51352in
-   :height: 0.57688in
 
 最终连接结果如下：
 
 .. image:: images/26_media/image4.png
-   :width: 5.65357in
-   :height: 2.04645in
 
 只保留AD9280的引脚绑定
 
 .. image:: images/26_media/image5.png
-   :width: 2.13771in
-   :height: 1.03643in
 
 重新生成下载文件，导出硬件信息。
 
@@ -145,14 +135,10 @@ ADC采集部分
 1. ADC的采集在前面已经讲过，在本章的Vitis中加入dma_bd和adc_dma.h
 
 .. image:: images/26_media/image6.png
-   :width: 1.52774in
-   :height: 2.20249in
 
 2. 在main.c文件的main函数中，中断初始化，进行DMA的初始化，中断连接，建立BD链表
 
 .. image:: images/26_media/image7.png
-   :width: 4.10676in
-   :height: 1.71185in
 
 LWIP控制部分
 ~~~~~~~~~~~~
@@ -161,57 +147,39 @@ LWIP控制部分
 
 .. image:: images/26_media/image8.png
    :alt: image868
-   :width: 6.00069in
-   :height: 4.06181in
 
 2. 进行DHCP，pbuf的设置
 
 .. image:: images/26_media/image9.png
    :alt: image869
-   :width: 5.99861in
-   :height: 4.85486in
 
 3. 在lwip_app.c文件中，start_udp用于udp初始化，前面已经讲过。
 
 .. image:: images/26_media/image10.png
-   :width: 2.58622in
-   :height: 0.63382in
 
 4. udp_receive函数为接收回调函数，在此函数中判断上位机发来的命令，格式请参考前面制定的传输协议。
 
 .. image:: images/26_media/image11.png
-   :width: 3.16213in
-   :height: 0.21674in
 
 5. transfer_data函数用于回答上位机的命令，在udp_receive
 
 .. image:: images/26_media/image12.png
-   :width: 3.29884in
-   :height: 0.22331in
 
 6. send_adc_data函数用于发送ADC数据到上位机，最前面的5个字节为TargetHeader，可参考传输协议。
 
 .. image:: images/26_media/image13.png
-   :width: 2.48976in
-   :height: 1.79904in
 
 7. 在lwip_loop函数中，启动UDP传输，由于上位机只能显示一个通道的ADC数据，因此本实验中只打开CH1的通道。在while循环中，判断ADC数据是否采集完成，之后进行分包发送
 
 .. image:: images/26_media/image14.png
-   :width: 3.4786in
-   :height: 1.37227in
 
 8. 需要注意的是上位机设置的缓存大小为1MB，由于上位机固定为数据位宽为两个字节，且为无符号位，因此在adc_dma.h中将AD9280的采集数设置为1024*512，ADC_BYTE设为2
 
 .. image:: images/26_media/image15.png
-   :width: 1.75962in
-   :height: 0.23648in
 
 并将数据转换为两个字节，有符号数。在lwip_app.c的while循环中实现。
 
 .. image:: images/26_media/image16.png
-   :width: 3.5384in
-   :height: 1.73084in
 
 板上验证
 --------
@@ -219,63 +187,43 @@ LWIP控制部分
 1. 连接开发板如下所示，需要保证PC网卡为千兆网卡，否则会因为网络速度过低，导致无法显示。将AN108模块插到扩展口，连接专用屏蔽线到波形发生器，为了方便观察显示效果，波形发生器采样频率设置范围为1KHz~1MHz，电压幅度最大为10V
 
 .. image:: images/26_media/image17.png
-   :width: 4.45247in
-   :height: 3.4457in
 
 AX7015硬件连接图
 
 .. image:: images/26_media/image18.png
-   :width: 4.459in
-   :height: 3.55839in
 
 AX7021硬件连接图（J15扩展口）
 
 .. image:: images/26_media/image19.png
-   :width: 4.34914in
-   :height: 3.08545in
 
 AX7020/AX7010硬件连接图(J11扩展口)
 
 .. image:: images/26_media/image20.png
-   :width: 6.00417in
-   :height: 4.80835in
 
 AX7Z035/AX7Z100硬件连接图
 
 .. image:: images/26_media/image21.png
-   :width: 5.35974in
-   :height: 3.92031in
 
 AX7Z020/AX7Z010硬件连接图（扩展口J21）
 
 2. 如果有DHCP服务器，会自动分配IP给开发板；如果没有DHCP服务器，默认开发板IP地址为192.168.1.11，需要将PC的IP地址设为同一网段，如下图所示。同时要确保网络里没有192.168.1.11的IP地址，否则会造成IP冲突，导致无法显示。可以在板子未上电前在CMD里输入ping
-   192.168.1.11查看是否能ping通，如果ping通，说明网络中有此IP地址，就无法验证。
+192.168.1.11查看是否能ping通，如果ping通，说明网络中有此IP地址，就无法验证。
 
-..
-
-   没有问题之后打开putty软件。
+没有问题之后打开putty软件。
 
 .. image:: images/26_media/image22.png
-   :width: 2.30129in
-   :height: 2.87891in
 
-3. 下载程序到开发板，在putty中可以看到打印信息如下
+1. 下载程序到开发板，在putty中可以看到打印信息如下
 
 .. image:: images/26_media/image23.png
-   :width: 4.35116in
-   :height: 2.73994in
 
 4. 在工程目录下，打开示波器.exe
 
 .. image:: images/26_media/image24.png
-   :width: 3.05833in
-   :height: 1.03125in
 
 5. 显示结果如下
 
 .. image:: images/26_media/image25.png
-   :width: 4.74534in
-   :height: 2.75589in
 
 上位机软件使用方法，请参考AN108以太网传输的上位机软件使用说明一节。
 
@@ -283,8 +231,6 @@ AX7Z020/AX7Z010硬件连接图（扩展口J21）
 ------------------
 
 .. image:: images/26_media/image26.png
-   :width: 4.76561in
-   :height: 2.76767in
 
 黄色框显示发送板卡的MAC和IP地址。若背景变成红色，说明网络连接断开或数据丢包。
 
@@ -293,8 +239,6 @@ AX7Z020/AX7Z010硬件连接图（扩展口J21）
 **复位**\ ：点击复位可使波形显示到初始状态，如下图
 
 .. image:: images/26_media/image27.png
-   :width: 4.85253in
-   :height: 2.81815in
 
 **自动**\ ：没有用处
 
@@ -316,11 +260,7 @@ AX7Z020/AX7Z010硬件连接图（扩展口J21）
 点击保存按扭后，在设置的保存路径中会出现一个TXT文件
 
 .. image:: images/26_media/image28.png
-   :width: 6.00278in
-   :height: 1.87778in
 
 打开文件后即可看到原始ADC数据
 
 .. image:: images/26_media/image29.png
-   :width: 5.25216in
-   :height: 3.20727in
