@@ -3,10 +3,7 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-.. _ALINX: http://www.alinx.com
-
-
-`ALINX`_ ZYNQ 7000 development platform FPGA tutorial
+ZYNQ 7000 development platform FPGA tutorial
 =========================================================
 
 .. toctree::
