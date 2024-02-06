@@ -7,7 +7,7 @@
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#project-information
 
 project = 'ZYNQ 7000开发平台FPGA教程'
-copyright = '2024, JunFN'
+copyright = '2024 , ALINX '
 author = 'JunFN'
 release = '1.0'
 
@@ -18,9 +18,16 @@ sys.path.insert(0, os.path.abspath('../..'))
 # -- General configuration ---------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#general-configuration
 
-master_doc = 'index'
-
 extensions = []
+
+html_theme_options = {
+"extra_footer": """
+        These engineering documents are copyrighted by
+            <a
+                href="https://www.alinx.com/"
+            >ALINX official website</a>
+    """
+}
 
 templates_path = ['_templates']
 exclude_patterns = []
@@ -31,8 +38,7 @@ language = 'zh_CN'
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output
 
 html_theme = 'sphinx_book_theme'
-
 #html_theme = 'sphinx_rtd_theme'
-html_logo = "7Z010_S1_RSTdocument/images/00_media/8.png"
+html_logo = "7Z010_S1_RSTdocument_CN/images/00_media/8.png"
 #highlight_language = 'verilog'
 
