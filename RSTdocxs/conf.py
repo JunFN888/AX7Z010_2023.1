@@ -11,7 +11,6 @@ copyright = '2024 , ALINX '
 author = 'JunFN'
 release = '1.0'
 
-
 import os
 import sys
 sys.path.insert(0, os.path.abspath('../..'))
@@ -20,7 +19,13 @@ sys.path.insert(0, os.path.abspath('../..'))
 
 extensions = []
 
+
 html_theme_options = {
+    "repository_url": "https://github.com/JunFN888/AX7Z010_2023.1.git",
+    "repository_branch": "master",
+    "home_page_in_toc": True,
+    "use_repository_button": True,
+    "navigation_with_keys": False,
 "extra_footer": """
         These engineering documents are copyrighted by
             <a
