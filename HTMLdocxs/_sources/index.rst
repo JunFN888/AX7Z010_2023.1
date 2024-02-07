@@ -4,7 +4,7 @@
    contain the root `toctree` directive.
 
 
-ZYNQ 7000 开发平台 FPGA 教程
+**ZYNQ 7000 开发平台**
 ======================================
 
 .. toctree::
