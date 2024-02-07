@@ -32,7 +32,8 @@ Expansion port and some button LEDs.
 
 # AX7Z010, AX7Z010B document tutorial link
 https://ax7z010-20231.readthedocs.io/zh-cn/en/src/00_About%20ALINX_EN.html
-Note: You can switch between Chinese and English languages at the footer at the end of the document
+
+ Note: You can switch between Chinese and English languages at the footer at the end of the document
 
 # AX7Z010, AX7Z010B routine
 ## Routine description
