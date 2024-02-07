@@ -1,4 +1,4 @@
-"chapter 2" ZYNQ Introduction
+ZYNQ Introduction
 ================================
 
 The highlight of the Zynq family is the complete ARM Processing Subsystem (PS) included in the FPGA. Each Zynq family processor includes a Cortex-A9 processor, and the entire processor is built with the processor in mind.
@@ -11,9 +11,7 @@ To put it bluntly, it's the SOC part of the ARM, and the FPGA part. Of these, th
 Cortex™-A9 processor, AMBA® interconnect, internal memory, external memory interface and peripherals. These peripherals mainly include USB bus interface, Ethernet interface, SD/SDIO interface, I2C bus interface, CAN bus interface, UART interface, and GPIO.
 
 .. image:: images/02_media/image1.png
-   :width: 5.4953in
-   :height: 3.15609in
-
+      
 General block diagram of ZYNQ chip
 
 PS: Processing System, which is the part of the SOC of the ARM that is not related to the FPGA.
@@ -23,9 +21,7 @@ PL: Progarmmable Logic, the FPGA part.
 * The PL part is the same as the 7 series, and you can see the corresponding 7 series products in the DS190 documentation. *
 
 .. image:: images/02_media/image2.png
-   :width: 6.00417in
-   :height: 1.04722in
-
+      
 PS and PL interconnection technology 
 -----------------------------------------
 
@@ -43,9 +39,7 @@ Architecture), a high-performance, high-bandwidth, low-latency on-chip bus that 
 The AXI protocol mainly describes how data is transferred between a master and a slave device, where a connection is established by handshaking signals between the master and the slave device. The READY signal is issued when the slave device is ready to receive data. When the master device's data is ready, it issues and maintains the VALID signal to indicate that the data is valid. Data transmission begins only when both the VALID and READY signals are valid. When both signals remain valid, the master device continues to transmit the next data. The master device can revoke the VALID signal or the slave device can revoke the READY signal to terminate the transmission.The protocol of AXI is shown in the figure.At T2, the READY signal of the slave device is valid, and at T3 the VILID signal of the master device is valid, and the data transmission starts.
 
 .. image:: images/02_media/image3.png
-   :width: 4.22385in
-   :height: 1.70463in
-
+      
 AXI Handshake Timing Diagram
 
 In ZYNQ, AXI-Lite, AXI4 and AXI-Stream are supported. Table 5-1 shows the characteristics of these three AXI interfaces.
@@ -89,15 +83,11 @@ The AXI4 and AXI4-Lite interfaces contain 5 different channels:
 Each of these channels is a separate AXI handshake protocol. The following two figures show the read and write models respectively:
 
 .. image:: images/02_media/image4.png
-   :width: 3.77612in
-   :height: 1.63024in
-
+      
 AXI Read Data Channel
 
 .. image:: images/02_media/image5.png
-   :width: 3.85128in
-   :height: 2.35547in
-
+      
 AXI Write Data Channel
 
 The AXI bus protocol is implemented in hardware inside the ZYNQ chip, including 9 physical interfaces, which are AXI-GP0~AXI-GP3, AXI-HP0~AXI-HP3, and AXI-ACP interface.
@@ -110,9 +100,7 @@ RAM)
 The AXI_GP interfaces, which are general-purpose AXI interfaces, are four in total, including two 32-bit master device interfaces and two 32-bit slave device interfaces.
 
 .. image:: images/02_media/image6.png
-   :width: 5.53056in
-   :height: 3.16528in
-
+      
 As you can see, only two AXI-GPs are Master Ports, i.e., host interfaces, and the remaining seven ports are Slave
 Port (Slave Interface). The host interface has the authority to initiate reads and writes, and the ARM can use the two AXI-GP host interfaces to actively access the PL logic, which actually maps the PL to an address, and reads and writes to the PL registers as if it were reading and writing to its own memory. The rest of the slave interface is a passive interface, accepting reads and writes from the PL, against the grain.
 
@@ -124,9 +112,7 @@ AXI-Stream implements the corresponding interfaces, which can be added directly 
 IP:
 
 .. image:: images/02_media/image7.png
-   :width: 2.6709in
-   :height: 2.49687in
-
+      
 The following is a description of the functions of several commonly used AXI interface IPs:
 
 AXI-DMA: Realization of conversion from PS memory to PL high-speed transfer high speed channel AXI-HP <----> AXI-Stream
@@ -160,35 +146,25 @@ The AXI Interconnect basic connection modes are the following:
 - N-to-M Interconnect (Shared Access Mode)
 
 .. image:: images/02_media/image8.png
-   :width: 3.15811in
-   :height: 1.99139in
-
+      
 many-to-one situation
 
 .. image:: images/02_media/image9.png
-   :width: 3.31896in
-   :height: 2.18051in
-
+      
 One-to-many scenarios
 
 .. image:: images/02_media/image10.png
-   :width: 3.7847in
-   :height: 2.26394in
-
+      
 Many-to-many read and write address channels
 
 .. image:: images/02_media/image11.png
-   :width: 3.83584in
-   :height: 2.10589in
-
+      
 Many-to-many read and write data channels
 
 ZYNQ internal AXI interface devices are interconnected by means of an interconnect matrix, which ensures both the high efficiency of the data transmission and the flexibility of the connection. xilinx provides the IP core axi_interconnect to realize such an interconnect matrix in Vivado, and we just need to call it.
 
 .. image:: images/02_media/image12.png
-   :width: 2.59167in
-   :height: 2.3875in
-
+      
 AXI Interconnect IP
 
 Introduction to the ZYNQ chip development process

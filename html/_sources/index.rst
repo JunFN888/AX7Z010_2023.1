@@ -3,15 +3,14 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-ZYNQ 7000 development platform FPGA tutorial
-=========================================================
+ZYNQ 7000 development platform
+==================================
 
 .. toctree::
    :maxdepth: 1
    :caption: company profile
 
-   src/01_SoftwarePackageDescription_EN
-   src/02_ZYNQIntroduction_EN
+   src/00_About ALINX_EN
    
 .. toctree::
    :maxdepth: 2
