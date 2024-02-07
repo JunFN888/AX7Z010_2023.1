@@ -30,6 +30,9 @@ Expansion port and some button LEDs.
 15. 7 light-emitting diodes LED, 6 on the core board and 1 on the base board. There is 1 power indicator light on the core board; 1 power indicator light, 1 DONE configuration indicator light; and 4 user indicator lights on the base board.
 16. 4 user buttons on the base panel.
 
+# AX7Z010, AX7Z010B document tutorial link
+https://ax7z010-20231.readthedocs.io/zh-cn/en/src/00_About%20ALINX_EN.html
+Note: You can switch between Chinese and English languages at the footer at the end of the document
 
 # AX7Z010, AX7Z010B routine
 ## Routine description

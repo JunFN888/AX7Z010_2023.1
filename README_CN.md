@@ -30,6 +30,9 @@ XC7Z010-1CLG400I。ZYNQ7010 芯片可分成处理器系统部分 Processor Syste
   15. 7 个发光二极管 LED, 核心板上 6 个，底板上 1 个。核心板上 1 个电源指示灯；底板上有1 个电源指示灯，1 个 DONE 配置指示灯；4 个用户指示灯。   
   16. 4 个用户按键在底板上。
 
+# AX7Z010、AX7Z010B 文档教程链接
+https://ax7z010-20231.readthedocs.io/zh-cn/latest/7Z010_S1_RSTdocument_CN/00_%E5%85%B3%E4%BA%8EALINX_CN.html
+注意：文档的末尾页脚处可以切换中英文语言
 
 # AX7Z010、AX7Z010B 例程
 ## 例程描述
